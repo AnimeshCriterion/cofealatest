@@ -68,20 +68,20 @@ class ProductWidget extends StatelessWidget {
                         overflow: TextOverflow.ellipsis),
                     const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
-                    Row(mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          RatingBar(
-                            rating: double.parse(ratting),
-                            size: 18,
-                          ),
-
-
-                      Text('(${productModel.reviewCount.toString()})',
-                          style: robotoRegular.copyWith(
-                            fontSize: Dimensions.fontSizeSmall,
-                          )),
-
-                    ]),
+                    // Row(mainAxisAlignment: MainAxisAlignment.center,
+                    //     children: [
+                    //       RatingBar(
+                    //         rating: double.parse(ratting),
+                    //         size: 18,
+                    //       ),
+                    //
+                    //
+                    //   Text('(${productModel.reviewCount.toString()})',
+                    //       style: robotoRegular.copyWith(
+                    //         fontSize: Dimensions.fontSizeSmall,
+                    //       )),
+                    //
+                    // ]),
                     const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
 

@@ -77,7 +77,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         });
                         if (_isSuccess) {
                           Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                              builder: (_) => DashBoardScreen()), (route) => false);
+                              builder: (_) => const DashBoardScreen()), (route) => false);
 
 
                           showAnimatedDialog(context, MyDialog(
@@ -87,7 +87,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           ), dismissible: false, isFlip: true);
                         } else if (_isFailed) {
                           Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                              builder: (_) => DashBoardScreen()), (route) => false);
+                              builder: (_) => const DashBoardScreen()), (route) => false);
 
 
 
@@ -99,7 +99,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           ), dismissible: false, isFlip: true);
                         } else if (url == '${AppConstants.baseUrl}/cancel') {
                           Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                              builder: (_) => DashBoardScreen()), (route) => false);
+                              builder: (_) => const DashBoardScreen()), (route) => false);
 
 
                           showAnimatedDialog(context, MyDialog(
@@ -121,7 +121,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
                   _isLoading ? Center(
                     child: CustomLoader(color: Theme.of(context).primaryColor),
-                  ) : SizedBox.shrink(),
+                  ) : const SizedBox.shrink(),
                 ],
               ),
             ),
@@ -136,7 +136,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       controllerGlobal!.goBack();
       return Future.value(false);
     } else {
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => DashBoardScreen()), (route) => false);
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const DashBoardScreen()), (route) => false);
       showAnimatedDialog(context, MyDialog(
         icon: Icons.clear,
         title: getTranslated('payment_cancelled', context),

@@ -110,14 +110,14 @@ class RecommendedProductView extends StatelessWidget {
                             Center(
                               child: Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                Text('${double.parse(ratting!).toStringAsFixed(1)} ${getTranslated('out_of_5', context)}',
-                                    style: titilliumBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
-                                  Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      RatingBar(rating: double.parse(ratting), size: 18,),
-                                      Text('(${ratting.toString()})')
-                                    ],
-                                  ),
+                                // Text('${double.parse(ratting!).toStringAsFixed(1)} ${getTranslated('out_of_5', context)}',
+                                //     style: titilliumBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
+                                //   Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
+                                //     children: [
+                                //       RatingBar(rating: double.parse(ratting), size: 18,),
+                                //       Text('(${ratting.toString()})')
+                                //     ],
+                                //   ),
 
                                 const SizedBox(height: Dimensions.paddingSizeExtraExtraSmall),
                                 recommended.recommendedProduct !=null && recommended.recommendedProduct!.discount!= null && recommended.recommendedProduct!.discount! > 0  ? Text(
@@ -141,7 +141,8 @@ class RecommendedProductView extends StatelessWidget {
                                 ):const SizedBox(),
 
                               ],),
-                            ),),
+                            ),
+                            ),
                           ),
 
 

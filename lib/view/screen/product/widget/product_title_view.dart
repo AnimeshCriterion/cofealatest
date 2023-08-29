@@ -67,32 +67,32 @@ class ProductTitleView extends StatelessWidget {
             ]),
             const SizedBox(height: Dimensions.paddingSizeDefault),
 
-            Row(children: [
-              Text('${details.reviewList != null ? details.reviewList!.length : 0} reviews | ',
-                  style: titilliumRegular.copyWith(color: Theme.of(context).hintColor,
-                    fontSize: Dimensions.fontSizeDefault,)),
-
-              Text('${details.orderCount} orders | ', style: titilliumRegular.copyWith(
-                color: Theme.of(context).hintColor,
-                fontSize: Dimensions.fontSizeDefault,
-              )),
-
-              Text('${details.wishCount} wish', style: titilliumRegular.copyWith(
-                color: Theme.of(context).hintColor,
-                fontSize: Dimensions.fontSizeDefault,
-              )),
-
-              const Expanded(child: SizedBox.shrink()),
-              const SizedBox(width: 5),
-
-
-              Row(children: [
-                const Icon(Icons.star, color: Colors.orange,),
-                Text('${productModel!.reviews != null ? productModel!.reviews!.isNotEmpty ?
-                double.parse(averageRatting!) : 0.0 : 0.0}')
-              ],),
-
-            ]),
+            // Row(children: [
+            //   Text('${details.reviewList != null ? details.reviewList!.length : 0} reviews | ',
+            //       style: titilliumRegular.copyWith(color: Theme.of(context).hintColor,
+            //         fontSize: Dimensions.fontSizeDefault,)),
+            //
+            //   Text('${details.orderCount} orders | ', style: titilliumRegular.copyWith(
+            //     color: Theme.of(context).hintColor,
+            //     fontSize: Dimensions.fontSizeDefault,
+            //   )),
+            //
+            //   Text('${details.wishCount} wish', style: titilliumRegular.copyWith(
+            //     color: Theme.of(context).hintColor,
+            //     fontSize: Dimensions.fontSizeDefault,
+            //   )),
+            //
+            //   const Expanded(child: SizedBox.shrink()),
+            //   const SizedBox(width: 5),
+            //
+            //
+            //   Row(children: [
+            //     const Icon(Icons.star, color: Colors.orange,),
+            //     Text('${productModel!.reviews != null ? productModel!.reviews!.isNotEmpty ?
+            //     double.parse(averageRatting!) : 0.0 : 0.0}')
+            //   ],),
+            //
+            // ]),
             const SizedBox(height: Dimensions.paddingSizeSmall),
 
 
