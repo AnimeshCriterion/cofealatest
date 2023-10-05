@@ -91,14 +91,14 @@ class _MoreScreenState extends State<MoreScreen> {
                 Padding(padding: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_LARGE),
                   child: Image.asset(Images.logo_with_name_image, height: 35),
                 ),
-                Expanded(child: SizedBox.shrink()),
+                const Expanded(child: SizedBox.shrink()),
                 InkWell(
                   onTap: () {
                     if(isGuestMode) {
-                      showAnimatedDialog(context, GuestDialog(), isFlip: true);
+                      showAnimatedDialog(context, const GuestDialog(), isFlip: true);
                     }else {
                       if(Provider.of<ProfileProvider>(context, listen: false).userInfoModel != null) {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProfileScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ProfileScreen()));
                       }
                     }
                   },
@@ -106,18 +106,18 @@ class _MoreScreenState extends State<MoreScreen> {
                     Text(!isGuestMode ? profile.userInfoModel != null ?
                     '${profile.userInfoModel!.fName} ${profile.userInfoModel!.lName}' : 'Full Name' : 'Guest',
                         style: titilliumRegular.copyWith(color: ColorResources.WHITE)),
-                    SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
+                    const SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
 
 
-                    isGuestMode ? CircleAvatar(child: Icon(Icons.person, size: 35)) :
+                    isGuestMode ? const CircleAvatar(child: Icon(Icons.person, size: 35)) :
                     profile.userInfoModel == null ?
-                    CircleAvatar(child: Icon(Icons.person, size: 35)) : ClipRRect(
+                    const CircleAvatar(child: Icon(Icons.person, size: 35)) : ClipRRect(
                       borderRadius: BorderRadius.circular(15),
                       child: FadeInImage.assetNetwork(
                         placeholder: Images.logo_image, width: 35, height: 35, fit: BoxFit.fill,
                         image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls!.customerImageUrl}/'
                             '${profile.userInfoModel!.image}',
-                        imageErrorBuilder: (c, o, s) => CircleAvatar(child: Icon(Icons.person, size: 35)),
+                        imageErrorBuilder: (c, o, s) => const CircleAvatar(child: Icon(Icons.person, size: 35)),
                       ),
                     ),
                   ]),
@@ -129,16 +129,16 @@ class _MoreScreenState extends State<MoreScreen> {
 
 
         Container(
-          margin: EdgeInsets.only(top: 120),
+          margin: const EdgeInsets.only(top: 120),
           decoration: BoxDecoration(
             color: ColorResources.getIconBg(context),
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
           ),
           child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Column(crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
+                  const SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
 
                   // Top Row Items
                   Container(height: MediaQuery.of(context).size.width/3.6,
@@ -149,32 +149,32 @@ class _MoreScreenState extends State<MoreScreen> {
                           Icon(Icons.arrow_back_ios, color: Theme.of(context).primaryColor),
                           Expanded(
                             child: ListView(scrollDirection:Axis.horizontal,
-                                physics: BouncingScrollPhysics(),
+                                physics: const BouncingScrollPhysics(),
                                 children: [
                                   Provider.of<SplashProvider>(context,listen: false).configModel!.walletStatus ==1?
                                   SquareButton(image: Images.wallet, title: getTranslated('wallet', context),
-                                      navigateTo: WalletScreen(),count: 1,hasCount: false):SizedBox(),
+                                      navigateTo: const WalletScreen(),count: 1,hasCount: false):const SizedBox(),
 
 
                                   Provider.of<SplashProvider>(context,listen: false).configModel!.loyaltyPointStatus ==1?
                                   SquareButton(image: Images.loyaltyPoint, title: getTranslated('loyalty_point', context),
-                                    navigateTo: LoyaltyPointScreen(),count: 1,hasCount: false,):SizedBox(),
+                                    navigateTo: const LoyaltyPointScreen(),count: 1,hasCount: false,):const SizedBox(),
 
 
                                   SquareButton(image: Images.shoppingImage, title: getTranslated('orders', context),
-                                    navigateTo: OrderScreen(),count: 1,hasCount: false,),
-                                  SquareButton(image: Images.gift_card, title:" My Gift Vouchar",
+                                    navigateTo: const OrderScreen(),count: 1,hasCount: false,),
+                                  const SquareButton(image: Images.gift_card, title:" My Gift Voucher",
                                     navigateTo: MyGiftVoucherScreen(),count: 1,hasCount: false,),
 
                                   SquareButton(image: Images.cartImage, title: getTranslated('CART', context),
-                                    navigateTo: CartScreen(),
+                                    navigateTo: const CartScreen(),
                                     count: Provider.of<CartProvider>(context,listen: false).cartList.length, hasCount: true,),
 
                                   SquareButton(image: Images.offers, title: getTranslated('offers', context),
-                                    navigateTo: OffersScreen(),count: 0,hasCount: false,),
+                                    navigateTo: const OffersScreen(),count: 0,hasCount: false,),
 
                                   SquareButton(image: Images.wishlist, title: getTranslated('wishlist', context),
-                                    navigateTo: WishListScreen(),
+                                    navigateTo: const WishListScreen(),
                                     count: Provider.of<AuthProvider>(context, listen: false).isLoggedIn() &&
                                         Provider.of<WishListProvider>(context, listen: false).wishList != null &&
                                         Provider.of<WishListProvider>(context, listen: false).wishList!.length > 0 ?
@@ -186,27 +186,27 @@ class _MoreScreenState extends State<MoreScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                  const SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
 
 
 
 
                   // Buttons
                   TitleButton(image: Images.fastDelivery, title: getTranslated('address', context),
-                      navigateTo: AddressListScreen()),
+                      navigateTo: const AddressListScreen()),
 
                   TitleButton(image: Images.moreFilledImage, title: getTranslated('all_category', context),
-                      navigateTo: AllCategoryScreen()),
+                      navigateTo: const AllCategoryScreen()),
 
                   TitleButton(image: Images.notificationFilled, title: getTranslated('notification', context),
-                      navigateTo: NotificationScreen()),
+                      navigateTo: const NotificationScreen()),
 
-                  singleVendor?SizedBox():
+                  singleVendor?const SizedBox():
                   TitleButton(image: Images.chats, title: getTranslated('chats', context),
-                      navigateTo: InboxScreen()),
+                      navigateTo: const InboxScreen()),
 
                   TitleButton(image: Images.settings, title: getTranslated('settings', context),
-                      navigateTo: SettingsScreen()),
+                      navigateTo: const SettingsScreen()),
 
                   TitleButton(image: Images.preference, title: getTranslated('support_ticket', context),
                       navigateTo: SupportTicketScreen()),
@@ -236,14 +236,14 @@ class _MoreScreenState extends State<MoreScreen> {
                         color: ColorResources.getPrimary(context)),
                     title: Text(getTranslated('app_info', context)!,
                         style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE)),
-                    trailing: Text(AppConstants.appVersion),
+                    trailing: const Text(AppConstants.appVersion),
                   ),
 
-                  isGuestMode ? SizedBox() : ListTile(
+                  isGuestMode ? const SizedBox() : ListTile(
                     leading: Icon(Icons.exit_to_app, color: ColorResources.getPrimary(context), size: 25),
                     title: Text(getTranslated('sign_out', context)!,
                         style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE)),
-                    onTap: () => showAnimatedDialog(context, SignOutConfirmationDialog(), isFlip: true),
+                    onTap: () => showAnimatedDialog(context, const SignOutConfirmationDialog(), isFlip: true),
                   ),
                 ]),
           ),

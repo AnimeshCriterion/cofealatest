@@ -37,7 +37,7 @@ class PaymentInfo extends StatelessWidget {
               Text(getTranslated('PAYMENT_PLATFORM', context)!,
                   style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeSmall)),
 
-              Text(order!.trackingModel!.paymentMethod != null ? getTranslated( order!.trackingModel!.paymentMethod, context)!: '',
+              Text(order!.trackingModel!.paymentMethod != null ? order!.trackingModel!.paymentMethod.toString(): '',
                   style: titilliumBold.copyWith(color: Theme.of(context).primaryColor,
                   )),
             ]),

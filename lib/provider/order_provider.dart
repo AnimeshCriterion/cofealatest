@@ -183,19 +183,20 @@ class OrderProvider with ChangeNotifier {
     if(fromDetails) {
       _orderDetails = null;
     }
-    if(orderModel == null) {
+    // if(orderModel == null) {
       _trackingModel = null;
       notifyListeners();
       ApiResponse apiResponse = await orderRepo.getTrackingInfo(orderID);
       if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+        print("sfffffffffff"+apiResponse.response!.data.toString());
         _trackingModel = OrderModel.fromJson(apiResponse.response!.data);
       } else {
         ApiChecker.checkApi( apiResponse);
       }
       notifyListeners();
-    }else {
-      _trackingModel = orderModel;
-    }
+    // }else {
+    //   _trackingModel = orderModel;
+    // }
   }
 
   void setPaymentMethod(int index) {

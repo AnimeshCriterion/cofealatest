@@ -26,13 +26,13 @@ class CartWidget extends StatelessWidget {
       onTap: () {
         print('======>product is=====>${cartModel!.id!}/${cartModel!.name}');
         Navigator.push(context, PageRouteBuilder(
-          transitionDuration: Duration(milliseconds: 1000),
+          transitionDuration: const Duration(milliseconds: 1000),
           pageBuilder: (context, anim1, anim2) => ProductDetails(productId: cartModel!.productId, slug: cartModel!.slug,),
         ));
       },
       child: Container(
-        margin: EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
-        padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+        margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
+        padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
         decoration: BoxDecoration(color: Theme.of(context).highlightColor,
 
         ),
@@ -55,7 +55,7 @@ class CartWidget extends StatelessWidget {
 
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                  padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -69,7 +69,7 @@ class CartWidget extends StatelessWidget {
                                   color: ColorResources.getReviewRattingColor(context),
                                 )),
                           ),
-                          SizedBox(width: Dimensions.PADDING_SIZE_SMALL,),
+                          const SizedBox(width: Dimensions.PADDING_SIZE_SMALL,),
                           !fromCheckout ? InkWell(
                             onTap: () {
                               if(Provider.of<AuthProvider>(context, listen: false).isLoggedIn()) {
@@ -80,11 +80,11 @@ class CartWidget extends StatelessWidget {
                             },
                             child: Container(width: 20,height: 20,
                                 child: Image.asset(Images.delete,scale: .5,)),
-                          ) : SizedBox.shrink(),
+                          ) : const SizedBox.shrink(),
                         ],
 
                       ),
-                      SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+                      const SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
                       Row(
                         children: [
 
@@ -94,8 +94,8 @@ class CartWidget extends StatelessWidget {
                             style: titilliumSemiBold.copyWith(color: ColorResources.getRed(context),
                               decoration: TextDecoration.lineThrough,
                             ),
-                          ):SizedBox(),
-                          SizedBox(width: Dimensions.FONT_SIZE_DEFAULT,),
+                          ):const SizedBox(),
+                          const SizedBox(width: Dimensions.FONT_SIZE_DEFAULT,),
                           Text(
                             PriceConverter.convertPrice(context, cartModel!.price,
                                 discount: cartModel!.discount,discountType: 'amount'),
@@ -112,21 +112,21 @@ class CartWidget extends StatelessWidget {
 
                       //variation
                       (cartModel!.variant != null && cartModel!.variant!.isNotEmpty) ? Padding(
-                        padding: EdgeInsets.only(top: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                        padding: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                         child: Row(children: [
                           Flexible(child: Text(cartModel!.variant.toString(),
                               style: robotoRegular.copyWith(fontSize: Dimensions.FONT_SIZE_DEFAULT,
                                 color: ColorResources.getReviewRattingColor(context),))),
                         ]),
-                      ) : SizedBox(),
-                      SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
+                      ) : const SizedBox(),
+                      const SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
 
 
                       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           cartModel!.shippingType !='order_wise' && Provider.of<AuthProvider>(context, listen: false).isLoggedIn()?
                           Padding(
-                            padding: EdgeInsets.only(top: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                            padding: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                             child: Row(children: [
                               Text('${getTranslated('shipping_cost', context)}: ',
                                   style: titilliumSemiBold.copyWith(fontSize: Dimensions.FONT_SIZE_DEFAULT,
@@ -135,18 +135,18 @@ class CartWidget extends StatelessWidget {
                                   style: robotoRegular.copyWith(fontSize: Dimensions.FONT_SIZE_SMALL,
                                     color: Theme.of(context).disabledColor,)),
                             ]),
-                          ):SizedBox(),
+                          ):const SizedBox(),
 
 
 
                           Provider.of<AuthProvider>(context, listen: false).isLoggedIn() ? Row(
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(right: Dimensions.PADDING_SIZE_SMALL),
+                                padding: const EdgeInsets.only(right: Dimensions.PADDING_SIZE_SMALL),
                                 child: QuantityButton(isIncrement: false, index: index,
                                   quantity: cartModel!.quantity,
-                                  maxQty: 0,
-                                  cartModel: cartModel, minimumOrderQuantity:0,
+                                  maxQty:cartModel!.productInfo!.totalCurrentStock,
+                                  cartModel: cartModel, minimumOrderQuantity:  cartModel!.productInfo!.minimumOrderQty,
                                   digitalProduct: cartModel!.productType == "digital"? true : false,
 
                                 ),
@@ -154,16 +154,16 @@ class CartWidget extends StatelessWidget {
                               Text(cartModel!.quantity.toString(), style: titilliumSemiBold),
 
                               Padding(
-                                padding: EdgeInsets.only(left: Dimensions.PADDING_SIZE_SMALL),
+                                padding: const EdgeInsets.only(left: Dimensions.PADDING_SIZE_SMALL),
                                 child: QuantityButton(index: index, isIncrement: true,
                                   quantity: cartModel!.quantity,
-                                  maxQty: 0,
-                                  cartModel: cartModel, minimumOrderQuantity: 0,
+                                  maxQty: cartModel!.productInfo!.totalCurrentStock,
+                                  cartModel: cartModel, minimumOrderQuantity: cartModel!.productInfo!.minimumOrderQty,
                                   digitalProduct: cartModel!.productType == "digital"? true : false,
                                 ),
                               ),
                             ],
-                          ) : SizedBox.shrink(),
+                          ) : const SizedBox.shrink(),
                         ],),
 
                     ],
@@ -198,7 +198,7 @@ class QuantityButton extends StatelessWidget {
             Provider.of<CartProvider>(context, listen: false).updateCartProductQuantity(cartModel!.id, cartModel!.quantity!-1, context).then((value) {
               showCustomSnackBar(value.message, context,isError: value.isSuccess);
             });
-        } else if ((isIncrement && quantity! < maxQty!) || (isIncrement && digitalProduct!)) {
+        } else if ((isIncrement && quantity! < minimumOrderQuantity!) || (isIncrement && digitalProduct!)) {
           Provider.of<CartProvider>(context, listen: false).updateCartProductQuantity(cartModel!.id, cartModel!.quantity!+1, context).then((value) {
             showCustomSnackBar(value.message, context,isError: !value.isSuccess);
           });

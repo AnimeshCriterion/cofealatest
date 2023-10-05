@@ -14,7 +14,7 @@ class OrderModel {
   int? _sellerId;
   int? _shippingMethodId;
   double? _shippingCost;
-  String? _createdAt;
+  String? _createdAt="";
   String? _updatedAt;
   double? _discountAmount;
   String? _discountType;
@@ -129,7 +129,7 @@ class OrderModel {
     _customerType = json['customer_type'];
     _paymentStatus = json['payment_status'];
     _orderStatus = json['order_status'];
-    _paymentMethod = json['payment_method'];
+    _paymentMethod = json['gateway_name'];
     _transactionRef = json['transaction_ref'];
     _orderAmount = json['order_amount'].toDouble();
     _shippingAddress = json['shipping_address'];

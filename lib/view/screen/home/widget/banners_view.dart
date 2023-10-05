@@ -104,7 +104,7 @@ class BannersView extends StatelessWidget {
                               placeholder: Images.placeholder, fit: BoxFit.cover,
                               image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls!.bannerImageUrl}'
                                   '/${bannerProvider.mainBannerList![index].photo}',
-                              imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder_3x1, fit: BoxFit.cover),
+                              imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder_3x1, fit: BoxFit.fill,width: MediaQuery.of(context).size.width,),
                             ),
                           ),
                         ),

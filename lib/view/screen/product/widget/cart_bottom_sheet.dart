@@ -337,11 +337,11 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                 Row(children: [
                   Text(getTranslated('quantity', context)!, style: robotoBold),
                   QuantityButton(isIncrement: false, quantity: details.quantity,
-                      stock: stock, minimumOrderQuantity: widget.product!.minimumOrderQty,
+                      stock: stock, minimumOrderQuantity: widget.product!.minQty,
                       digitalProduct: widget.product!.productType == "digital"),
                   Text(details.quantity.toString(), style: titilliumSemiBold),
                   QuantityButton(isIncrement: true, quantity: details.quantity, stock: stock,
-                      minimumOrderQuantity: widget.product!.minimumOrderQty,
+                      minimumOrderQuantity: widget.product!.minQty,
                       digitalProduct: widget.product!.productType == "digital"),
                 ]),
                 const SizedBox(height: Dimensions.paddingSizeSmall),
