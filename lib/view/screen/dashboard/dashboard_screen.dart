@@ -57,26 +57,28 @@ class DashBoardScreenState extends State<DashBoardScreen> {
           return true;
         }
       },
-      child: Scaffold(
-        key: _scaffoldKey,
-        bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Theme.of(context).primaryColor,
-          unselectedItemColor: Theme.of(context).textTheme.bodyLarge!.color,
-          showUnselectedLabels: true,
-          currentIndex: _pageIndex,
-          type: BottomNavigationBarType.fixed,
-          items: _getBottomWidget(singleVendor),
-          onTap: (int index) {
-            _setPage(index);
-          },
-        ),
-        body: PageView.builder(
-          controller: _pageController,
-          itemCount: _screens.length,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index){
-            return _screens[index];
-          },
+      child: SafeArea(
+        child: Scaffold(
+          key: _scaffoldKey,
+          bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Theme.of(context).primaryColor,
+            unselectedItemColor: Theme.of(context).textTheme.bodyLarge!.color,
+            showUnselectedLabels: true,
+            currentIndex: _pageIndex,
+            type: BottomNavigationBarType.fixed,
+            items: _getBottomWidget(singleVendor),
+            onTap: (int index) {
+              _setPage(index);
+            },
+          ),
+          body: PageView.builder(
+            controller: _pageController,
+            itemCount: _screens.length,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index){
+              return _screens[index];
+            },
+          ),
         ),
       ),
     );

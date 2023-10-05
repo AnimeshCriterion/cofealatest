@@ -68,169 +68,171 @@ class _ProductDetailsState extends State<ProductDetails> {
         }
         return true;
       },
-      child: Scaffold(
-        appBar: AppBar(title: Row(children: [
-          InkWell(
-            child: Icon(Icons.arrow_back_ios, color: Theme.of(context).cardColor, size: 20),
-            onTap: widget.isFromWishList? () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => const WishListScreen())):
-                () => Navigator.pop(context),),
-          const SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(title: Row(children: [
+            InkWell(
+              child: Icon(Icons.arrow_back_ios, color: Theme.of(context).cardColor, size: 20),
+              onTap: widget.isFromWishList? () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => const WishListScreen())):
+                  () => Navigator.pop(context),),
+            const SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
 
 
-          Text(getTranslated('product_details', context)!,
-              style: robotoRegular.copyWith(fontSize: 20,
-                  color: Theme.of(context).cardColor)),
-        ]),
-          automaticallyImplyLeading: false,
-          elevation: 0,
-          backgroundColor: Provider.of<ThemeProvider>(context).darkTheme ? Colors.black : Theme.of(context).primaryColor,
-        ),
-
-        body: RefreshIndicator(
-          onRefresh: ()async{
-            _loadData(context);
-          },
-          child: Consumer<ProductDetailsProvider>(
-
-            builder: (context, details, child) {
-              print("CheckDaya"+details.productDetailsModel!.averageReview.toString());
-              return SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: !details.isDetails?
-                Column(
-                  children: [
-
-                    ProductImageView(productModel: details.productDetailsModel),
-
-                    Container(
-                      transform: Matrix4.translationValues(0.0, -25.0, 0.0),
-                      padding: const EdgeInsets.only(top: Dimensions.FONT_SIZE_DEFAULT),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).canvasColor,
-                        borderRadius: const BorderRadius.only(topLeft:Radius.circular(Dimensions.PADDING_SIZE_EXTRA_LARGE),
-                            topRight:Radius.circular(Dimensions.PADDING_SIZE_EXTRA_LARGE) ),
-                      ),
-                      child: Column(children: [
-
-
-
-                        ProductTitleView(productModel: details.productDetailsModel,
-                            averageRatting: details.productDetailsModel!.averageReview != 0?
-                            details.productDetailsModel!.averageReview: "0"),
-
-                        Container(height: 60,
-                          margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
-                          padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-                          child: ProductSpecification(productSpecification: details.productDetailsModel),) ,
-
-                        details.productDetailsModel!.videoUrl != null?
-                        YoutubeVideoWidget(url: details.productDetailsModel!.videoUrl):const SizedBox(),
-
-                        // Container(padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT,
-                        //     horizontal: Dimensions.FONT_SIZE_DEFAULT),
-                        //     decoration: BoxDecoration(
-                        //         color: Theme.of(context).cardColor
-                        //     ),
-                        //     child: PromiseScreen()),
-
-                        // details.productDetailsModel.addedBy == 'seller' ?
-                        // SellerView(sellerId: details.productDetailsModel.userId.toString()) : SizedBox.shrink(),
-
-
-
-                        // Container(
-                        //   width: MediaQuery.of(context).size.width,
-                        //   margin: EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
-                        //   padding: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-                        //   color: Theme.of(context).cardColor,
-                        //   child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                        //     Text(getTranslated('customer_reviews', context),
-                        //       style: titilliumSemiBold.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE),),
-                        //     SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT,),
-                        //     Container(width: 230,height: 30,
-                        //       decoration: BoxDecoration(color: ColorResources.visitShop(context),
-                        //         borderRadius: BorderRadius.circular(Dimensions.PADDING_SIZE_EXTRA_LARGE),),
-                        //
-                        //
-                        //       child: Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
-                        //         children: [
-                        //           RatingBar(rating: double.parse(details.productDetailsModel.averageReview.toString()), size: 18,),
-                        //           SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT),
-                        //           Text('${double.parse(details.productDetailsModel.averageReview.toString()).toStringAsFixed(1)}'+ ' '+ '${getTranslated('out_of_5', context)}'),
-                        //         ],
-                        //       ),
-                        //     ),
-                        //
-                        //     SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
-                        //     Text('${getTranslated('total', context)}' + ' '+'${details.reviewList != null ? details.reviewList.length : 0}' +' '+ '${getTranslated('reviews', context)}'),
-                        //
-                        //     details.reviewList != null ? details.reviewList.length != 0 ? ReviewWidget(reviewModel: details.reviewList[0])
-                        //         : SizedBox() : ReviewShimmer(),
-                        //     details.reviewList != null ? details.reviewList.length > 1 ? ReviewWidget(reviewModel: details.reviewList[1])
-                        //         : SizedBox() : ReviewShimmer(),
-                        //     details.reviewList != null ? details.reviewList.length > 2 ? ReviewWidget(reviewModel: details.reviewList[2])
-                        //         : SizedBox() : ReviewShimmer(),
-                        //
-                        //     InkWell(
-                        //         onTap: () {
-                        //           if(details.reviewList != null)
-                        //           {Navigator.push(context, MaterialPageRoute(builder: (_) =>
-                        //               ReviewScreen(reviewList: details.reviewList)));}},
-                        //         child: details.reviewList != null && details.reviewList.length > 3?
-                        //         Text(getTranslated('view_more', context),
-                        //           style: titilliumRegular.copyWith(color: Theme.of(context).primaryColor),):SizedBox())
-                        //
-                        //
-                        //
-                        //   ]),
-                        // ),
-
-                        details.productDetailsModel!.addedBy == 'seller' ?
-                        Padding(padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-                          child: TitleRow(title: getTranslated('more_from_the_shop', context), isDetailsPage: true),
-                        ):const SizedBox(),
-
-                        details.productDetailsModel!.addedBy == 'seller' ?
-                        Padding(padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                          child: ProductView(isHomePage: true, productType: ProductType.SELLER_PRODUCT,
-                              scrollController: _scrollController, sellerId: details.productDetailsModel!.userId.toString()),):const SizedBox(),
-
-
-
-
-                        Container(
-                          margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
-                          padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-                          child: Column(children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL,
-                                  vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                              child: TitleRow(title: getTranslated('related_products', context), isDetailsPage: true),
-                            ),
-                            const SizedBox(height: 5),
-                            const RelatedProductView(),
-                          ],
-                          ),
-                        ),
-
-
-                      ],),),
-                  ],
-                ):
-                Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(height: MediaQuery.of(context).size.height,
-                        child: const Center(child: CircularProgressIndicator())),
-                  ],
-                ),
-              );
-            },
+            Text(getTranslated('product_details', context)!,
+                style: robotoRegular.copyWith(fontSize: 20,
+                    color: Theme.of(context).cardColor)),
+          ]),
+            automaticallyImplyLeading: false,
+            elevation: 0,
+            backgroundColor: Provider.of<ThemeProvider>(context).darkTheme ? Colors.black : Theme.of(context).primaryColor,
           ),
-        ),
-        bottomNavigationBar: Consumer<ProductDetailsProvider>(
-            builder: (context, details, child) {
-              return BottomCartView(product: details.productDetailsModel);
-            }
+
+          body: RefreshIndicator(
+            onRefresh: ()async{
+              _loadData(context);
+            },
+            child: Consumer<ProductDetailsProvider>(
+
+              builder: (context, details, child) {
+                print("CheckDaya"+details.productDetailsModel!.averageReview.toString());
+                return SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: !details.isDetails?
+                  Column(
+                    children: [
+
+                      ProductImageView(productModel: details.productDetailsModel),
+
+                      Container(
+                        transform: Matrix4.translationValues(0.0, -25.0, 0.0),
+                        padding: const EdgeInsets.only(top: Dimensions.FONT_SIZE_DEFAULT),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).canvasColor,
+                          borderRadius: const BorderRadius.only(topLeft:Radius.circular(Dimensions.PADDING_SIZE_EXTRA_LARGE),
+                              topRight:Radius.circular(Dimensions.PADDING_SIZE_EXTRA_LARGE) ),
+                        ),
+                        child: Column(children: [
+
+
+
+                          ProductTitleView(productModel: details.productDetailsModel,
+                              averageRatting: details.productDetailsModel!.averageReview != 0?
+                              details.productDetailsModel!.averageReview: "0"),
+
+                          Container(height: 60,
+                            margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
+                            padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                            child: ProductSpecification(productSpecification: details.productDetailsModel),) ,
+
+                          details.productDetailsModel!.videoUrl != null?
+                          YoutubeVideoWidget(url: details.productDetailsModel!.videoUrl):const SizedBox(),
+
+                          // Container(padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_DEFAULT,
+                          //     horizontal: Dimensions.FONT_SIZE_DEFAULT),
+                          //     decoration: BoxDecoration(
+                          //         color: Theme.of(context).cardColor
+                          //     ),
+                          //     child: PromiseScreen()),
+
+                          // details.productDetailsModel.addedBy == 'seller' ?
+                          // SellerView(sellerId: details.productDetailsModel.userId.toString()) : SizedBox.shrink(),
+
+
+
+                          // Container(
+                          //   width: MediaQuery.of(context).size.width,
+                          //   margin: EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
+                          //   padding: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+                          //   color: Theme.of(context).cardColor,
+                          //   child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                          //     Text(getTranslated('customer_reviews', context),
+                          //       style: titilliumSemiBold.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE),),
+                          //     SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT,),
+                          //     Container(width: 230,height: 30,
+                          //       decoration: BoxDecoration(color: ColorResources.visitShop(context),
+                          //         borderRadius: BorderRadius.circular(Dimensions.PADDING_SIZE_EXTRA_LARGE),),
+                          //
+                          //
+                          //       child: Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
+                          //         children: [
+                          //           RatingBar(rating: double.parse(details.productDetailsModel.averageReview.toString()), size: 18,),
+                          //           SizedBox(width: Dimensions.PADDING_SIZE_DEFAULT),
+                          //           Text('${double.parse(details.productDetailsModel.averageReview.toString()).toStringAsFixed(1)}'+ ' '+ '${getTranslated('out_of_5', context)}'),
+                          //         ],
+                          //       ),
+                          //     ),
+                          //
+                          //     SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
+                          //     Text('${getTranslated('total', context)}' + ' '+'${details.reviewList != null ? details.reviewList.length : 0}' +' '+ '${getTranslated('reviews', context)}'),
+                          //
+                          //     details.reviewList != null ? details.reviewList.length != 0 ? ReviewWidget(reviewModel: details.reviewList[0])
+                          //         : SizedBox() : ReviewShimmer(),
+                          //     details.reviewList != null ? details.reviewList.length > 1 ? ReviewWidget(reviewModel: details.reviewList[1])
+                          //         : SizedBox() : ReviewShimmer(),
+                          //     details.reviewList != null ? details.reviewList.length > 2 ? ReviewWidget(reviewModel: details.reviewList[2])
+                          //         : SizedBox() : ReviewShimmer(),
+                          //
+                          //     InkWell(
+                          //         onTap: () {
+                          //           if(details.reviewList != null)
+                          //           {Navigator.push(context, MaterialPageRoute(builder: (_) =>
+                          //               ReviewScreen(reviewList: details.reviewList)));}},
+                          //         child: details.reviewList != null && details.reviewList.length > 3?
+                          //         Text(getTranslated('view_more', context),
+                          //           style: titilliumRegular.copyWith(color: Theme.of(context).primaryColor),):SizedBox())
+                          //
+                          //
+                          //
+                          //   ]),
+                          // ),
+
+                          details.productDetailsModel!.addedBy == 'seller' ?
+                          Padding(padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+                            child: TitleRow(title: getTranslated('more_from_the_shop', context), isDetailsPage: true),
+                          ):const SizedBox(),
+
+                          details.productDetailsModel!.addedBy == 'seller' ?
+                          Padding(padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                            child: ProductView(isHomePage: true, productType: ProductType.SELLER_PRODUCT,
+                                scrollController: _scrollController, sellerId: details.productDetailsModel!.userId.toString()),):const SizedBox(),
+
+
+
+
+                          Container(
+                            margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
+                            padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+                            child: Column(children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL,
+                                    vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                                child: TitleRow(title: getTranslated('related_products', context), isDetailsPage: true),
+                              ),
+                              const SizedBox(height: 5),
+                              const RelatedProductView(),
+                            ],
+                            ),
+                          ),
+
+
+                        ],),),
+                    ],
+                  ):
+                  Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(height: MediaQuery.of(context).size.height,
+                          child: const Center(child: CircularProgressIndicator())),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+          bottomNavigationBar: Consumer<ProductDetailsProvider>(
+              builder: (context, details, child) {
+                return BottomCartView(product: details.productDetailsModel);
+              }
+          ),
         ),
       ),
     );

@@ -62,6 +62,7 @@ class BannersView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
         Consumer<BannerProvider>(
