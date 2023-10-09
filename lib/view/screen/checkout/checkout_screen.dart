@@ -1173,37 +1173,37 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   ),
 
                   // Payment Method
-                  Container(
-
-                    height: 100,
-                    margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
-                    padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-                    color: Theme
-                        .of(context)
-                        .highlightColor,
-                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(getTranslated('payment_method', context)!,
-                            style: titilliumSemiBold.copyWith(
-                                fontSize: Dimensions.FONT_SIZE_LARGE),),
-                          const SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                          Expanded(child: Row(children: [
-                            _cod! && !widget.onlyDigital!
-                                ? Expanded(child: CustomCheckBox(
-                                title: getTranslated(
-                                    'cash_on_delivery', context), index: 0))
-                                : const SizedBox(),
-                            _digitalPayment! ? Expanded(
-                              child: Container(
-                                  child: CustomCheckBox(title: getTranslated(
-                                      'digital_payment', context),
-                                      index: !_cod! || widget.onlyDigital!
-                                          ? 0
-                                          : 1)),
-                            ) : const SizedBox(),
-                          ],)),
-                        ]),
-                  ),
+                  // Container(
+                  //
+                  //   height: 100,
+                  //   margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
+                  //   padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                  //   color: Theme
+                  //       .of(context)
+                  //       .highlightColor,
+                  //   child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         Text(getTranslated('payment_method', context)!,
+                  //           style: titilliumSemiBold.copyWith(
+                  //               fontSize: Dimensions.FONT_SIZE_LARGE),),
+                  //         const SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                  //         Expanded(child: Row(children: [
+                  //           _cod! && !widget.onlyDigital!
+                  //               ? Expanded(child: CustomCheckBox(
+                  //               title: getTranslated(
+                  //                   'cash_on_delivery', context), index: 0))
+                  //               : const SizedBox(),
+                  //           _digitalPayment! ? Expanded(
+                  //             child: Container(
+                  //                 child: CustomCheckBox(title: getTranslated(
+                  //                     'digital_payment', context),
+                  //                     index: !_cod! || widget.onlyDigital!
+                  //                         ? 0
+                  //                         : 1)),
+                  //           ) : const SizedBox(),
+                  //         ],)),
+                  //       ]),
+                  // ),
 
 
                   Container(

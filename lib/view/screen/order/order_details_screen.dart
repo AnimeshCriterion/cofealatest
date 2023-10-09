@@ -62,7 +62,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
     return WillPopScope(
       onWillPop: () async{
         widget.isNotification!?
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => DashBoardScreen())):Navigator.pop(context);
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => const DashBoardScreen())):Navigator.pop(context);
         return true;
       },
       child: Scaffold(
@@ -71,9 +71,9 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
             backgroundColor: Theme.of(context).cardColor,leading: InkWell(
                 onTap: (){
                   widget.isNotification!?
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => DashBoardScreen())):Navigator.pop(context);
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => const DashBoardScreen())):Navigator.pop(context);
                 },
-                child: Icon(Icons.keyboard_backspace)),title: Text(getTranslated('ORDER_DETAILS', context)!,
+                child: const Icon(Icons.keyboard_backspace)),title: Text(getTranslated('ORDER_DETAILS', context)!,
               style: robotoRegular.copyWith(color: Theme.of(context).primaryColor,
                   fontSize: Dimensions.FONT_SIZE_LARGE),)),
         body: Column(
@@ -121,12 +121,12 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
 
                   return order.orderDetails != null ?
                   ListView(
-                    physics: BouncingScrollPhysics(),
-                    padding: EdgeInsets.all(0),
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.all(0),
                     children: [
-                      SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT,),
+                      const SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT,),
                       Container(
-                        margin: EdgeInsets.symmetric(
+                        margin: const EdgeInsets.symmetric(
                             vertical: Dimensions.PADDING_SIZE_DEFAULT,
                             horizontal: Dimensions.PADDING_SIZE_SMALL),
                         child: Row(
@@ -141,7 +141,7 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
                             ],
                           ),
                           ),
-                            Expanded(child: SizedBox()),
+                            const Expanded(child: SizedBox()),
 
 
                             Text(DateConverter.localDateToIsoStringAMPM(DateTime.parse(order.trackingModel!.createdAt!)),
@@ -153,7 +153,7 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
 
                       Container(
                         padding:
-                        EdgeInsets.all(Dimensions.MARGIN_SIZE_SMALL),
+                        const EdgeInsets.all(Dimensions.MARGIN_SIZE_SMALL),
                         decoration: BoxDecoration(color: Theme.of(context).highlightColor),
                         child: Column(
                           children: [
@@ -164,7 +164,7 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
 
                                   order.onlyDigital!?
                                   Text('${getTranslated('SHIPPING_TO', context)} : ',
-                                      style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_DEFAULT)):SizedBox(),
+                                      style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_DEFAULT)):const SizedBox(),
 
                                   order.onlyDigital!?
                                   Expanded(child: Padding(
@@ -172,7 +172,7 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
                                     child: Text(' ${widget.orderModel !=null  && widget.orderModel!.shippingAddressData != null ?
                                     widget.orderModel!.shippingAddressData!.address :''}', maxLines: 3, overflow: TextOverflow.ellipsis,
                                         style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_SMALL)),
-                                  )):SizedBox(),
+                                  )):const SizedBox(),
 
                                 ]),
                             SizedBox(height: order.onlyDigital!? Dimensions.PADDING_SIZE_LARGE:0),
@@ -189,14 +189,14 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
                                       maxLines: 3, overflow: TextOverflow.ellipsis, style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_SMALL)),
                                 )),
                               ],
-                            ):SizedBox(),
+                            ):const SizedBox(),
 
                           ],
                         ),
                       ),
 
                       widget.orderModel != null && widget.orderModel!.orderNote != null?
-                      Padding(padding : EdgeInsets.all(Dimensions.MARGIN_SIZE_SMALL),
+                      Padding(padding : const EdgeInsets.all(Dimensions.MARGIN_SIZE_SMALL),
                         child: Text.rich(
                           TextSpan(children: [
                             TextSpan(text: '${getTranslated('order_note', context)} : ',
@@ -208,8 +208,8 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
                           ],
                           ),
                         ),
-                      ):SizedBox(),
-                      SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                      ):const SizedBox(),
+                      const SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
 
 
 
@@ -226,10 +226,10 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
                       OrderProductList(order: order,orderType: widget.orderType),
 
 
-                      SizedBox(height: Dimensions.MARGIN_SIZE_DEFAULT),
+                      const SizedBox(height: Dimensions.MARGIN_SIZE_DEFAULT),
 
                       // Amounts
-                      Container(padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                      Container(padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
                         color: Theme.of(context).highlightColor,
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -242,7 +242,7 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
                                   amount: PriceConverter.convertPrice(context, _order)),
 
 
-                              widget.orderType == "POS"?SizedBox():
+                              widget.orderType == "POS"?const SizedBox():
                               AmountWidget(title: getTranslated('SHIPPING_FEE', context),
                                   amount: PriceConverter.convertPrice(context, order.trackingModel!.shippingCost)),
 
@@ -253,7 +253,7 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
 
                               widget.orderType == "POS"?
                               AmountWidget(title: getTranslated('EXTRA_DISCOUNT', context),
-                                  amount: PriceConverter.convertPrice(context, eeDiscount)):SizedBox(),
+                                  amount: PriceConverter.convertPrice(context, eeDiscount)):const SizedBox(),
 
 
                               AmountWidget(title: getTranslated('coupon_voucher', context),
@@ -264,7 +264,7 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
                               //     amount: PriceConverter.convertPrice(context, _tax)),
 
 
-                              Padding(padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                              const Padding(padding: EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                                 child: Divider(height: 2, color: ColorResources.hintTextColor),),
 
 
@@ -278,17 +278,17 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
 
 
 
-                      SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
+                      const SizedBox(height: Dimensions.PADDING_SIZE_SMALL,),
 
                       order.trackingModel!.deliveryMan != null?
-                      Container(padding: EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+                      Container(padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
                         decoration: BoxDecoration(color: Theme.of(context).highlightColor,
                           boxShadow: [BoxShadow(color: Theme.of(context).hintColor.withOpacity(0.2), spreadRadius:2, blurRadius: 10)],
                         ),
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
                           Text('${getTranslated('shipping_info', context)}', style: robotoBold),
-                          SizedBox(height: Dimensions.MARGIN_SIZE_EXTRA_SMALL),
+                          const SizedBox(height: Dimensions.MARGIN_SIZE_EXTRA_SMALL),
 
 
 
@@ -303,7 +303,7 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
 
 
                           ]),
-                          SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
+                          const SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
                           Row(mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               CallAndChatWidget(orderProvider: order, orderModel: order.trackingModel),
@@ -313,21 +313,21 @@ print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
                       ):
                       //third party
                       order.trackingModel!.thirdPartyServiceName != null?
-                      ShippingInfo(order: order):SizedBox(),
+                      ShippingInfo(order: order):const SizedBox(),
 
 
-                      SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
+                      const SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
 
                       // Payment
                       PaymentInfo(order: order),
 
-                      SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                      const SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
 
 
                       CancelAndSupport(orderModel: widget.orderModel),
 
                     ],
-                  ) : LoadingPage();
+                  ) : const LoadingPage();
                 },
               ),
             )

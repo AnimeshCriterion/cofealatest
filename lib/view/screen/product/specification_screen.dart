@@ -30,7 +30,7 @@ class SpecificationScreen extends StatelessWidget {
             child: Column(
               children: [
                 Visibility(
-                  visible: specification.uSp1.toString().isNotEmpty || specification.uSp1.toString()!="null",
+                  visible: specification.uSp1.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -59,7 +59,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uAc1.toString().isNotEmpty || specification.uAc1.toString()!="null",
+                  visible: specification.uAc1.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -88,7 +88,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uSp3.toString().isNotEmpty || specification.uSp3.toString()!="null",
+                  visible:  specification.uSp3.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -117,7 +117,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uSp4.toString().isNotEmpty || specification.uSp4.toString()!="null",
+                  visible:  specification.uSp4.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -146,7 +146,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uSp5.toString().isNotEmpty || specification.uSp5.toString()!="null",
+                  visible:  specification.uSp5.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -175,7 +175,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uSp6.toString().isNotEmpty || specification.uSp6.toString()!="null",
+                  visible:  specification.uSp6.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -204,7 +204,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uAc1.toString().isNotEmpty || specification.uAc1.toString()!="null",
+                  visible:  specification.uAc1.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -233,7 +233,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uAc2.toString().isNotEmpty || specification.uAc2.toString()!="null",
+                  visible:  specification.uAc2.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -262,7 +262,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uAc3.toString().isNotEmpty || specification.uAc3.toString()!="null",
+                  visible:  specification.uAc3.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -291,7 +291,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uAc4.toString().isNotEmpty || specification.uAc4.toString()!="null",
+                  visible:  specification.uAc4.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -320,7 +320,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uAc5.toString().isNotEmpty || specification.uAc5.toString()!="null",
+                  visible:  specification.uAc5.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -349,7 +349,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uAc6.toString().isNotEmpty || specification.uAc6.toString()!="null",
+                  visible:  specification.uAc6.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -378,7 +378,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uF1.toString().isNotEmpty || specification.uF1.toString()!="null",
+                  visible:  specification.uF1.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -407,7 +407,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:  specification.uF2.toString().isNotEmpty || specification.uF2.toString()!="null",
+                  visible:  specification.uF2.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -436,7 +436,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uF3.toString().isNotEmpty || specification.uF3.toString()!="null",
+                  visible: specification.uF3.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -465,7 +465,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uF4.toString().isNotEmpty || specification.uF4.toString()!="null",
+                  visible: specification.uF4.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -494,7 +494,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uF5.toString().isNotEmpty || specification.uF5.toString()!="null",
+                  visible: specification.uF5.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -523,7 +523,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uF6.toString().isNotEmpty || specification.uF6.toString()!="null",
+                  visible: specification.uF6.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -552,7 +552,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uF7.toString().isNotEmpty || specification.uF7.toString()!="null",
+                  visible: specification.uF7.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -581,7 +581,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uF8.toString().isNotEmpty || specification.uF8.toString()!="null",
+                  visible: specification.uF8.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -610,7 +610,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uF9.toString().isNotEmpty || specification.uF9.toString()!="null",
+                  visible: specification.uF9.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -639,7 +639,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uF10.toString().isNotEmpty || specification.uF10.toString()!="null",
+                  visible: specification.uF10.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -668,7 +668,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uF11.toString().isNotEmpty || specification.uF11.toString()!="null",
+                  visible: specification.uF11.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -697,7 +697,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uNsp1.toString().isNotEmpty || specification.uNsp1.toString()!="null",
+                  visible: specification.uNsp1.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -726,7 +726,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible:specification.uNpo.toString().isNotEmpty || specification.uNpo.toString()!="null",
+                  visible:specification.uNpo.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -755,7 +755,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uCfspc.toString().isNotEmpty || specification.uCfspc.toString()!="null",
+                  visible: specification.uCfspc.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -784,7 +784,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uEsp.toString().isNotEmpty || specification.uEsp.toString()!="null",
+                  visible: specification.uEsp.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -813,7 +813,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uOrg.toString().isNotEmpty || specification.uOrg.toString()!="null",
+                  visible: specification.uOrg.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -842,7 +842,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uBn.toString().isNotEmpty || specification.uBn.toString()!="null",
+                  visible: specification.uBn.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -871,7 +871,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uRs.toString().isNotEmpty || specification.uRs.toString()!="null",
+                  visible: specification.uRs.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -900,7 +900,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uPrs.toString().isNotEmpty || specification.uPrs.toString()!="null",
+                  visible: specification.uPrs.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -929,7 +929,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uAlt.toString().isNotEmpty || specification.uAlt.toString()!="null",
+                  visible: specification.uAlt.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -958,7 +958,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uCfp.toString().isNotEmpty || specification.uCfp.toString()!="null",
+                  visible: specification.uCfp.toString().isNotEmpty ,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -987,7 +987,7 @@ class SpecificationScreen extends StatelessWidget {
                   ),
                 ),
                 Visibility(
-                  visible: specification.uCpn.toString().isNotEmpty || specification.uCpn.toString()!="null",
+                  visible: specification.uCpn.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),
@@ -1015,37 +1015,37 @@ class SpecificationScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                // Visibility(
+                //   visible: specification.uF2.toString().isNotEmpty ,
+                //   child: Container(
+                //     decoration: BoxDecoration(
+                //         border: Border.all(color: Theme.of(context).hintColor)),
+                //     child: Row(
+                //       children: [
+                //         Expanded(
+                //             child: Container(
+                //                 decoration: BoxDecoration(
+                //                   border: Border(
+                //                       right: BorderSide(
+                //                           color: Theme.of(context).hintColor)),
+                //                   color: Theme.of(context).hintColor.withOpacity(0.1),
+                //                 ),
+                //                 child: Center(
+                //                     child: Padding(
+                //                       padding: const EdgeInsets.all(8.0),
+                //                       child: Text(
+                //                         "Weight",
+                //                         style: titilliumSemiBold.copyWith(
+                //                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
+                //                       ),
+                //                     )))),
+                //         Expanded(child: Center(child: Text("")))
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 Visibility(
-                  visible: specification.uF2.toString().isNotEmpty || specification.uF2.toString()!="null",
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Theme.of(context).hintColor)),
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                      right: BorderSide(
-                                          color: Theme.of(context).hintColor)),
-                                  color: Theme.of(context).hintColor.withOpacity(0.1),
-                                ),
-                                child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "Weight",
-                                        style: titilliumSemiBold.copyWith(
-                                            fontSize: Dimensions.FONT_SIZE_DEFAULT),
-                                      ),
-                                    )))),
-                        Expanded(child: Center(child: Text("")))
-                      ],
-                    ),
-                  ),
-                ),
-                Visibility(
-                  visible:specification.uStoragetype.toString().isNotEmpty || specification.uStoragetype.toString()!="null",
+                  visible:specification.uStoragetype.toString().isNotEmpty,
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Theme.of(context).hintColor)),

@@ -78,6 +78,7 @@ class BannersView extends StatelessWidget {
                   CarouselSlider.builder(
                     options: CarouselOptions(
                       viewportFraction: 1,
+                      aspectRatio: 16/10,
                       autoPlay: true,
                       enlargeCenterPage: true,
                       disableCenter: true,
@@ -87,7 +88,8 @@ class BannersView extends StatelessWidget {
                     ),
                     itemCount: bannerProvider.mainBannerList!.isEmpty ? 1 : bannerProvider.mainBannerList!.length,
                     itemBuilder: (context, index, _) {
-
+print("Animesh"+bannerProvider.mainBannerList![index].photo.toString());
+print("Animesh${Provider.of<SplashProvider>(context,listen: false).baseUrls!.bannerImageUrl}");
                       return InkWell(
                         onTap: () {
                           _clickBannerRedirect(context,
@@ -101,10 +103,10 @@ class BannersView extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: FadeInImage.assetNetwork(
-                              placeholder: Images.placeholder, fit: BoxFit.cover,
+                              placeholder: Images.placeholder, fit: BoxFit.fill,
                               image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls!.bannerImageUrl}'
                                   '/${bannerProvider.mainBannerList![index].photo}',
-                              imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder_3x1, fit: BoxFit.fill,width: MediaQuery.of(context).size.width,),
+                              imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder_3x1, fit: BoxFit.contain,width: MediaQuery.of(context).size.width,),
                             ),
                           ),
                         ),

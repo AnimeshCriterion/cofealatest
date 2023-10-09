@@ -42,7 +42,10 @@ class CurrencyDialog extends StatelessWidget {
             List<String?> valueList = [];
             if(isCurrency) {
               for (var currency in splash.configModel!.currencyList!) {
-                valueList.add(currency.name);
+                if(currency.status==1){
+                  valueList.add(currency.name);
+                }
+
               }
             }else {
               for (var language in AppConstants.languages) {
