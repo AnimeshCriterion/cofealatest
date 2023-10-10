@@ -417,7 +417,7 @@ class ProductDetailsModel {
     _refundable = json['refundable'];
     _digitalProductType = json['digital_product_type'];
     _digitalFileReady = json['digital_file_ready'];
-    _images = json['images'].cast<String>();
+    _images = json['images'].cast<String>()??"";
     _thumbnail = json['thumbnail'];
     _featured = json['featured'];
     _videoProvider = json['video_provider'];

@@ -210,48 +210,54 @@ class CartWidget extends StatelessWidget {
                               : const SizedBox(),
                           Provider.of<AuthProvider>(context, listen: false)
                                   .isLoggedIn()
-                              ? Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: Dimensions.PADDING_SIZE_SMALL),
-                                      child: QuantityButton(
-                                        isIncrement: false,
-                                        index: index,
-                                        quantity: cartModel!.quantity,
-                                        maxQty: cartModel!
-                                            .productInfo!.totalCurrentStock,
-                                        cartModel: cartModel,
-                                        minimumOrderQuantity: cartModel!
-                                            .productInfo!.minimumOrderQty,
-                                        digitalProduct:
-                                            cartModel!.productType == "digital"
-                                                ? true
-                                                : false,
+                              ?
+                          Visibility(
+                            visible: cartModel!.productInfo!=null,
+                                child: Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            right: Dimensions.PADDING_SIZE_SMALL),
+                                        child: QuantityButton(
+                                          isIncrement: false,
+                                          index: index,
+                                          quantity: cartModel!.quantity,
+                                          maxQty: cartModel!
+                                              .productInfo!=null?cartModel!
+                                              .productInfo!.totalCurrentStock:0,
+                                          cartModel: cartModel,
+                                          minimumOrderQuantity: cartModel!
+                                              .productInfo!=null?cartModel!
+                                              .productInfo!.minimumOrderQty:0,
+                                          digitalProduct:
+                                              cartModel!.productType == "digital"
+                                                  ? true
+                                                  : false,
+                                        ),
                                       ),
-                                    ),
-                                    Text(cartModel!.quantity.toString(),
-                                        style: titilliumSemiBold),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: Dimensions.PADDING_SIZE_SMALL),
-                                      child: QuantityButton(
-                                        index: index,
-                                        isIncrement: true,
-                                        quantity: cartModel!.quantity,
-                                        maxQty: cartModel!
-                                            .productInfo!.totalCurrentStock,
-                                        cartModel: cartModel,
-                                        minimumOrderQuantity: cartModel!
-                                            .productInfo!.minimumOrderQty,
-                                        digitalProduct:
-                                            cartModel!.productType == "digital"
-                                                ? true
-                                                : false,
+                                      Text(cartModel!.quantity.toString(),
+                                          style: titilliumSemiBold),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: Dimensions.PADDING_SIZE_SMALL),
+                                        child: QuantityButton(
+                                          index: index,
+                                          isIncrement: true,
+                                          quantity: cartModel!.quantity,
+                                          maxQty: cartModel!
+                                              .productInfo!.totalCurrentStock,
+                                          cartModel: cartModel,
+                                          minimumOrderQuantity: cartModel!
+                                              .productInfo!.minimumOrderQty,
+                                          digitalProduct:
+                                              cartModel!.productType == "digital"
+                                                  ? true
+                                                  : false,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                )
+                                    ],
+                                  ),
+                              )
                               : const SizedBox.shrink(),
                         ],
                       ),
@@ -287,7 +293,7 @@ class QuantityButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return cartModel!.slug!.contains("vouchar")?Container(): InkWell(
       onTap: () {
         if (!isIncrement && quantity! > minimumOrderQuantity!) {
           Provider.of<CartProvider>(context, listen: false)

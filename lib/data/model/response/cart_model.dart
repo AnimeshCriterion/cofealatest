@@ -162,7 +162,7 @@ class CartModel {
 
 class ProductInfo {
   int? minimumOrderQty;
-  int? totalCurrentStock;
+  int? totalCurrentStock=0;
 
   ProductInfo({ this.minimumOrderQty, this.totalCurrentStock});
 
