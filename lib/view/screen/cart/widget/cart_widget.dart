@@ -199,7 +199,7 @@ class CartWidget extends StatelessWidget {
                                                 .getReviewRattingColor(
                                                     context))),
                                     Text(
-                                        '${PriceConverter.convertPrice(context, cartModel!.shippingCost!.toDouble())}',
+                                        PriceConverter.convertPrice(context, cartModel!.shippingCost!.toDouble()),
                                         style: robotoRegular.copyWith(
                                           fontSize: Dimensions.FONT_SIZE_SMALL,
                                           color:
@@ -208,6 +208,7 @@ class CartWidget extends StatelessWidget {
                                   ]),
                                 )
                               : const SizedBox(),
+                          cartModel!.productType!.isNotEmpty?
                           Provider.of<AuthProvider>(context, listen: false)
                                   .isLoggedIn()
                               ?
@@ -258,7 +259,7 @@ class CartWidget extends StatelessWidget {
                                     ],
                                   ),
                               )
-                              : const SizedBox.shrink(),
+                              : const SizedBox.shrink():Container()
                         ],
                       ),
                     ],
