@@ -239,14 +239,14 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
           ) : const SizedBox(),
 
 
-          Padding(
-            padding: const EdgeInsets.only(left: 75, right: 75, top: 5),
-            child: Row(
-              children: [
-                Text('${getTranslated('tax', context)} ${widget.orderDetailsModel.productDetails!.taxModel}(${widget.orderDetailsModel.tax})'),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 75, right: 75, top: 5),
+          //   child: Row(
+          //     children: [
+          //       Text('${getTranslated('tax', context)} ${widget.orderDetailsModel.productDetails!.taxModel}(${widget.orderDetailsModel.tax})'),
+          //     ],
+          //   ),
+          // ),
 
 
 

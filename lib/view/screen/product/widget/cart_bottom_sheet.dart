@@ -172,16 +172,16 @@ class CartBottomSheetState extends State<CartBottomSheet> {
                           Text(widget.product!.name ?? '',
                               style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeLarge),
                               maxLines: 2, overflow: TextOverflow.ellipsis),
-
-                              const SizedBox(height: Dimensions.paddingSizeSmall),
-                              Row(
-                                children: [
-                                  const Icon(Icons.star,color: Colors.orange),
-                                  Text(double.parse(ratting).toStringAsFixed(1),
-                                      style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeLarge),
-                                      maxLines: 2, overflow: TextOverflow.ellipsis),
-                                ],
-                              ),
+                              //
+                              // const SizedBox(height: Dimensions.paddingSizeSmall),
+                              // Row(
+                              //   children: [
+                              //     const Icon(Icons.star,color: Colors.orange),
+                              //     Text(double.parse(ratting).toStringAsFixed(1),
+                              //         style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeLarge),
+                              //         maxLines: 2, overflow: TextOverflow.ellipsis),
+                              //   ],
+                              // ),
 
                               SizedBox(height: widget.product!.taxModel == "include" ? Dimensions.paddingSizeSmall:0),
                               if( widget.product!.taxModel == "include")

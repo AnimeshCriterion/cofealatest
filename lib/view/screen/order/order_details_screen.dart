@@ -89,7 +89,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                   double eeDiscount = 0;
                   double _tax = 0;
 
-print("AnimeshSSSS"+order.trackingModel!.createdAt.toString());
+print("AnimeshSSSS${order.trackingModel!.createdAt}");
 
                   if (order.orderDetails != null) {
                     order.orderDetails!.forEach((orderDetails) {
