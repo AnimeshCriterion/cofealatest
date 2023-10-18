@@ -48,7 +48,7 @@ import 'provider/banner_provider.dart';
 import 'provider/flash_deal_provider.dart';
 import 'provider/product_provider.dart';
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+// final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
@@ -57,8 +57,8 @@ Future<void> main() async {
  // await Firebase.initializeApp();
   await FlutterDownloader.initialize(debug: true , ignoreSsl: true);
   await di.init();
-  final NotificationAppLaunchDetails? notificationAppLaunchDetails =
-  await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+  // final NotificationAppLaunchDetails? notificationAppLaunchDetails =
+  // await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
   int? orderID;
   // if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
   //   orderID = (notificationAppLaunchDetails!.payload != null && notificationAppLaunchDetails.payload!.isNotEmpty)
