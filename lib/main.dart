@@ -54,26 +54,26 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+ // await Firebase.initializeApp();
   await FlutterDownloader.initialize(debug: true , ignoreSsl: true);
   await di.init();
   final NotificationAppLaunchDetails? notificationAppLaunchDetails =
   await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
   int? orderID;
-  if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
-    orderID = (notificationAppLaunchDetails!.payload != null && notificationAppLaunchDetails.payload!.isNotEmpty)
-        ? int.parse(notificationAppLaunchDetails.payload!) : null;
-  }
-  final RemoteMessage? remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
-  if (remoteMessage != null) {
-    orderID = remoteMessage.notification?.titleLocKey != null ? int.parse(remoteMessage.notification!.titleLocKey!) : null;
-  }
-  if (kDebugMode) {
-    print('========-notification-----$orderID----===========');
-  }
+  // if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
+  //   orderID = (notificationAppLaunchDetails!.payload != null && notificationAppLaunchDetails.payload!.isNotEmpty)
+  //       ? int.parse(notificationAppLaunchDetails.payload!) : null;
+  // }
+  // final RemoteMessage? remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
+  // if (remoteMessage != null) {
+  //   orderID = remoteMessage.notification?.titleLocKey != null ? int.parse(remoteMessage.notification!.titleLocKey!) : null;
+  // }
+  // if (kDebugMode) {
+  //   print('========-notification-----$orderID----===========');
+  // }
 
-  await MyNotification.initialize(flutterLocalNotificationsPlugin);
-  FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
+  // await MyNotification.initialize(flutterLocalNotificationsPlugin);
+  // FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
 
   runApp(MultiProvider(
     providers: [
