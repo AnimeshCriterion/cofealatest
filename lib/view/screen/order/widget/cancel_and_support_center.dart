@@ -17,7 +17,7 @@ class CancelAndSupport extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("dvvvvvvvvvv"+orderModel!.toJson().toString());
+
     return Padding(
       padding: const EdgeInsets.symmetric(
           horizontal: Dimensions.paddingSizeSmall,
@@ -37,8 +37,12 @@ class CancelAndSupport extends StatelessWidget {
           })) :
 
       CustomButton(buttonText: getTranslated('TRACK_ORDER', context),
-        onTap: () => Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => TrackingScreen(orderID: orderModel!.id.toString()))),),),
+        onTap: () {
+        print("ncjkbnfvjd fvnd"+orderModel!.id!.toString());
+          return Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => TrackingScreen(orderID: orderModel!.id.toString())));
+        },),
+      ),
         const SizedBox(width: Dimensions.paddingSizeSmall),
 
 

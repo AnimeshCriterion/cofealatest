@@ -94,7 +94,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             child: Consumer<ProductDetailsProvider>(
 
               builder: (context, details, child) {
-                print("CheckDaya"+details.productDetailsModel!.averageReview.toString());
+         //       print("CheckDaya"+details.productDetailsModel!.averageReview.toString());
                 return SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: !details.isDetails?

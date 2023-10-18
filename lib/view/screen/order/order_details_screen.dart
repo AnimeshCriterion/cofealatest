@@ -42,7 +42,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
 
 
   void _loadData(BuildContext context) async {
-    await Provider.of<OrderProvider>(context, listen: false).initTrackingInfo(widget.orderId.toString(), OrderModel(), true, context);
+   await Provider.of<OrderProvider>(context, listen: false).initTrackingInfo(widget.orderId.toString(), OrderModel(), true, context);
 
     await Provider.of<OrderProvider>(context, listen: false).getOrderDetails(widget.orderId.toString(), context,
       Provider.of<LocalizationProvider>(context, listen: false).locale.countryCode!,
@@ -89,7 +89,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                   double eeDiscount = 0;
                   double _tax = 0;
 
-print("AnimeshSSSS${order.trackingModel!.createdAt}");
+// print("AnimeshSSSS${order.trackingModel.createdAt}");
 
                   if (order.orderDetails != null) {
                     order.orderDetails!.forEach((orderDetails) {
@@ -324,7 +324,7 @@ print("AnimeshSSSS${order.trackingModel!.createdAt}");
                       const SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
 
 
-                      CancelAndSupport(orderModel: widget.orderModel),
+                      CancelAndSupport(orderModel: order.trackingModel),
 
                     ],
                   ) : const LoadingPage();
