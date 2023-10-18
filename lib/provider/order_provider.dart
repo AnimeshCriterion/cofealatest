@@ -188,7 +188,7 @@ class OrderProvider with ChangeNotifier {
       notifyListeners();
       ApiResponse apiResponse = await orderRepo.getTrackingInfo(orderID);
       if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
-        print("sfffffffffff"+apiResponse.response!.data.toString());
+        print("sfffffffffff${apiResponse.response!.data}");
         _trackingModel = OrderModel.fromJson(apiResponse.response!.data);
       } else {
         ApiChecker.checkApi( apiResponse);

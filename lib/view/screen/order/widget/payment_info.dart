@@ -26,7 +26,7 @@ class PaymentInfo extends StatelessWidget {
                         style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeSmall)),
 
                     Text((order!.trackingModel!.paymentStatus != null && order!.trackingModel!.paymentStatus!.isNotEmpty) ?
-                    order!.trackingModel!.paymentStatus! : 'Digital Payment',
+                    order!.trackingModel!.paymentStatus!.toString().toCapitalized() : 'Digital Payment',
                       style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeSmall),
                     ),
                   ]),
@@ -37,11 +37,17 @@ class PaymentInfo extends StatelessWidget {
               Text(getTranslated('PAYMENT_PLATFORM', context)!,
                   style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeSmall)),
 
-              Text(order!.trackingModel!.paymentMethod != null ? order!.trackingModel!.paymentMethod.toString(): '',
+              Text(order!.trackingModel!.paymentMethod != null ? order!.trackingModel!.paymentMethod.toString().toUpperCase(): '',
                   style: titilliumBold.copyWith(color: Theme.of(context).primaryColor,
                   )),
             ]),
           ]),
     );
   }
+}
+
+
+extension StringCasingExtension on String {
+  String toCapitalized() => length > 0 ?'${this[0].toUpperCase()}${substring(1).toLowerCase()}':'';
+  String toTitleCase() => replaceAll(RegExp(' +'), ' ').split(' ').map((str) => str.toCapitalized()).join(' ');
 }

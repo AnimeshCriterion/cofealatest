@@ -129,7 +129,7 @@ class OrderModel {
     _customerType = json['customer_type'];
     _paymentStatus = json['payment_status'];
     _orderStatus = json['order_status'];
-    _paymentMethod = json['gateway_name'];
+    _paymentMethod = json['payment_method'];
     _transactionRef = json['transaction_ref'];
     _orderAmount = json['order_amount'].toDouble();
     _shippingAddress = json['shipping_address'];
@@ -154,7 +154,7 @@ class OrderModel {
     _discountType = json['discount_type'];
     _orderNote = json['order_note'];
     _orderType = json['order_type'];
-    _extraDiscount = json['extra_discount'].toDouble();
+    _extraDiscount = json['wallet_discount'].toDouble();
     _extraDiscountType = json['extra_discount_type'];
     if(json['delivery_service_name']!=null && json['delivery_service_name']!= ""){
       _thirdPartyServiceName = json['delivery_service_name'];

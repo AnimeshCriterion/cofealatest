@@ -248,7 +248,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
 
 
                               AmountWidget(title: getTranslated('DISCOUNT', context),
-                                  amount: PriceConverter.convertPrice(context, _discount)),
+                                  amount: PriceConverter.convertPrice(context, order.trackingModel!.extraDiscount)),
 
 
                               widget.orderType == "POS"?
