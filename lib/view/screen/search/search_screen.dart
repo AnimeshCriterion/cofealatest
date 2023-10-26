@@ -27,11 +27,11 @@ class _SearchScreenState extends State<SearchScreen> {
     Provider.of<SearchProvider>(context, listen: false).cleanSearchProduct();
     Provider.of<SearchProvider>(context, listen: false).initHistoryList();
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorResources.getIconBg(context),
-        resizeToAvoidBottomInset: true,
-        body: Column(
+    return Scaffold(
+      backgroundColor: ColorResources.getIconBg(context),
+      resizeToAvoidBottomInset: true,
+      body: SafeArea(
+        child: Column(
           children: [
             Container(
               decoration: BoxDecoration(color: Theme.of(context).canvasColor,

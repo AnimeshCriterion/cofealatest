@@ -68,33 +68,33 @@ class _ProductDetailsState extends State<ProductDetails> {
         }
         return true;
       },
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(title: Row(children: [
-            InkWell(
-              child: Icon(Icons.arrow_back_ios, color: Theme.of(context).cardColor, size: 20),
-              onTap: widget.isFromWishList? () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => const WishListScreen())):
-                  () => Navigator.pop(context),),
-            const SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
+      child: Scaffold(
+        appBar: AppBar(title: Row(children: [
+          InkWell(
+            child: Icon(Icons.arrow_back_ios, color: Theme.of(context).cardColor, size: 20),
+            onTap: widget.isFromWishList? () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => const WishListScreen())):
+                () => Navigator.pop(context),),
+          const SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
 
 
-            Text(getTranslated('product_details', context)!,
-                style: robotoRegular.copyWith(fontSize: 20,
-                    color: Theme.of(context).cardColor)),
-          ]),
-            automaticallyImplyLeading: false,
-            elevation: 0,
-            backgroundColor: Provider.of<ThemeProvider>(context).darkTheme ? Colors.black : Theme.of(context).primaryColor,
-          ),
+          Text(getTranslated('product_details', context)!,
+              style: robotoRegular.copyWith(fontSize: 20,
+                  color: Theme.of(context).cardColor)),
+        ]),
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          backgroundColor: Provider.of<ThemeProvider>(context).darkTheme ? Colors.black : Theme.of(context).primaryColor,
+        ),
 
-          body: RefreshIndicator(
+        body: SafeArea(
+          child: RefreshIndicator(
             onRefresh: ()async{
               _loadData(context);
             },
             child: Consumer<ProductDetailsProvider>(
 
               builder: (context, details, child) {
-         //       print("CheckDaya"+details.productDetailsModel!.averageReview.toString());
+       //       print("CheckDaya"+details.productDetailsModel!.averageReview.toString());
                 return SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: !details.isDetails?
@@ -228,11 +228,11 @@ class _ProductDetailsState extends State<ProductDetails> {
               },
             ),
           ),
-          bottomNavigationBar: Consumer<ProductDetailsProvider>(
-              builder: (context, details, child) {
-                return BottomCartView(product: details.productDetailsModel);
-              }
-          ),
+        ),
+        bottomNavigationBar: Consumer<ProductDetailsProvider>(
+            builder: (context, details, child) {
+              return BottomCartView(product: details.productDetailsModel);
+            }
         ),
       ),
     );

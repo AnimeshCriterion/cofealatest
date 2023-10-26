@@ -163,8 +163,8 @@ class _MoreScreenState extends State<MoreScreen> {
 
                                   SquareButton(image: Images.shoppingImage, title: getTranslated('orders', context),
                                     navigateTo: const OrderScreen(),count: 1,hasCount: false,),
-                                  const SquareButton(image: Images.gift_card, title:" My Gift Voucher",
-                                    navigateTo: MyGiftVoucherScreen(),count: 1,hasCount: false,),
+                                   SquareButton(image: Images.gift_card, title: getTranslated('my_gift_voucher', context),
+                                    navigateTo: const MyGiftVoucherScreen(),count: 1,hasCount: false,),
 
                                   SquareButton(image: Images.cartImage, title: getTranslated('CART', context),
                                     navigateTo: const CartScreen(),
@@ -219,8 +219,8 @@ class _MoreScreenState extends State<MoreScreen> {
                       navigateTo: HtmlViewScreen(title: getTranslated('privacy_policy', context),
                         url: Provider.of<SplashProvider>(context, listen: false).configModel!.termsConditions,)),
 
-                  TitleButton(image: Images.helpCenter, title: getTranslated('faq', context),
-                      navigateTo: FaqScreen(title: getTranslated('faq', context),)),
+                  // TitleButton(image: Images.helpCenter, title: getTranslated('faq', context),
+                  //     navigateTo: FaqScreen(title: getTranslated('faq', context),)),
 
                   TitleButton(image: Images.aboutUs, title: getTranslated('about_us', context),
                       navigateTo: HtmlViewScreen(title: getTranslated('about_us', context),
@@ -316,7 +316,7 @@ class TitleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.asset(image, width: 25, height: 25, fit: BoxFit.fill),
+      leading: Image.asset(image, width: 25, height: 25, fit: BoxFit.fill,color: Theme.of(context).primaryColor,),
       title: Text(title!, style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeLarge)),
       onTap: () => Navigator.push(
         context, MaterialPageRoute(builder: (_) => navigateTo),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:country_currency_pickers/country.dart';
 import 'package:country_currency_pickers/country_picker_dropdown.dart';
 import 'package:dropdown_search/dropdown_search.dart';
@@ -167,7 +169,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                                             size: 40,
                                             color: Theme.of(context).primaryColor,
                                           )),
-                                      Positioned(
+                                      Platform.isAndroid?Positioned(
                                         bottom: 10,
                                         right: 0,
                                         child: InkWell(
@@ -189,7 +191,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                                             ),
                                           ),
                                         ),
-                                      ),
+                                      ):Container(),
                                       Positioned(
                                         top: 10,
                                         right: 0,

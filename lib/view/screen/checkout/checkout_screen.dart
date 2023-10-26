@@ -770,7 +770,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                 child: Center(
                                   child: TextField(controller: _controller,
                                       decoration: InputDecoration(
-                                        hintText: 'Have a coupon?',
+                                        hintText:getTranslated('have_a_coupon?', context),
                                         hintStyle: titilliumRegular.copyWith(
                                             fontSize: Dimensions
                                                 .FONT_SIZE_DEFAULT),
@@ -877,7 +877,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   child: TextField(
                                       controller: _voucharcontroller,
                                       decoration: InputDecoration(
-                                        hintText: 'Have a Voucher?',
+                                        hintText:getTranslated('have_a_voucher', context),
                                         hintStyle: titilliumRegular.copyWith(
                                             fontSize: Dimensions
                                                 .FONT_SIZE_DEFAULT),
@@ -951,7 +951,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   Consumer<SplashProvider>(
                       builder: (context, profile, _) {
                         return Center(child: Text(
-                            "Use wallet(Available Balance:${profile.myCurrency!
+                           " ${getTranslated('available_wallet_balance', context)}${profile.myCurrency!
                                 .symbol} ${balanceWallet})"));
                       }
                   )
@@ -991,7 +991,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   child: TextField(
                                       controller: _walletcontroller,
                                       decoration: InputDecoration(
-                                        hintText: 'Enter a wallet amount?',
+                                        hintText:getTranslated('enter_wallet_amount', context),
                                         hintStyle: titilliumRegular.copyWith(
                                             fontSize: Dimensions
                                                 .FONT_SIZE_DEFAULT),

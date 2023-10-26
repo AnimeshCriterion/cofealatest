@@ -170,13 +170,14 @@ class ProfileScreenState extends State<ProfileScreen> {
               ),
 
               Container(padding: const EdgeInsets.only(top: 55),
+                color: Theme.of(context).primaryColor,
                 child: Column(children: [
                   Column(
                     children: [
                       Container(margin: const EdgeInsets.only(top: Dimensions.marginSizeExtraLarge),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).cardColor,
+                          color: Theme.of(context).primaryColor,
                           border: Border.all(color: Colors.white, width: 3),
                           shape: BoxShape.circle,),
                         child: Stack(clipBehavior: Clip.none,
@@ -193,7 +194,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                               Image.file(file!, width: Dimensions.profileImageSize,
                                   height: Dimensions.profileImageSize, fit: BoxFit.fill),),
                             Positioned(bottom: 0, right: -10,
-                              child: CircleAvatar(backgroundColor: ColorResources.lightSkyBlue,
+                              child: CircleAvatar(backgroundColor: Theme.of(context).primaryColor,
                                 radius: 14,
                                 child: IconButton(onPressed: _choose,
                                   padding: const EdgeInsets.all(0),
@@ -224,7 +225,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           child: Row(children: [
                             Expanded(child: Column(
                               children: [Row(children: [
-                                Icon(Icons.person, color: ColorResources.getLightSkyBlue(context), size: 20),
+                                Icon(Icons.person, color:Theme.of(context).primaryColor, size: 20),
                                 const SizedBox(width: Dimensions.marginSizeExtraSmall),
                                 Text(getTranslated('FIRST_NAME', context)!, style: titilliumRegular)
                               ],
@@ -244,7 +245,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             Expanded(child: Column(
                               children: [
                                 Row(children: [
-                                  Icon(Icons.person, color: ColorResources.getLightSkyBlue(context), size: 20),
+                                  Icon(Icons.person, color: Theme.of(context).primaryColor, size: 20),
                                   const SizedBox(width: Dimensions.marginSizeExtraSmall),
                                   Text(getTranslated('LAST_NAME', context)!, style: titilliumRegular)
                                 ],),
@@ -271,7 +272,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             right: Dimensions.marginSizeDefault),
                           child: Column(children: [
                             Row(children: [Icon(Icons.alternate_email,
-                                color: ColorResources.getLightSkyBlue(context), size: 20),
+                                color:Theme.of(context).primaryColor, size: 20),
                                 const SizedBox(width: Dimensions.marginSizeExtraSmall,),
                                 Text(getTranslated('EMAIL', context)!, style: titilliumRegular)
                               ],
@@ -297,7 +298,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             right: Dimensions.marginSizeDefault),
                           child: Column(children: [
                             Row(children: [
-                              Icon(Icons.dialpad, color: ColorResources.getLightSkyBlue(context), size: 20),
+                              Icon(Icons.dialpad, color: Theme.of(context).primaryColor, size: 20),
                               const SizedBox(width: Dimensions.marginSizeExtraSmall),
                               Text(getTranslated('PHONE_NO', context)!, style: titilliumRegular)
                             ],),
@@ -321,7 +322,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                             right: Dimensions.marginSizeDefault),
                           child: Column(children: [
                             Row(children: [
-                              Icon(Icons.lock_open, color: ColorResources.getPrimary(context), size: 20),
+                              Icon(Icons.lock_open, color: Theme.of(context).primaryColor, size: 20),
                               const SizedBox(width: Dimensions.marginSizeExtraSmall),
                               Text(getTranslated('PASSWORD', context)!, style: titilliumRegular)
                             ],),
@@ -343,7 +344,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                           child: Column(children: [
                             Row(
                               children: [
-                                Icon(Icons.lock_open, color: ColorResources.getPrimary(context), size: 20),
+                                Icon(Icons.lock_open, color: Theme.of(context).primaryColor, size: 20),
                                 const SizedBox(width: Dimensions.marginSizeExtraSmall),
                                 Text(getTranslated('RE_ENTER_PASSWORD', context)!, style: titilliumRegular)
                               ],),

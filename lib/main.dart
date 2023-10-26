@@ -38,6 +38,7 @@ import 'package:flutter_sixvalley_ecommerce/theme/light_theme.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/app_constants.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/splash/splash_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:upgrader/upgrader.dart';
 
 import 'di_container.dart' as di;
 import 'helper/custom_delegate.dart';
@@ -54,6 +55,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
+  await Upgrader.clearSavedSettings();
  // await Firebase.initializeApp();
   await FlutterDownloader.initialize(debug: true , ignoreSsl: true);
   await di.init();

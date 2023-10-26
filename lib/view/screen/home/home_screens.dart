@@ -43,6 +43,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/product/view_all_product
 import 'package:flutter_sixvalley_ecommerce/view/screen/search/search_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/topSeller/all_top_seller_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:upgrader/upgrader.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -100,7 +101,8 @@ class _HomePageState extends State<HomePage> {
 
 
    List<String?> types =[getTranslated('new_arrival', context),getTranslated('top_product', context), getTranslated('best_selling', context),  getTranslated('discounted_product', context)];
-    return SafeArea(
+    return UpgradeAlert(
+      upgrader: Upgrader(dialogStyle: UpgradeDialogStyle.cupertino),
       child: Scaffold(
         backgroundColor: ColorResources.getHomeBg(context),
         resizeToAvoidBottomInset: false,

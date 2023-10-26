@@ -26,6 +26,7 @@ dependencies:
   carousel_slider: ^4.0.0-nullsafety.0
   flutter_staggered_grid_view: ^0.4.1
   shimmer: ^2.0.0-nullsafety.0
+  upgrader: ^8.2.0
   url_launcher: ^6.0.2
   image_picker: ^0.8.4+8
   webview_flutter: ^3.0.0

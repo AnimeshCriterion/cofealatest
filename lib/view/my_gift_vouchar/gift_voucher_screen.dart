@@ -8,6 +8,7 @@ import '../../../utill/color_resources.dart';
 import '../../../utill/custom_themes.dart';
 import '../../../utill/dimensions.dart';
 import '../../../utill/images.dart';
+import '../../localization/language_constrants.dart';
 import '../../provider/gift_voucher-provider.dart';
 import '../basewidget/show_custom_snakbar.dart';
 import '../screen/cart/cart_screen.dart';
@@ -53,7 +54,7 @@ class _GiftVoucherScreenState extends State<MyGiftVoucherScreen> {
         backgroundColor: Provider.of<ThemeProvider>(context).darkTheme
             ? Colors.black
             : Theme.of(context).primaryColor,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(5),
                 bottomLeft: Radius.circular(5))),
@@ -61,7 +62,7 @@ class _GiftVoucherScreenState extends State<MyGiftVoucherScreen> {
         //     color: ColorResources.WHITE),
         //   onPressed: () => Navigator.of(context).pop(),
         // ),
-        title: Text('My Gift Vouchers',
+        title: Text(getTranslated('my_gift_vouchers', context)!,
             style: titilliumRegular.copyWith(
                 fontSize: 20, color: ColorResources.WHITE)),
         actions: [
@@ -70,7 +71,7 @@ class _GiftVoucherScreenState extends State<MyGiftVoucherScreen> {
             child: IconButton(
               onPressed: () {
                 //  Navigator.push(context, MaterialPageRoute(builder: (_) => GiftVoucherScreen()));
-                Navigator.push(context, MaterialPageRoute(builder: (_) => CartScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => const CartScreen()));
               },
               icon: Stack(clipBehavior: Clip.none, children: [
                 Image.asset(
@@ -99,15 +100,15 @@ class _GiftVoucherScreenState extends State<MyGiftVoucherScreen> {
               builder: (context, locationProvider, _) {
                 return Expanded(
                   child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
                     itemCount: locationProvider
                         .myGiftVoucherList
                         .length,
                     itemBuilder: (context, index) {
                       return Container(
-                        padding: EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
-                        margin: EdgeInsets.only(
+                        padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+                        margin: const EdgeInsets.only(
                             bottom: Dimensions.PADDING_SIZE_SMALL),
                         decoration: BoxDecoration(
                           color: ColorResources.getImageBg(context),
@@ -148,7 +149,7 @@ class _GiftVoucherScreenState extends State<MyGiftVoucherScreen> {
                                 Icon(Icons.card_giftcard,
                                     color: ColorResources.getPrimary(context),
                                     size: 20),
-                                SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
+                                const SizedBox(width: Dimensions.PADDING_SIZE_SMALL),
                                 Expanded(child: Text(locationProvider
                                     .myGiftVoucherList[index].name
                                     .toString(), style: titilliumSemiBold)),
@@ -165,7 +166,7 @@ class _GiftVoucherScreenState extends State<MyGiftVoucherScreen> {
                                     locationProvider
                                         .myGiftVoucherList[index].isPurchase
                                         .toString() == '1' ?
-                                    'Redeem' : 'Not Redeem',
+                                    getTranslated('redeem', context)!: getTranslated('not_redeem', context)!,
                                     style: titilliumSemiBold.copyWith(
                                         color: Colors.white),
                                   ),
