@@ -514,7 +514,7 @@ class AuthProvider with ChangeNotifier {
     ResponseModel responseModel;
     if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
       responseModel = ResponseModel(apiResponse.response!.data["message"], true);
-      resendTime = (apiResponse.response!.data["resend_time"]);
+      resendTime =30;
     } else {
       String? errorMessage;
       if (apiResponse.error is String) {

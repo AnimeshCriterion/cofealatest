@@ -135,6 +135,7 @@ class ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       key: _scaffoldKey,
       body: Consumer<ProfileProvider>(
         builder: (context, profile, child) {
@@ -144,36 +145,35 @@ class ProfileScreenState extends State<ProfileScreen> {
           _phoneController.text = profile.userInfoModel!.phone!;
 
 
-          if (kDebugMode) {
-            print('wallet amount===>${profile.userInfoModel!.walletBalance}');
-          }
-
           return Stack(clipBehavior: Clip.none,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 100),
-                child: Image.asset(Images.toolbarBackground, fit: BoxFit.fill, height: 500,
-                  color: Provider.of<ThemeProvider>(context).darkTheme ? Colors.black : null,),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 100),
+              //   child: Image.asset(Images.toolbarBackground, fit: BoxFit.fill, height: 500,
+              //     color: Provider.of<ThemeProvider>(context).darkTheme ? Colors.black : null,),
+              // ),
 
-              Container(padding: const EdgeInsets.only(top: 35, left: 15),
-                child: Row(children: [
-                  CupertinoNavigationBarBackButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    color: Colors.white,),
-                  const SizedBox(width: 10),
 
-                  Text(getTranslated('PROFILE', context)!,
-                      style: titilliumRegular.copyWith(fontSize: 20, color: Colors.white),
-                      maxLines: 1, overflow: TextOverflow.ellipsis),
-                ]),
-              ),
 
-              Container(padding: const EdgeInsets.only(top: 55),
+              Container(padding: const EdgeInsets.only(top: 0),
                 color: Theme.of(context).primaryColor,
                 child: Column(children: [
                   Column(
                     children: [
+                      Container(padding: const EdgeInsets.only(top: 35, left: 15),
+                        color: Theme.of(context).primaryColor,
+
+                        child: Row(children: [
+                          CupertinoNavigationBarBackButton(
+                            onPressed: () => Navigator.of(context).pop(),
+                            color: Colors.white,),
+                          const SizedBox(width: 10),
+
+                          Text(getTranslated('PROFILE', context)!,
+                              style: titilliumRegular.copyWith(fontSize: 20, color: Colors.white),
+                              maxLines: 1, overflow: TextOverflow.ellipsis),
+                        ]),
+                      ),
                       Container(margin: const EdgeInsets.only(top: Dimensions.marginSizeExtraLarge),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -194,11 +194,11 @@ class ProfileScreenState extends State<ProfileScreen> {
                               Image.file(file!, width: Dimensions.profileImageSize,
                                   height: Dimensions.profileImageSize, fit: BoxFit.fill),),
                             Positioned(bottom: 0, right: -10,
-                              child: CircleAvatar(backgroundColor: Theme.of(context).primaryColor,
+                              child: CircleAvatar(backgroundColor: Colors.white,
                                 radius: 14,
                                 child: IconButton(onPressed: _choose,
                                   padding: const EdgeInsets.all(0),
-                                  icon: const Icon(Icons.edit, color: ColorResources.white, size: 18),),),
+                                  icon:  Icon(Icons.edit, color: Theme.of(context).primaryColor, size: 18),),),
                             ),
                           ],
                         ),
