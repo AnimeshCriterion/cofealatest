@@ -1063,7 +1063,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Storage Type	",
+                                        "Storage type",
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),

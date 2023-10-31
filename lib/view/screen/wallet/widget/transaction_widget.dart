@@ -30,9 +30,9 @@ class TransactionWidget extends StatelessWidget {
             const SizedBox(height: Dimensions.paddingSizeExtraSmall,),
 
 
-            Text('$reformatType',
-              style: robotoRegular.copyWith(color: ColorResources.getHint(context)),
-            ),
+            // Text('$reformatType',
+            //   style: robotoRegular.copyWith(color: ColorResources.getHint(context)),
+            // ),
           ],)),
           Column(crossAxisAlignment: CrossAxisAlignment.end,children: [
             Text(DateConverter.localDateToIsoStringAMPM(DateTime.parse(transactionModel!.createdAt!)),

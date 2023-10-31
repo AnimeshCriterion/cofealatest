@@ -34,7 +34,7 @@ class SignOutConfirmationDialog extends StatelessWidget {
         Consumer<ProfileProvider>(
           builder: (context, delete,_) {
             return delete.isDeleting?
-            Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,children: const [
+            const Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,children: [
               CircularProgressIndicator()
             ],) : Row(children: [
 
@@ -50,13 +50,13 @@ class SignOutConfirmationDialog extends StatelessWidget {
 
                     });
                   }else{
-                    Provider.of<AuthProvider>(context, listen: false).clearSharedData().then((condition) {
+                  //  Provider.of<AuthProvider>(context, listen: false).clearSharedData().then((condition) {
                       Navigator.pop(context);
                       Provider.of<ProfileProvider>(context,listen: false).clearHomeAddress();
                       Provider.of<ProfileProvider>(context,listen: false).clearOfficeAddress();
                       Provider.of<AuthProvider>(context,listen: false).clearSharedData();
                       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const AuthScreen()), (route) => false);
-                    });
+                  //  });
                   }
 
                 },
@@ -73,7 +73,7 @@ class SignOutConfirmationDialog extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
                   alignment: Alignment.center,
-                  decoration: const BoxDecoration(color: ColorResources.red, borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
+                  decoration:  BoxDecoration(color: ColorResources.getPrimary(context), borderRadius: BorderRadius.only(bottomRight: Radius.circular(10))),
                   child: Text(getTranslated('NO', context)!, style: titilliumBold.copyWith(color: ColorResources.white)),
                 ),
               )),

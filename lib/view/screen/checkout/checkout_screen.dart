@@ -952,7 +952,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       builder: (context, profile, _) {
                         return Center(child: Text(
                            " ${getTranslated('available_wallet_balance', context)}${profile.myCurrency!
-                                .symbol} ${balanceWallet})"));
+                                .symbol} ${balanceWallet}"));
                       }
                   )
                   ,
