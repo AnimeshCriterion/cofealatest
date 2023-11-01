@@ -1044,35 +1044,35 @@ class SpecificationScreen extends StatelessWidget {
                 //     ),
                 //   ),
                 // ),
-                Visibility(
-                  visible:specification.uStoragetype.toString().isNotEmpty,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Theme.of(context).hintColor)),
-                    child: Row(
-                      children: [
-                        Expanded(
-                            child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                      right: BorderSide(
-                                          color: Theme.of(context).hintColor)),
-                                  color: Theme.of(context).hintColor.withOpacity(0.1),
-                                ),
-                                child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "Storage type",
-                                        style: titilliumSemiBold.copyWith(
-                                            fontSize: Dimensions.FONT_SIZE_DEFAULT),
-                                      ),
-                                    )))),
-                        Expanded(child: Center(child: Text(specification.uStoragetype.toString())))
-                      ],
-                    ),
-                  ),
-                ),
+                // Visibility(
+                //   visible:specification.uStoragetype.toString().isNotEmpty,
+                //   child: Container(
+                //     decoration: BoxDecoration(
+                //         border: Border.all(color: Theme.of(context).hintColor)),
+                //     child: Row(
+                //       children: [
+                //         Expanded(
+                //             child: Container(
+                //                 decoration: BoxDecoration(
+                //                   border: Border(
+                //                       right: BorderSide(
+                //                           color: Theme.of(context).hintColor)),
+                //                   color: Theme.of(context).hintColor.withOpacity(0.1),
+                //                 ),
+                //                 child: Center(
+                //                     child: Padding(
+                //                       padding: const EdgeInsets.all(8.0),
+                //                       child: Text(
+                //                         "Storage type",
+                //                         style: titilliumSemiBold.copyWith(
+                //                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
+                //                       ),
+                //                     )))),
+                //         Expanded(child: Center(child: Text(specification.uStoragetype.toString())))
+                //       ],
+                //     ),
+                //   ),
+                // ),
 
 
 

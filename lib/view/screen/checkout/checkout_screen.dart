@@ -90,6 +90,14 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     Provider.of<CartProvider>(context, listen: false).getChosenShippingMethod(context);
     _digitalPayment = Provider.of<SplashProvider>(context, listen: false).configModel!.digitalPayment;
     _cod = Provider.of<SplashProvider>(context, listen: false).configModel!.cod;
+
+
+
+
+
+
+
+
     _billingAddress = Provider.of<SplashProvider>(context, listen: false).configModel!.billingAddress == 1;
   }
 
@@ -721,7 +729,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: Text('Coupon', style: TextStyle(
+                            child: Text(getTranslated('coupons', context)!, style: TextStyle(
                                 color: subscriptionIndex == 1 ||
                                     subscriptionIndex == 2
                                     ? Colors.black
@@ -729,7 +737,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: Text('Voucher', style: TextStyle(
+                            child: Text(getTranslated('voucher', context)!, style: TextStyle(
                                 color: subscriptionIndex == 0 ||
                                     subscriptionIndex == 2
                                     ? Colors.black
@@ -1142,7 +1150,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                   amount: PriceConverter.convertPrice(
                                       context, widget.shippingFee)),
                               AmountWidget1(title:
-                              'Wallet Amount', amount: PriceConverter
+                              getTranslated(
+                                  'wallet_amount', context), amount: PriceConverter
                                   .convertPrice(context, Provider
                                   .of<CouponProvider>(
                                   context, listen: false)

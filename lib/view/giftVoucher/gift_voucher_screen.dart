@@ -69,7 +69,7 @@ class _GiftVoucherScreenState extends State<GiftVoucherScreen> {
         //     color: ColorResources.WHITE),
         //   onPressed: () => Navigator.of(context).pop(),
         // ),
-        title: Text('Gift Vouchers',
+        title: Text(getTranslated('gift_vouchers', context)!,
             style: titilliumRegular.copyWith(
                 fontSize: 20, color: ColorResources.WHITE)),
         actions: [

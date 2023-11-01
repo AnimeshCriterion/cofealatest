@@ -36,12 +36,12 @@ class SupportTicketScreen extends StatelessWidget {
 
       bottomChild: InkWell(
         onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const IssueTypeScreen())),
-        child: Material(color: ColorResources.getColombiaBlue(context),
+        child: Material(color: ColorResources.getPrimary(context),
           elevation: 5,
           borderRadius: BorderRadius.circular(50),
           child: Row(mainAxisSize: MainAxisSize.min, children: [
             Container(padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
-              decoration: BoxDecoration(color: ColorResources.getFloatingBtn(context),
+              decoration: BoxDecoration(color: ColorResources.getPrimary(context),
                 shape: BoxShape.circle,),
               child: const Icon(Icons.add, color: Colors.white, size: 35),),
 

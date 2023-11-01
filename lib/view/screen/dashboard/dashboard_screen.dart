@@ -57,21 +57,21 @@ class DashBoardScreenState extends State<DashBoardScreen> {
           return true;
         }
       },
-      child: SafeArea(
-        child: Scaffold(
-          key: _scaffoldKey,
-          bottomNavigationBar: BottomNavigationBar(
-            selectedItemColor: Theme.of(context).primaryColor,
-            unselectedItemColor: Theme.of(context).textTheme.bodyLarge!.color,
-            showUnselectedLabels: true,
-            currentIndex: _pageIndex,
-            type: BottomNavigationBarType.fixed,
-            items: _getBottomWidget(singleVendor),
-            onTap: (int index) {
-              _setPage(index);
-            },
-          ),
-          body: PageView.builder(
+      child: Scaffold(
+        key: _scaffoldKey,
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Theme.of(context).primaryColor,
+          unselectedItemColor: Theme.of(context).textTheme.bodyLarge!.color,
+          showUnselectedLabels: true,
+          currentIndex: _pageIndex,
+          type: BottomNavigationBarType.fixed,
+          items: _getBottomWidget(singleVendor),
+          onTap: (int index) {
+            _setPage(index);
+          },
+        ),
+        body: SafeArea(
+          child: PageView.builder(
             controller: _pageController,
             itemCount: _screens.length,
             physics: const NeverScrollableScrollPhysics(),
@@ -113,7 +113,7 @@ class DashBoardScreenState extends State<DashBoardScreen> {
     }else{
       list.add(_barItem(Images.homeImage, getTranslated('home', context), 0));
       list.add(_barItem(Images.shoppingImage, getTranslated('orders', context), 1));
-      list.add(_barItem(Images.gift_card, getTranslated('gifts', context), 2));
+      list.add(_barItem(Images.gift_card, getTranslated('voucher', context), 2));
       list.add(_barItem(Images.notification, getTranslated('notification', context), 3));
       list.add(_barItem(Images.moreImage, getTranslated('more', context), 4));
     }
