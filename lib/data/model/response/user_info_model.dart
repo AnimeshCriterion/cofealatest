@@ -38,7 +38,7 @@ class UserInfoModel {
     if(json['loyalty_point'] != null){
       loyaltyPoint = json['loyalty_point'].toDouble();
     }else{
-      walletBalance = 0.0;
+      walletBalance = json['wallet_balance'].toDouble();
     }
 
   }

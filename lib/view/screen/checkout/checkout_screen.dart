@@ -68,6 +68,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         .then((value) {
       setState(() {
          balanceWallet = value.toString();
+         print("ANiejhs"+balanceWallet.toString());
       });
 
     });
@@ -77,6 +78,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   void initState() {
     super.initState();
     getWalletbalance();
+    Provider
+        .of<CouponProvider>(
+        context, listen: false)
+        .sewallet = 0.0;
     Provider.of<ProfileProvider>(context, listen: false).initAddressList();
     Provider.of<ProfileProvider>(context, listen: false).initAddressTypeList(context);
     Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
@@ -402,7 +407,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                               BuildContext context) =>
                                                               const SavedAddressListScreen())),
                                               child: Image.asset(
-                                                  Images.address, scale: 3),
+                                                  Images.address, scale: 3,color:Theme
+                                                  .of(context)
+                                                  .primaryColor),
                                             ),
 
                                           ],
@@ -512,7 +519,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                               BuildContext context) =>
                                                               const SavedBillingAddressListScreen())),
                                               child: Image.asset(
-                                                  Images.address, scale: 3),
+                                                  Images.address, scale: 3,color:Theme
+                            .of(context)
+                            .primaryColor),
                                             ),
                                           ],
                                         ),
