@@ -148,7 +148,7 @@ class _GiftVoucherScreenState extends State<GiftVoucherScreen> {
                                   },
                                   child: Container(
                                     // height: MediaQuery.of(context).size.width/2,
-                                    margin: EdgeInsets.all(5),
+                                    margin: const EdgeInsets.all(5),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: Theme.of(context).highlightColor,

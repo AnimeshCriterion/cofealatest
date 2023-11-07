@@ -46,6 +46,7 @@ import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
 
 
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -81,7 +82,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
     singleVendor = Provider.of<SplashProvider>(context, listen: false).configModel!.businessMode == "single";
     Provider.of<FlashDealProvider>(context, listen: false).getMegaDealList(true, true);
 
