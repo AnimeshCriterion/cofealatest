@@ -42,6 +42,8 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/top_seller_v
 import 'package:flutter_sixvalley_ecommerce/view/screen/product/view_all_product_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/search/search_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/topSeller/all_top_seller_screen.dart';
+import 'package:ottu/ottu.dart';
+import 'package:ottu/paymentDelegate/paymentDelegate.dart';
 import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
 
@@ -54,8 +56,10 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>  {
   final ScrollController _scrollController = ScrollController();
+
+
 
 
   Future<void> _loadData(bool reload) async {
@@ -463,6 +467,8 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+
 }
 
 class SliverDelegate extends SliverPersistentHeaderDelegate {

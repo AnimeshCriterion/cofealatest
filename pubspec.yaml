@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localization:
+
 
 
   cupertino_icons: ^1.0.2
@@ -29,7 +29,7 @@ dependencies:
   shimmer: ^2.0.0-nullsafety.0
   upgrader:
   url_launcher:
-  ottu:
+  ottu: ^0.1.5
   image_picker:
   webview_flutter:
   flutter_html: ^3.0.0-alpha.3
@@ -48,7 +48,6 @@ dependencies:
   google_maps_flutter:
   flutter_google_places:
   geocoding:
-
   geolocator:
   flutter_typeahead:
   marquee:
@@ -65,17 +64,19 @@ dependencies:
   path:
   cached_network_image:
   http_parser:
-  intl: any
   google_maps_webservice: ^0.0.19
 
 
 
+dependency_overrides:
+  intl: any
+  flutter_localization:
+
 
 dev_dependencies:
-  flutter_lints: ^2.0.1
-
   flutter_test:
     sdk: flutter
+  flutter_lints: ^2.0.1
 
 
 flutter:

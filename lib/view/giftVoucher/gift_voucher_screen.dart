@@ -161,6 +161,8 @@ class _GiftVoucherScreenState extends State<GiftVoucherScreen> {
                                     ),
                                     child: Stack(children: [
                                       Column(
+
+
                                           crossAxisAlignment:
                                               CrossAxisAlignment.stretch,
                                           children: [
