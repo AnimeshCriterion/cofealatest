@@ -53,6 +53,7 @@ dependencies:
   marquee:
   flutter_rating_bar:
   flutter_widget_from_html:
+  devicelocale: ^0.7.0
   flutter_widget_from_html_core:
   flutter_html_table: ^3.0.0-alpha.3
   fluttertoast:

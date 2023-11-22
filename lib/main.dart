@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:devicelocale/devicelocale.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -62,6 +63,7 @@ Future<void> main() async {
   // final NotificationAppLaunchDetails? notificationAppLaunchDetails =
   // await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
   int? orderID;
+  String? localess = await Devicelocale.currentLocale;
   // if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
   //   orderID = (notificationAppLaunchDetails!.payload != null && notificationAppLaunchDetails.payload!.isNotEmpty)
   //       ? int.parse(notificationAppLaunchDetails.payload!) : null;
@@ -109,17 +111,20 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<LocationProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<WalletTransactionProvider>()),
     ],
-    child: MyApp(orderId: orderID),
+    child: MyApp(orderId: orderID,local: localess),
   ));
 }
 
 class MyApp extends StatelessWidget {
   final int? orderId;
-  const MyApp({Key? key, required this.orderId}) : super(key: key);
+  final String? local;
+  const MyApp( {Key? key, required this.orderId,required this.local}) : super(key: key);
+
 
 
   @override
   Widget build(BuildContext context) {
+    print("locall${local.toString().substring(0,2)}");
     List<Locale> locals = [];
     for (var language in AppConstants.languages) {
       locals.add(Locale(language.languageCode!, language.countryCode));
@@ -129,7 +134,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeProvider>(context).darkTheme ? dark : light,
-      locale: Provider.of<LocalizationProvider>(context).locale,
+      locale: Locale(local!.toString().substring(0,2)),
       localizationsDelegates: [
         AppLocalization.delegate,
         GlobalMaterialLocalizations.delegate,
