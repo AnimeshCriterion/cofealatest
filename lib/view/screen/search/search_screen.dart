@@ -68,6 +68,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         Provider.of<SearchProvider>(context, listen: false).saveSearchAddress(text);
                       }},
                     onClearPressed: () => Provider.of<SearchProvider>(context, listen: false).cleanSearchProduct(),
+                    searchController: searchController,
                     ),
                   ),
                 ],

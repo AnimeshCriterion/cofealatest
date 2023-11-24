@@ -51,12 +51,12 @@ class SearchWidget extends StatelessWidget {
                     horizontal: Dimensions.paddingSizeSmall,
                   ),
                   child: TextFormField(
-                    controller: isSeller? searchController: controller,
+                    controller: searchController,
                     onFieldSubmitted: (query) {
                       onSubmit!(query);
                     },
                     onChanged: (query) {
-                      // onTextChanged(query);
+                      onTextChanged!(query);
                     },
                     textInputAction: TextInputAction.search,
                     maxLines: 1,
@@ -109,9 +109,9 @@ class SearchWidget extends StatelessWidget {
             ):
             InkWell(
               onTap: (){
-                if(controller.text.trim().isNotEmpty) {
-                  Provider.of<SearchProvider>(context, listen: false).saveSearchAddress( controller.text.toString());
-                  Provider.of<SearchProvider>(context, listen: false).searchProduct( controller.text.toString(), context);
+                if(searchController!.value.text.trim().isNotEmpty) {
+                  Provider.of<SearchProvider>(context, listen: false).saveSearchAddress( searchController!.value.text.toString());
+                  Provider.of<SearchProvider>(context, listen: false).searchProduct( searchController!.value.text.toString(), context);
                 }else{
                   showCustomSnackBar(getTranslated('enter_somethings', context), context);
 

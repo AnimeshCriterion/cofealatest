@@ -53,12 +53,22 @@ class _ProductDetailsState extends State<ProductDetails> {
       Provider.of<WishListProvider>(context, listen: false).checkWishList(widget.productId.toString(), context);
     }
 
+
+
+
+  }
+
+
+  @override
+  void initState() {
+    _loadData(context);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     ScrollController _scrollController = ScrollController();
-    _loadData(context);
+
     return WillPopScope(
       onWillPop: () async{
         if(widget.isFromWishList){

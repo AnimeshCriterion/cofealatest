@@ -58,8 +58,11 @@ class ProductRepo {
         uri = '${AppConstants.categoryProductUri}$id';
       }
       final response = await dioClient!.get(uri);
+      print("ANimeshshshsh0"+response.toString());
       return ApiResponse.withSuccess(response);
+
      } catch (e) {
+       print("ANimeshshshsh0"+e.toString());
        return ApiResponse.withError(ApiErrorHandler.getMessage(e));
     }
   }

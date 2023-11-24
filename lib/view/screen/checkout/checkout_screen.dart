@@ -434,7 +434,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                 Provider
                                                     .of<OrderProvider>(
                                                     context, listen: false)
-                                                    .shippingIndex == -1 ?
+                                                    .addressIndex == -1 ?
                                                 '${getTranslated(
                                                     'address_type', context)!}' :
                                                 Provider
@@ -458,7 +458,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                 Provider
                                                     .of<OrderProvider>(
                                                     context, listen: false)
-                                                    .addressIndex == 0
+                                                    .addressIndex == -1
                                                     ?
                                                 getTranslated(
                                                     'add_your_address', context)!
