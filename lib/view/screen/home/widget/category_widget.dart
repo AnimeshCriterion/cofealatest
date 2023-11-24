@@ -14,7 +14,7 @@ class CategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column( children: [
       Container(
-        height: MediaQuery.of(context).size.width/5,
+        height: MediaQuery.of(context).size.width/6,
         width: MediaQuery.of(context).size.width/5,
         decoration: BoxDecoration(
           border: Border.all(color: Theme.of(context).primaryColor.withOpacity(.2)),
@@ -37,7 +37,7 @@ class CategoryWidget extends StatelessWidget {
       Center(
         child: Text(category.name!,
           textAlign: TextAlign.center,
-          maxLines: 1,
+          maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeSmall,
               color: ColorResources.getTextTitle(context)),

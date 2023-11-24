@@ -189,7 +189,7 @@ class _HomePageState extends State<HomePage>  {
 
                                     Container(
                                       width: 40,height: 40,decoration: BoxDecoration(color: Theme.of(context).primaryColor,
-                                        borderRadius: BorderRadius.all(Radius.circular(Dimensions.PADDING_SIZE_EXTRA_SMALL))
+                                        borderRadius: const BorderRadius.all(Radius.circular(Dimensions.PADDING_SIZE_EXTRA_SMALL))
                                     ),
                                       child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.ICON_SIZE_SMALL),
                                     ),
@@ -200,7 +200,7 @@ class _HomePageState extends State<HomePage>  {
 
                     SliverToBoxAdapter(
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(Dimensions.HOME_PAGE_PADDING,
+                        padding: const EdgeInsets.fromLTRB(Dimensions.HOME_PAGE_PADDING,
                             Dimensions.PADDING_SIZE_SMALL, Dimensions.PADDING_SIZE_DEFAULT, Dimensions.PADDING_SIZE_SMALL  ),
                         child: Column(
                           children: [
@@ -459,7 +459,7 @@ class _HomePageState extends State<HomePage>  {
                     },
 
                   ),
-                ):SizedBox(),
+                ):const SizedBox(),
               ],
             ),
           ),

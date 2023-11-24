@@ -57,7 +57,7 @@ Future<void> main() async {
   HttpOverrides.global = MyHttpOverrides();
   WidgetsFlutterBinding.ensureInitialized();
   await Upgrader.clearSavedSettings();
- // await Firebase.initializeApp();
+  await Firebase.initializeApp();
   await FlutterDownloader.initialize(debug: true , ignoreSsl: true);
   await di.init();
   // final NotificationAppLaunchDetails? notificationAppLaunchDetails =
@@ -111,20 +111,20 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<LocationProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<WalletTransactionProvider>()),
     ],
-    child: MyApp(orderId: orderID,local: localess),
+    child: MyApp(orderId: orderID),
   ));
 }
 
 class MyApp extends StatelessWidget {
   final int? orderId;
-  final String? local;
-  const MyApp( {Key? key, required this.orderId,required this.local}) : super(key: key);
+
+  const MyApp( {Key? key, required this.orderId}) : super(key: key);
 
 
 
   @override
   Widget build(BuildContext context) {
-    print("locall${local.toString().substring(0,2)}");
+    Provider.of<LocalizationProvider>(context).getSystemDeviceLocale();
     List<Locale> locals = [];
     for (var language in AppConstants.languages) {
       locals.add(Locale(language.languageCode!, language.countryCode));
@@ -134,7 +134,8 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeProvider>(context).darkTheme ? dark : light,
-      locale: Locale(local!.toString().substring(0,2)),
+    //  locale: Locale(local!.toString().substring(0,2)),
+      locale: Provider.of<LocalizationProvider>(context).locale,
       localizationsDelegates: [
         AppLocalization.delegate,
         GlobalMaterialLocalizations.delegate,

@@ -61,6 +61,7 @@ dependencies:
   flutter_downloader:
   country_currency_pickers:
   dropdown_search:
+  get: ^4.6.5
   flutter_inappwebview:
   path:
   cached_network_image:

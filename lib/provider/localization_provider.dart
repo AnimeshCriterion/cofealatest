@@ -1,3 +1,4 @@
+import 'package:devicelocale/devicelocale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sixvalley_ecommerce/data/datasource/remote/dio/dio_client.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/app_constants.dart';
@@ -11,17 +12,29 @@ class LocalizationProvider extends ChangeNotifier {
     _loadCurrentLanguage();
   }
 
+
+
+
   Locale _locale = Locale(AppConstants.languages[0].languageCode!, AppConstants.languages[0].countryCode);
   bool _isLtr = true;
   int? _languageIndex;
+
+
 
   Locale get locale => _locale;
   bool get isLtr => _isLtr;
   int? get languageIndex => _languageIndex;
 
+  void getSystemDeviceLocale() async{
+    var data=await Devicelocale.currentLocale;
+    _locale=Locale(data!);
+    notifyListeners();
+
+  }
+
   void setLanguage(Locale locale) {
     _locale = locale;
-    _isLtr = _locale.languageCode != 'ar';
+    _isLtr = _locale!.languageCode != 'ar';
     dioClient!.updateHeader(null, locale.countryCode);
     for(int index=0; index<AppConstants.languages.length; index++) {
       if(AppConstants.languages[index].languageCode == locale.languageCode) {

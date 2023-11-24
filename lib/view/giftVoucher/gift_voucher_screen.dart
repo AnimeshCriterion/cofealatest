@@ -61,7 +61,7 @@ class _GiftVoucherScreenState extends State<GiftVoucherScreen> {
         backgroundColor: Provider.of<ThemeProvider>(context).darkTheme
             ? Colors.black
             : Theme.of(context).primaryColor,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(5),
                 bottomLeft: Radius.circular(5))),
@@ -78,7 +78,7 @@ class _GiftVoucherScreenState extends State<GiftVoucherScreen> {
             child: IconButton(
               onPressed: () {
                 //  Navigator.push(context, MaterialPageRoute(builder: (_) => GiftVoucherScreen()));
-                Navigator.push(context, MaterialPageRoute(builder: (_) => CartScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) => const CartScreen()));
               },
               icon: Stack(clipBehavior: Clip.none, children: [
                 Image.asset(
@@ -110,7 +110,7 @@ class _GiftVoucherScreenState extends State<GiftVoucherScreen> {
                   ? Row(children: [
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.only(top: 3),
+                        margin: const EdgeInsets.only(top: 3),
                         height: double.infinity,
                         decoration: BoxDecoration(
                           color: Theme.of(context).highlightColor,
@@ -126,15 +126,15 @@ class _GiftVoucherScreenState extends State<GiftVoucherScreen> {
                           ],
                         ),
                         child: StaggeredGridView.countBuilder(
-                          physics: BouncingScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           itemCount: categoryProvider.giftVoucherList.length,
-                          padding: EdgeInsets.all(0),
+                          padding: const EdgeInsets.all(0),
                           crossAxisCount: 2,
                           // padding: EdgeInsets.all(0),
                           // physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           staggeredTileBuilder: (int index) =>
-                              StaggeredTile.fit(1),
+                              const StaggeredTile.fit(1),
                           itemBuilder: (context, index) {
                             GiftVoucherDataModel _category =
                                 categoryProvider.giftVoucherList[index];
@@ -175,14 +175,14 @@ class _GiftVoucherScreenState extends State<GiftVoucherScreen> {
                                               decoration: BoxDecoration(
                                                 color: ColorResources.getIconBg(
                                                     context),
-                                                borderRadius: BorderRadius.only(
+                                                borderRadius: const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(10),
                                                     topRight:
                                                         Radius.circular(10)),
                                               ),
                                               child: ClipRRect(
-                                                borderRadius: BorderRadius.only(
+                                                borderRadius: const BorderRadius.only(
                                                     topLeft:
                                                         Radius.circular(10),
                                                     topRight:
@@ -265,7 +265,7 @@ class _GiftVoucherScreenState extends State<GiftVoucherScreen> {
 
                                               },
                                               child: Padding(
-                                                padding: EdgeInsets.only(
+                                                padding: const EdgeInsets.only(
                                                     top: Dimensions
                                                         .PADDING_SIZE_SMALL,
                                                     bottom: 5,
@@ -283,7 +283,7 @@ class _GiftVoucherScreenState extends State<GiftVoucherScreen> {
                                                       children: [
                                                         Container(
                                                           height: 35,
-                                                          margin: EdgeInsets
+                                                          margin: const EdgeInsets
                                                               .symmetric(
                                                                   horizontal:
                                                                       5),
