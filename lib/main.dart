@@ -63,7 +63,12 @@ Future<void> main() async {
   // final NotificationAppLaunchDetails? notificationAppLaunchDetails =
   // await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
   int? orderID;
-  String? localess = await Devicelocale.currentLocale;
+
+  var data=await Devicelocale.currentLocale;
+  List systemList=data!.split("-").toList();
+  print("Checklsysss"+systemList[1].toString());
+  print("Checklsysss"+systemList[0].toString());
+
   // if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
   //   orderID = (notificationAppLaunchDetails!.payload != null && notificationAppLaunchDetails.payload!.isNotEmpty)
   //       ? int.parse(notificationAppLaunchDetails.payload!) : null;
@@ -111,20 +116,21 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<LocationProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<WalletTransactionProvider>()),
     ],
-    child: MyApp(orderId: orderID),
+    child: MyApp(orderId: orderID,systemLang:systemList ,),
   ));
 }
 
 class MyApp extends StatelessWidget {
   final int? orderId;
-
-  const MyApp( {Key? key, required this.orderId}) : super(key: key);
+final List systemLang;
+  const MyApp( {Key? key, required this.orderId,required this.systemLang}) : super(key: key);
 
 
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<LocalizationProvider>(context).getSystemDeviceLocale();
+    print("CheckCheck${Provider.of<LocalizationProvider>(context).getLanguageSystemDefualt()}");
+  Provider.of<LocalizationProvider>(context).getSystemDeviceLocale();
     List<Locale> locals = [];
     for (var language in AppConstants.languages) {
       locals.add(Locale(language.languageCode!, language.countryCode));
@@ -135,7 +141,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeProvider>(context).darkTheme ? dark : light,
     //  locale: Locale(local!.toString().substring(0,2)),
-      locale: Provider.of<LocalizationProvider>(context).locale,
+      locale: Provider.of<LocalizationProvider>(context).getLanguageSystemDefualt()!?Provider.of<LocalizationProvider>(context).systemLocal:Provider.of<LocalizationProvider>(context).locale,
       localizationsDelegates: [
         AppLocalization.delegate,
         GlobalMaterialLocalizations.delegate,

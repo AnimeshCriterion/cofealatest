@@ -71,6 +71,7 @@ class SearchProvider with ChangeNotifier {
   }
 
   void searchProduct(String query, BuildContext context) async {
+    print("AnimeshSearch"+query.toString());
     _searchText = query;
     _isClear = false;
     _searchProductList = null;

@@ -1,3 +1,4 @@
+import 'package:devicelocale/devicelocale.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sixvalley_ecommerce/localization/language_constrants.dart';
@@ -79,14 +80,27 @@ class CurrencyDialog extends StatelessWidget {
             child: VerticalDivider(width: Dimensions.paddingSizeExtraSmall, color: Theme.of(context).hintColor),
           ),
           Expanded(child: TextButton(
-            onPressed: () {
+            onPressed: () async {
+
               if(isCurrency) {
                 Provider.of<SplashProvider>(context, listen: false).setCurrency(index!);
               }else {
-                Provider.of<LocalizationProvider>(context, listen: false).setLanguage(Locale(
-                  AppConstants.languages[index!].languageCode!,
-                  AppConstants.languages[index!].countryCode,
-                ));
+                if(index==2){
+                  var data=await Devicelocale.currentLocale;
+                  List systemList=data!.split("-").toList();
+                 Provider.of<LocalizationProvider>(context,listen: false).setLangaugeSystemDefault(true);
+                 Provider.of<LocalizationProvider>(context, listen: false).setLanguage(Locale(
+                   systemList[0].toString(),
+                   systemList[1].toString(),
+                 ));
+                }else{
+                  Provider.of<LocalizationProvider>(context,listen: false).setLangaugeSystemDefault(false);
+                  Provider.of<LocalizationProvider>(context, listen: false).setLanguage(Locale(
+                    AppConstants.languages[index!].languageCode!,
+                    AppConstants.languages[index!].countryCode,
+                  ));
+                }
+
                 Provider.of<CategoryProvider>(context, listen: false).getCategoryList(true);
                 Provider.of<HomeCategoryProductProvider>(context, listen: false).getHomeCategoryProductList(true);
                 Provider.of<TopSellerProvider>(context, listen: false).getTopSellerList(true);

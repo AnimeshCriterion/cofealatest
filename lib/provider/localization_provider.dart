@@ -18,17 +18,23 @@ class LocalizationProvider extends ChangeNotifier {
   Locale _locale = Locale(AppConstants.languages[0].languageCode!, AppConstants.languages[0].countryCode);
   bool _isLtr = true;
   int? _languageIndex;
+  bool? _isLanguageSystem = true;
+
+Locale? systemLocal;
 
 
 
   Locale get locale => _locale;
   bool get isLtr => _isLtr;
   int? get languageIndex => _languageIndex;
+  bool? get languageSystemDefualt => _isLanguageSystem;
 
-  void getSystemDeviceLocale() async{
+   getSystemDeviceLocale() async{
     var data=await Devicelocale.currentLocale;
-    _locale=Locale(data!);
-    notifyListeners();
+    List systemList=data!.split("-").toList();
+    systemLocal=Locale(systemList[0].toString(),systemList[1].toString());
+    print("Ainemmeee"+systemLocal.toString());
+     notifyListeners();
 
   }
 
@@ -63,4 +69,22 @@ class LocalizationProvider extends ChangeNotifier {
     sharedPreferences!.setString(AppConstants.languageCode, locale.languageCode);
     sharedPreferences!.setString(AppConstants.countryCode, locale.countryCode!);
   }
+
+
+  void setLangaugeSystemDefault(bool isSystem){
+    sharedPreferences!.setBool("isSystemDefualt",isSystem)??false;
+
+  }
+
+  bool? getLanguageSystemDefualt(){
+     if(sharedPreferences!.getBool("isSystemDefualt")!=null){
+     _isLanguageSystem=sharedPreferences!.getBool("isSystemDefualt");
+     }else{
+       _isLanguageSystem=true;
+     }
+
+     return _isLanguageSystem;
+  }
+
+
 }

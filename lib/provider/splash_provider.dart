@@ -6,6 +6,7 @@ import 'package:flutter_sixvalley_ecommerce/helper/api_checker.dart';
 
 class SplashProvider extends ChangeNotifier {
   final SplashRepo? splashRepo;
+
   SplashProvider({required this.splashRepo});
 
   ConfigModel? _configModel;
@@ -29,6 +30,7 @@ class SplashProvider extends ChangeNotifier {
   bool get hasConnection => _hasConnection;
   bool get fromSetting => _fromSetting;
   bool get firstTimeConnectionCheck => _firstTimeConnectionCheck;
+
 
   Future<bool> initConfig(BuildContext context) async {
     _hasConnection = true;
@@ -89,6 +91,8 @@ class SplashProvider extends ChangeNotifier {
   void setFromSetting(bool isSetting) {
     _fromSetting = isSetting;
   }
+
+
 
   bool? showIntro() {
     return splashRepo!.showIntro();
