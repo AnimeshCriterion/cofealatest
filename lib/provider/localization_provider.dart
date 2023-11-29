@@ -33,6 +33,7 @@ Locale? systemLocal;
     var data=await Devicelocale.currentLocale;
     List systemList=data!.split("-").toList();
     systemLocal=Locale(systemList[0].toString(),systemList[1].toString());
+    dioClient!.updateHeader(null, systemList[1]);
     print("Ainemmeee"+systemLocal.toString());
      notifyListeners();
 

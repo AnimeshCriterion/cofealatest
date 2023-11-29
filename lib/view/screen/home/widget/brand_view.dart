@@ -58,17 +58,17 @@ class BrandView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: (MediaQuery.of(context).size.width/4) * 0.3,
-                          width: MediaQuery.of(context).size.width/4.2,
-                          child: Center(child: Text(
-                            brandProvider.brandList[index].name!,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.center,
-                            style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeSmall),
-                          )),
-                        ),
+                        // SizedBox(
+                        //   height: (MediaQuery.of(context).size.width/4) * 0.3,
+                        //   width: MediaQuery.of(context).size.width/4.2,
+                        //   child: Center(child: Text(
+                        //     brandProvider.brandList[index].name!,
+                        //     maxLines: 1,
+                        //     overflow: TextOverflow.ellipsis,
+                        //     textAlign: TextAlign.center,
+                        //     style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeSmall),
+                        //   )),
+                        // ),
                       ],
                     ),
                   ),
