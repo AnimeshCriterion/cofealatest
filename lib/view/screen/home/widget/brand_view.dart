@@ -21,7 +21,7 @@ class BrandView extends StatelessWidget {
         return brandProvider.brandList.isNotEmpty ?
         isHomePage?
         ConstrainedBox(
-          constraints: brandProvider.brandList.isNotEmpty ? const BoxConstraints(maxHeight: 130):const BoxConstraints(maxHeight: 0),
+          constraints: brandProvider.brandList.isNotEmpty ? const BoxConstraints(maxHeight: 100):const BoxConstraints(maxHeight: 0),
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: brandProvider.brandList.length,
@@ -124,16 +124,16 @@ class BrandView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: (MediaQuery.of(context).size.width/4) * 0.3,
-                    child: Center(child: Text(
-                      brandProvider.brandList[index].name!,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeSmall),
-                    )),
-                  ),
+                  // SizedBox(
+                  //   height: (MediaQuery.of(context).size.width/4) * 0.3,
+                  //   child: Center(child: Text(
+                  //     brandProvider.brandList[index].name!,
+                  //     maxLines: 1,
+                  //     overflow: TextOverflow.ellipsis,
+                  //     textAlign: TextAlign.center,
+                  //     style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeSmall),
+                  //   )),
+                  // ),
                 ],
               ),
             );
