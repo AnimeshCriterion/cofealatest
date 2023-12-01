@@ -129,8 +129,11 @@ final List systemLang;
 
   @override
   Widget build(BuildContext context) {
-    print("CheckCheck${Provider.of<LocalizationProvider>(context).getLanguageSystemDefualt()}");
-  Provider.of<LocalizationProvider>(context).getSystemDeviceLocale();
+    if(Provider.of<LocalizationProvider>(context).getLanguageSystemDefualt()!){
+      print("CheckCheck${Provider.of<LocalizationProvider>(context).getLanguageSystemDefualt()}");
+      Provider.of<LocalizationProvider>(context).getSystemDeviceLocale();
+    }
+
     List<Locale> locals = [];
     for (var language in AppConstants.languages) {
       locals.add(Locale(language.languageCode!, language.countryCode));
