@@ -177,7 +177,7 @@ class _MoreScreenState extends State<MoreScreen> {
                                     navigateTo: const WishListScreen(),
                                     count: Provider.of<AuthProvider>(context, listen: false).isLoggedIn() &&
                                         Provider.of<WishListProvider>(context, listen: false).wishList != null &&
-                                        Provider.of<WishListProvider>(context, listen: false).wishList!.length > 0 ?
+                                        Provider.of<WishListProvider>(context, listen: false).wishList!.isNotEmpty ?
                                     Provider.of<WishListProvider>(context, listen: false).wishList!.length : 0, hasCount: false,),
                                 ]),
                           ),
