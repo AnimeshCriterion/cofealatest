@@ -81,7 +81,7 @@ class CurrencyDialog extends StatelessWidget {
           ),
           Expanded(child: TextButton(
             onPressed: () async {
-
+              Provider.of<SplashProvider>(context, listen: false).initConfig(context);
               if(isCurrency) {
                 Provider.of<SplashProvider>(context, listen: false).setCurrency(index!);
               }else {

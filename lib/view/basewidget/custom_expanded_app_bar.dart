@@ -23,36 +23,39 @@ class CustomExpandedAppBar extends StatelessWidget {
 
     return Scaffold(
       floatingActionButton: isGuestCheck ? isGuestMode ? null : bottomChild : bottomChild,
-      body: Stack(children: [
+      body: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: Stack(children: [
 
-        // Background
-        Image.asset(
-          Images.morePageHeader, height: 150, fit: BoxFit.fill, width: MediaQuery.of(context).size.width,
-          color: Provider.of<ThemeProvider>(context).darkTheme ? Colors.black : Theme.of(context).primaryColor,
-        ),
-
-        Positioned(
-          top: 40,
-          left: Dimensions.paddingSizeSmall,
-          right: Dimensions.paddingSizeSmall,
-          child: Row(children: [
-            CupertinoNavigationBarBackButton(color: Colors.white, onPressed: () {
-              Provider.of<SplashProvider>(context, listen: false).setFromSetting(false);
-              Navigator.pop(context);
-            } ),
-            Text(title!, style: titilliumRegular.copyWith(fontSize: 20, color: Colors.white), maxLines: 1, overflow: TextOverflow.ellipsis),
-          ]),
-        ),
-
-        Container(
-          margin: const EdgeInsets.only(top: 120),
-          decoration: BoxDecoration(
-            color: ColorResources.getHomeBg(context),
-            borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          // Background
+          Image.asset(
+            Images.morePageHeader, height: 150, fit: BoxFit.fill, width: MediaQuery.of(context).size.width,
+            color: Provider.of<ThemeProvider>(context).darkTheme ? Colors.black : Theme.of(context).primaryColor,
           ),
-          child: isGuestCheck ? isGuestMode ? const NotLoggedInWidget() : child : child,
-        ),
-      ]),
+
+          Positioned(
+            top: 40,
+            left: Dimensions.paddingSizeSmall,
+            right: Dimensions.paddingSizeSmall,
+            child: Row(children: [
+              CupertinoNavigationBarBackButton(color: Colors.white, onPressed: () {
+                Provider.of<SplashProvider>(context, listen: false).setFromSetting(false);
+                Navigator.pop(context);
+              } ),
+              Text(title!, style: titilliumRegular.copyWith(fontSize: 20, color: Colors.white), maxLines: 1, overflow: TextOverflow.ellipsis),
+            ]),
+          ),
+
+          Container(
+            margin: const EdgeInsets.only(top: 120),
+            decoration: BoxDecoration(
+              color: ColorResources.getHomeBg(context),
+              borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+            ),
+            child: isGuestCheck ? isGuestMode ? const NotLoggedInWidget() : child : child,
+          ),
+        ]),
+      ),
     );
   }
 }

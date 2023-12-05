@@ -71,7 +71,7 @@ class SearchProvider with ChangeNotifier {
   }
 
   void searchProduct(String query, BuildContext context) async {
-    print("AnimeshSearch"+query.toString());
+    print("AnimeshSearch$query");
     _searchText = query;
     _isClear = false;
     _searchProductList = null;
@@ -87,6 +87,7 @@ class SearchProvider with ChangeNotifier {
         _searchProductList = [];
         if(ProductModel.fromJson(apiResponse.response!.data).products != null){
           _searchProductList!.addAll(ProductModel.fromJson(apiResponse.response!.data).products!);
+          print("SearchListAdded"+_searchProductList.toString());
           _filterProductList = [];
           _filterProductList!.addAll(ProductModel.fromJson(apiResponse.response!.data).products!);
         }

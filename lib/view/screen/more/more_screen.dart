@@ -217,7 +217,7 @@ class _MoreScreenState extends State<MoreScreen> {
 
                   TitleButton(image: Images.privacyPolicy, title: getTranslated('privacy_policy', context),
                       navigateTo: HtmlViewScreen(title: getTranslated('privacy_policy', context),
-                        url: Provider.of<SplashProvider>(context, listen: false).configModel!.termsConditions,)),
+                        url: Provider.of<SplashProvider>(context, listen: false).configModel!.privacyPolicy,)),
 
                   // TitleButton(image: Images.helpCenter, title: getTranslated('faq', context),
                   //     navigateTo: FaqScreen(title: getTranslated('faq', context),)),

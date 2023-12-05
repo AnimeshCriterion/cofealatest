@@ -33,6 +33,7 @@ class SplashProvider extends ChangeNotifier {
 
 
   Future<bool> initConfig(BuildContext context) async {
+    print("Datataaa");
     _hasConnection = true;
     ApiResponse apiResponse = await splashRepo!.getConfig();
     bool isSuccess;

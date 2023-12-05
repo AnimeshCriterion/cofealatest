@@ -43,7 +43,7 @@ class SearchWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Theme.of(context).cardColor,
                     borderRadius: const BorderRadius.only(topLeft: Radius.circular(Dimensions.paddingSizeSmall),
-                        bottomLeft: Radius.circular(Dimensions.paddingSizeSmall))
+                        bottomLeft: Radius.circular(Dimensions.paddingSizeSmall,))
                 ),
                 child: Padding(
                   padding:  EdgeInsets.symmetric(
@@ -95,14 +95,12 @@ class SearchWidget extends StatelessWidget {
 
               ),
             ),
-
             isSeller?
             InkWell(
               onTap: onTap,
               child: Container(
                 width: 55,height: 50,decoration: BoxDecoration(color: Theme.of(context).primaryColor,
-                  borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.paddingSizeSmall),
-                      bottomRight: Radius.circular(Dimensions.paddingSizeSmall))
+                  borderRadius:  BorderRadius.circular(Dimensions.paddingSizeSmall)
               ),
                 child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.iconSizeSmall),
               ),
@@ -119,8 +117,7 @@ class SearchWidget extends StatelessWidget {
               },
               child: Container(
                 width: 55,height: 50,decoration: BoxDecoration(color: Theme.of(context).primaryColor,
-                  borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.paddingSizeSmall),
-                      bottomRight: Radius.circular(Dimensions.paddingSizeSmall))
+                  borderRadius:  BorderRadius.circular(Dimensions.paddingSizeSmall)
               ),
                 child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.iconSizeSmall),
               ),

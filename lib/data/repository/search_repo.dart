@@ -14,7 +14,7 @@ class SearchRepo {
 
   Future<ApiResponse> getSearchProductList(String query) async {
     try {
-      final response = await dioClient!.get(AppConstants.searchUri + base64.encode(utf8.encode(query)));
+      final response = await dioClient!.get(AppConstants.searchUri + query);
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));
