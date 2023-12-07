@@ -38,50 +38,53 @@ class _SearchScreenState extends State<SearchScreen> {
                 boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.1),
                   spreadRadius: 1, blurRadius: 3, offset: const Offset(0, 1),)],
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Row(children: [
-                  Padding(padding: const EdgeInsets.only(left: Dimensions.paddingSizeDefault),
-                    child: InkWell(onTap: (){
-                      Navigator.pop(context);
+              child: Row(children: [
+                Padding(padding: const EdgeInsets.only(left: Dimensions.FONT_SIZE_SMALL,right: 20),
+                  child: InkWell(onTap: (){
+                    Navigator.pop(context);
+                    Provider.of<SearchProvider>(context, listen: false).cleanSearchProduct();
+
+
+
+                  },
+                      child: const Icon(Icons.arrow_back_ios)),),
+                  Expanded(child: SearchWidget(
+                    hintText: getTranslated('SEARCH_HINT', context),
+                    onSubmit: (String text) {
+                      if(text.trim().isEmpty) {
+                        Fluttertoast.showToast(
+                            msg: getTranslated('enter_somethings', context)!,
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.green,
+                            textColor: Colors.white,
+                            fontSize: 16.0
+                        );
+                        //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('enter_somethings'), backgroundColor: ColorResources.getRed(context)));
+
+                      }else{
+                        Provider.of<SearchProvider>(context, listen: false).searchProduct(text, context);
+                        Provider.of<SearchProvider>(context, listen: false).saveSearchAddress(text);
+                      }},
+                    onClearPressed: () {
                       Provider.of<SearchProvider>(context, listen: false).cleanSearchProduct();
+                      searchController=TextEditingController(text: "");
+setState(() {
 
+});
                     },
-                        child: const Icon(Icons.arrow_back_ios)),),
-
-
-                    Expanded(child: SearchWidget(
-                      hintText: getTranslated('SEARCH_HINT', context),
-                      onSubmit: (String text) {
-                        if(text.trim().isEmpty) {
-                          Fluttertoast.showToast(
-                              msg: getTranslated('enter_somethings', context)!,
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.BOTTOM,
-                              timeInSecForIosWeb: 1,
-                              backgroundColor: Colors.green,
-                              textColor: Colors.white,
-                              fontSize: 16.0
-                          );
-                          //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('enter_somethings'), backgroundColor: ColorResources.getRed(context)));
-
-                        }else{
-                          Provider.of<SearchProvider>(context, listen: false).searchProduct(text, context);
-                          Provider.of<SearchProvider>(context, listen: false).saveSearchAddress(text);
-                        }},
-                      onClearPressed: () => Provider.of<SearchProvider>(context, listen: false).cleanSearchProduct(),
-                      searchController: searchController,
-                      ),
+                    searchController: searchController,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: Dimensions.paddingSizeDefault,),
 
             Consumer<SearchProvider>(
               builder: (context, searchProvider, child) {
-                print("Animeshss"+ searchProvider.searchProductList!.length.toString());
+                print("Animeshss${searchProvider.searchProductList!.length}");
                 return
                   !searchProvider.isClear && searchProvider.searchProductList != null &&
                 searchProvider.searchProductList!.isNotEmpty ?

@@ -66,8 +66,9 @@ class SearchProvider with ChangeNotifier {
   void cleanSearchProduct() {
     _searchProductList = [];
     _isClear = true;
+
     _searchText = '';
-    // notifyListeners();
+     notifyListeners();
   }
 
   void searchProduct(String query, BuildContext context) async {

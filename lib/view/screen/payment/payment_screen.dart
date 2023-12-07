@@ -120,7 +120,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         bool _isSuccess = url.contains('success');
                         bool _isFailed = url.contains('fail');
                         setState(() {
-                          _isLoading = true;
+                          _isLoading = false;
                         });
                         if (_isSuccess) {
                           Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
