@@ -38,6 +38,7 @@ dependencies:
   firebase_core:
   firebase_messaging:
   flutter_local_notifications:
+  flutter_phoenix: ^1.1.1
   path_provider:
   google_sign_in:
   flutter_facebook_auth:
