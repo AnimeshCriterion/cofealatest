@@ -21,7 +21,7 @@ class BrandView extends StatelessWidget {
         return brandProvider.brandList.isNotEmpty ?
         isHomePage?
         ConstrainedBox(
-          constraints: brandProvider.brandList.isNotEmpty ? const BoxConstraints(maxHeight: 130):const BoxConstraints(maxHeight: 0),
+          constraints: brandProvider.brandList.isNotEmpty ? const BoxConstraints(maxHeight: 100):const BoxConstraints(maxHeight: 0),
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: brandProvider.brandList.length,
@@ -42,8 +42,8 @@ class BrandView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          width: (MediaQuery.of(context).size.width/5.9),
-                          height: (MediaQuery.of(context).size.width/5.9),
+                          width: (MediaQuery.of(context).size.width/5.8),
+                          height: (MediaQuery.of(context).size.width/5.8),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular((MediaQuery.of(context).size.width/5))),
                               color: Theme.of(context).highlightColor,
@@ -51,24 +51,24 @@ class BrandView extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.all(Radius.circular((MediaQuery.of(context).size.width/5))),
                             child: FadeInImage.assetNetwork(
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fill,
                               placeholder: Images.placeholder,
                               image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls!.brandImageUrl!}/${brandProvider.brandList[index].image!}',
                               imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder,  fit: BoxFit.cover,),
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: (MediaQuery.of(context).size.width/4) * 0.3,
-                          width: MediaQuery.of(context).size.width/4.2,
-                          child: Center(child: Text(
-                            brandProvider.brandList[index].name!,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.center,
-                            style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeSmall),
-                          )),
-                        ),
+                        // SizedBox(
+                        //   height: (MediaQuery.of(context).size.width/4) * 0.3,
+                        //   width: MediaQuery.of(context).size.width/4.2,
+                        //   child: Center(child: Text(
+                        //     brandProvider.brandList[index].name!,
+                        //     maxLines: 1,
+                        //     overflow: TextOverflow.ellipsis,
+                        //     textAlign: TextAlign.center,
+                        //     style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeSmall),
+                        //   )),
+                        // ),
                       ],
                     ),
                   ),
@@ -106,34 +106,33 @@ class BrandView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.all(Dimensions.paddingSizeExtraExtraSmall),
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).highlightColor,
-                          shape: BoxShape.circle,
-                          boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.15), blurRadius: 5, spreadRadius: 1)]
-                      ),
-                      child: ClipOval(
-                        child: FadeInImage.assetNetwork(
-                          fit: BoxFit.cover,
-                          placeholder: Images.placeholder,
-                          image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls!.brandImageUrl!}/${brandProvider.brandList[index].image!}',
-                          imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder,  fit: BoxFit.cover,),
-                        ),
+                  Container(
+                    padding: const EdgeInsets.all(Dimensions.paddingSizeExtraExtraSmall),
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).highlightColor,
+                        shape: BoxShape.circle,
+                        boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.15), blurRadius: 5, spreadRadius: 1)]
+                    ),
+                    child: ClipOval(
+                      child: FadeInImage.assetNetwork(
+
+                        fit: BoxFit.fill,
+                        placeholder: Images.placeholder,
+                        image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls!.brandImageUrl!}/${brandProvider.brandList[index].image!}',
+                        imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder,  fit: BoxFit.fill,),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: (MediaQuery.of(context).size.width/4) * 0.3,
-                    child: Center(child: Text(
-                      brandProvider.brandList[index].name!,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeSmall),
-                    )),
-                  ),
+                  // SizedBox(
+                  //   height: (MediaQuery.of(context).size.width/4) * 0.3,
+                  //   child: Center(child: Text(
+                  //     brandProvider.brandList[index].name!,
+                  //     maxLines: 1,
+                  //     overflow: TextOverflow.ellipsis,
+                  //     textAlign: TextAlign.center,
+                  //     style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeSmall),
+                  //   )),
+                  // ),
                 ],
               ),
             );

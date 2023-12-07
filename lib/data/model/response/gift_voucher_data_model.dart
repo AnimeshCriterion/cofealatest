@@ -27,7 +27,7 @@ class GiftVoucherDataModel {
   GiftVoucherDataModel.fromJson(Map<String, dynamic> json) {
     voucherItemNo = json['voucher_item_no'];
     giftVoucherId = json['gift_voucher_id'];
-    productId = json['product_id'];
+    productId = json['product_id'].toString();
     countryId = json['country_id'];
     name = json['name'];
     slug = json['slug'];

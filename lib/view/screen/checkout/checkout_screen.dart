@@ -130,11 +130,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       onTap: () async {
                         var data=Provider.of<OrderProvider>(context, listen: false).addressIndex;
                         var data1=Provider.of<OrderProvider>(context, listen: false).billingAddressIndex;
-                        print("ANimeshaddress"+data.toString());
-                        print("ANimeshaddress"+data1.toString());
                         if (Provider
                             .of<OrderProvider>(context, listen: false)
-                            .shippingIndex == -1 && !widget.onlyDigital!) {
+                            .addressIndex == -1 && !widget.onlyDigital!) {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(getTranslated(
                                   'select_a_shipping_address', context)!),
@@ -434,7 +432,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                 Provider
                                                     .of<OrderProvider>(
                                                     context, listen: false)
-                                                    .shippingIndex == -1 ?
+                                                    .addressIndex == -1 ?
                                                 '${getTranslated(
                                                     'address_type', context)!}' :
                                                 Provider
@@ -458,7 +456,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                                 Provider
                                                     .of<OrderProvider>(
                                                     context, listen: false)
-                                                    .addressIndex == 0
+                                                    .addressIndex == -1
                                                     ?
                                                 getTranslated(
                                                     'add_your_address', context)!

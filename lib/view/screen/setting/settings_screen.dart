@@ -19,7 +19,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     Provider.of<SplashProvider>(context, listen: false).setFromSetting(true);
-
+    Provider.of<SplashProvider>(context, listen: false).initConfig(context);
     return WillPopScope(
       onWillPop: () {
         Provider.of<SplashProvider>(context, listen: false).setFromSetting(false);
@@ -28,7 +28,7 @@ class SettingsScreen extends StatelessWidget {
       child: CustomExpandedAppBar(title: getTranslated('settings', context),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
-            Padding(padding: const EdgeInsets.only(top: Dimensions.paddingSizeLarge,
+            Padding(padding: const EdgeInsets.only(top: Dimensions.paddingSizeLarge,right: Dimensions.paddingSizeLarge,
                 left: Dimensions.paddingSizeLarge),
               child: Text(getTranslated('settings', context)!,
                   style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
@@ -45,7 +45,9 @@ class SettingsScreen extends StatelessWidget {
 
                 TitleButton(image: Images.language,
                   title: getTranslated('choose_language', context),
-                  onTap: () => showAnimatedDialog(context, const CurrencyDialog(isCurrency: false)),),
+                  onTap: () {
+                    showAnimatedDialog(context, const CurrencyDialog(isCurrency: false));
+                  },),
 
                 // TitleButton(image: Images.currency,
                 //   title: '${getTranslated('currency', context)} (${Provider.of<SplashProvider>(context).myCurrency!.name})',

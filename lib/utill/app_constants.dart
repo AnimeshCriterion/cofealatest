@@ -3,7 +3,7 @@ import 'package:flutter_sixvalley_ecommerce/data/model/response/language_model.d
 class AppConstants {
   static const String appName = 'Cofea';
   static const String appVersion = '14.0';
-  static const String baseUrl = 'https://test.cofea.com/';
+  static const String baseUrl = 'https://cofea.com/';
   static const String userId = 'userId';
   static const String name = 'name';
   static const String categoriesUri = '/api/v1/categories';
@@ -143,5 +143,6 @@ class AppConstants {
   static List<LanguageModel> languages = [
     LanguageModel(imageUrl: '', languageName: 'English', countryCode: 'US', languageCode: 'en'),
     LanguageModel(imageUrl: '', languageName: 'Arabic', countryCode: 'SA', languageCode: 'ar'),
+    LanguageModel(imageUrl: '', languageName: 'System Default', countryCode: 'SA', languageCode: 'ar'),
   ];
 }

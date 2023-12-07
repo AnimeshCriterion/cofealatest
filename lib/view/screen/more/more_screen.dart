@@ -71,7 +71,6 @@ class _MoreScreenState extends State<MoreScreen> {
   @override
   Widget build(BuildContext context) {
 
-
     return Scaffold(
       body: Stack(children: [
         Positioned(top: 0, left: 0, right: 0,
@@ -177,7 +176,7 @@ class _MoreScreenState extends State<MoreScreen> {
                                     navigateTo: const WishListScreen(),
                                     count: Provider.of<AuthProvider>(context, listen: false).isLoggedIn() &&
                                         Provider.of<WishListProvider>(context, listen: false).wishList != null &&
-                                        Provider.of<WishListProvider>(context, listen: false).wishList!.length > 0 ?
+                                        Provider.of<WishListProvider>(context, listen: false).wishList!.isNotEmpty ?
                                     Provider.of<WishListProvider>(context, listen: false).wishList!.length : 0, hasCount: false,),
                                 ]),
                           ),
@@ -217,7 +216,7 @@ class _MoreScreenState extends State<MoreScreen> {
 
                   TitleButton(image: Images.privacyPolicy, title: getTranslated('privacy_policy', context),
                       navigateTo: HtmlViewScreen(title: getTranslated('privacy_policy', context),
-                        url: Provider.of<SplashProvider>(context, listen: false).configModel!.termsConditions,)),
+                        url: Provider.of<SplashProvider>(context, listen: false).configModel!.privacyPolicy,)),
 
                   // TitleButton(image: Images.helpCenter, title: getTranslated('faq', context),
                   //     navigateTo: FaqScreen(title: getTranslated('faq', context),)),

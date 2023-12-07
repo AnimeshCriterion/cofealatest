@@ -232,6 +232,8 @@ class ProductProvider extends ChangeNotifier {
     _brandOrCategoryProductList.clear();
     _hasData = true;
     ApiResponse apiResponse = await productRepo!.getBrandOrCategoryProductList(isBrand, id);
+    // print("AnimeshCheckk"+apiResponse.response!.data.toString());
+    // print("AnimeshCheckk2313"+apiResponse.response!.statusCode.toString());
     if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
       apiResponse.response!.data.forEach((product) => _brandOrCategoryProductList.add(Product.fromJson(product)));
       _hasData = _brandOrCategoryProductList.length > 1;
@@ -239,6 +241,7 @@ class ProductProvider extends ChangeNotifier {
       products.addAll(_brandOrCategoryProductList);
       _brandOrCategoryProductList.clear();
       _brandOrCategoryProductList.addAll(products.reversed);
+      print("AnimeshCheckk2313"+_brandOrCategoryProductList.toList().toString());
     } else {
       ApiChecker.checkApi( apiResponse);
     }

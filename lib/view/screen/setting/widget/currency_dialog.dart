@@ -1,5 +1,7 @@
+import 'package:devicelocale/devicelocale.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_sixvalley_ecommerce/localization/language_constrants.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/brand_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/category_provider.dart';
@@ -13,6 +15,7 @@ import 'package:flutter_sixvalley_ecommerce/utill/app_constants.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/color_resources.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/custom_themes.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
+import 'package:flutter_sixvalley_ecommerce/view/screen/dashboard/dashboard_screen.dart';
 import 'package:provider/provider.dart';
 
 class CurrencyDialog extends StatelessWidget {
@@ -79,14 +82,38 @@ class CurrencyDialog extends StatelessWidget {
             child: VerticalDivider(width: Dimensions.paddingSizeExtraSmall, color: Theme.of(context).hintColor),
           ),
           Expanded(child: TextButton(
-            onPressed: () {
+            onPressed: () async {
+
               if(isCurrency) {
+
                 Provider.of<SplashProvider>(context, listen: false).setCurrency(index!);
+                Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+                Phoenix.rebirth(context);
               }else {
-                Provider.of<LocalizationProvider>(context, listen: false).setLanguage(Locale(
-                  AppConstants.languages[index!].languageCode!,
-                  AppConstants.languages[index!].countryCode,
-                ));
+                if(index==2){
+                  Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+
+                  var data=await Devicelocale.currentLocale;
+                  List systemList=data!.split("-").toList();
+                 Provider.of<LocalizationProvider>(context,listen: false).setLangaugeSystemDefault(true);
+                 Provider.of<LocalizationProvider>(context, listen: false).setLanguage(Locale(
+                   systemList[0].toString(),
+                   systemList[1].toString(),
+                 ));
+
+                  Phoenix.rebirth(context);
+                }else{
+
+                  Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+                  Provider.of<LocalizationProvider>(context,listen: false).setLangaugeSystemDefault(false);
+                  Provider.of<LocalizationProvider>(context, listen: false).setLanguage(Locale(
+                    AppConstants.languages[index!].languageCode!,
+                    AppConstants.languages[index!].countryCode,
+                  ));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => const DashBoardScreen()));
+                }
+
                 Provider.of<CategoryProvider>(context, listen: false).getCategoryList(true);
                 Provider.of<HomeCategoryProductProvider>(context, listen: false).getHomeCategoryProductList(true);
                 Provider.of<TopSellerProvider>(context, listen: false).getTopSellerList(true);
@@ -95,6 +122,8 @@ class CurrencyDialog extends StatelessWidget {
                 Provider.of<ProductProvider>(context, listen: false).getFeaturedProductList('1', reload: true);
                 Provider.of<FeaturedDealProvider>(context, listen: false).getFeaturedDealList(true);
                 Provider.of<ProductProvider>(context, listen: false).getLProductList('1', reload: true);
+                Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+                Phoenix.rebirth(context);
               }
               Navigator.pop(context);
             },

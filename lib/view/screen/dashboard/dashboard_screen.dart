@@ -20,6 +20,7 @@ class DashBoardScreen extends StatefulWidget {
   DashBoardScreenState createState() => DashBoardScreenState();
 }
 
+
 class DashBoardScreenState extends State<DashBoardScreen> {
   final PageController _pageController = PageController();
   int _pageIndex = 0;
@@ -48,6 +49,8 @@ class DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+
     return WillPopScope(
       onWillPop: () async {
         if(_pageIndex != 0) {

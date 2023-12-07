@@ -43,7 +43,7 @@ class SearchWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: Theme.of(context).cardColor,
                     borderRadius: const BorderRadius.only(topLeft: Radius.circular(Dimensions.paddingSizeSmall),
-                        bottomLeft: Radius.circular(Dimensions.paddingSizeSmall))
+                        bottomLeft: Radius.circular(Dimensions.paddingSizeSmall,))
                 ),
                 child: Padding(
                   padding:  EdgeInsets.symmetric(
@@ -51,12 +51,12 @@ class SearchWidget extends StatelessWidget {
                     horizontal: Dimensions.paddingSizeSmall,
                   ),
                   child: TextFormField(
-                    controller: isSeller? searchController: controller,
+                    controller: searchController,
                     onFieldSubmitted: (query) {
                       onSubmit!(query);
                     },
                     onChanged: (query) {
-                      // onTextChanged(query);
+                      onTextChanged!(query);
                     },
                     textInputAction: TextInputAction.search,
                     maxLines: 1,
@@ -95,23 +95,21 @@ class SearchWidget extends StatelessWidget {
 
               ),
             ),
-
             isSeller?
             InkWell(
               onTap: onTap,
               child: Container(
                 width: 55,height: 50,decoration: BoxDecoration(color: Theme.of(context).primaryColor,
-                  borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.paddingSizeSmall),
-                      bottomRight: Radius.circular(Dimensions.paddingSizeSmall))
+                  borderRadius:  BorderRadius.circular(Dimensions.paddingSizeSmall)
               ),
                 child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.iconSizeSmall),
               ),
             ):
             InkWell(
               onTap: (){
-                if(controller.text.trim().isNotEmpty) {
-                  Provider.of<SearchProvider>(context, listen: false).saveSearchAddress( controller.text.toString());
-                  Provider.of<SearchProvider>(context, listen: false).searchProduct( controller.text.toString(), context);
+                if(searchController!.value.text.trim().isNotEmpty) {
+                  Provider.of<SearchProvider>(context, listen: false).saveSearchAddress( searchController!.value.text.toString());
+                  Provider.of<SearchProvider>(context, listen: false).searchProduct( searchController!.value.text.toString(), context);
                 }else{
                   showCustomSnackBar(getTranslated('enter_somethings', context), context);
 
@@ -119,8 +117,7 @@ class SearchWidget extends StatelessWidget {
               },
               child: Container(
                 width: 55,height: 50,decoration: BoxDecoration(color: Theme.of(context).primaryColor,
-                  borderRadius: const BorderRadius.only(topRight: Radius.circular(Dimensions.paddingSizeSmall),
-                      bottomRight: Radius.circular(Dimensions.paddingSizeSmall))
+                  borderRadius:  BorderRadius.circular(Dimensions.paddingSizeSmall)
               ),
                 child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.iconSizeSmall),
               ),

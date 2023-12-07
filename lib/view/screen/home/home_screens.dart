@@ -42,8 +42,11 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/top_seller_v
 import 'package:flutter_sixvalley_ecommerce/view/screen/product/view_all_product_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/search/search_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/topSeller/all_top_seller_screen.dart';
+import 'package:ottu/ottu.dart';
+import 'package:ottu/paymentDelegate/paymentDelegate.dart';
 import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
+
 
 
 class HomePage extends StatefulWidget {
@@ -53,8 +56,10 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>  {
   final ScrollController _scrollController = ScrollController();
+
+
 
 
   Future<void> _loadData(bool reload) async {
@@ -81,7 +86,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
     singleVendor = Provider.of<SplashProvider>(context, listen: false).configModel!.businessMode == "single";
     Provider.of<FlashDealProvider>(context, listen: false).getMegaDealList(true, true);
 
@@ -185,7 +189,7 @@ class _HomePageState extends State<HomePage> {
 
                                     Container(
                                       width: 40,height: 40,decoration: BoxDecoration(color: Theme.of(context).primaryColor,
-                                        borderRadius: BorderRadius.all(Radius.circular(Dimensions.PADDING_SIZE_EXTRA_SMALL))
+                                        borderRadius: const BorderRadius.all(Radius.circular(Dimensions.PADDING_SIZE_EXTRA_SMALL))
                                     ),
                                       child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.ICON_SIZE_SMALL),
                                     ),
@@ -196,7 +200,7 @@ class _HomePageState extends State<HomePage> {
 
                     SliverToBoxAdapter(
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(Dimensions.HOME_PAGE_PADDING,
+                        padding: const EdgeInsets.fromLTRB(Dimensions.HOME_PAGE_PADDING,
                             Dimensions.PADDING_SIZE_SMALL, Dimensions.PADDING_SIZE_DEFAULT, Dimensions.PADDING_SIZE_SMALL  ),
                         child: Column(
                           children: [
@@ -455,7 +459,7 @@ class _HomePageState extends State<HomePage> {
                     },
 
                   ),
-                ):SizedBox(),
+                ):const SizedBox(),
               ],
             ),
           ),
@@ -463,6 +467,8 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+
 }
 
 class SliverDelegate extends SliverPersistentHeaderDelegate {
