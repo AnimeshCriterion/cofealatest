@@ -12,6 +12,8 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/product_widget.dart'
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
+import '../../fillter/fillter_products_screen.dart';
+
 class BrandAndCategoryProductScreen extends StatefulWidget {
   final bool isBrand;
   final String id;
@@ -45,7 +47,11 @@ class BrandAndCategoryProductScreen extends StatefulWidget {
         builder: (context, productProvider, child) {
           return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
 
-            CustomAppBar(title: widget.name),
+            CustomAppBar(title: widget.name,icon:Icons.filter_alt_outlined,onActionPressed: (){
+
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const FillterProductsView(
+              )));
+            },),
 
             widget. isBrand ? Container(height: 100,
               padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),

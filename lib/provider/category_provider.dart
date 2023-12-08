@@ -12,9 +12,14 @@ class CategoryProvider extends ChangeNotifier {
 
   final List<Category> _categoryList = [];
   int? _categorySelectedIndex;
+  void changeSelectedIndex(int selectedIndex) {
+    _categorySelectedIndex = selectedIndex;
+    notifyListeners();
+  }
 
   List<Category> get categoryList => _categoryList;
   int? get categorySelectedIndex => _categorySelectedIndex;
+
 
   Future<void> getCategoryList(bool reload) async {
     if (_categoryList.isEmpty || reload) {
@@ -30,8 +35,5 @@ class CategoryProvider extends ChangeNotifier {
     }
   }
 
-  void changeSelectedIndex(int selectedIndex) {
-    _categorySelectedIndex = selectedIndex;
-    notifyListeners();
-  }
+
 }
