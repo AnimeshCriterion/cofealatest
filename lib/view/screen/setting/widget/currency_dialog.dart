@@ -83,15 +83,15 @@ class CurrencyDialog extends StatelessWidget {
           ),
           Expanded(child: TextButton(
             onPressed: () async {
-
+              Provider.of<SplashProvider>(context, listen: false).initConfig(context);
               if(isCurrency) {
 
                 Provider.of<SplashProvider>(context, listen: false).setCurrency(index!);
-                Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+                Navigator.pop(context);
                 Phoenix.rebirth(context);
               }else {
                 if(index==2){
-                  Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+                //  Provider.of<SplashProvider>(context, listen: false).initConfig(context);
 
                   var data=await Devicelocale.currentLocale;
                   List systemList=data!.split("-").toList();
@@ -100,7 +100,7 @@ class CurrencyDialog extends StatelessWidget {
                    systemList[0].toString(),
                    systemList[1].toString(),
                  ));
-
+                  Navigator.pop(context);
                   Phoenix.rebirth(context);
                 }else{
 
@@ -110,8 +110,9 @@ class CurrencyDialog extends StatelessWidget {
                     AppConstants.languages[index!].languageCode!,
                     AppConstants.languages[index!].countryCode,
                   ));
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => const DashBoardScreen()));
+                  Navigator.pop(context);
+                  Phoenix.rebirth(context);
+
                 }
 
                 Provider.of<CategoryProvider>(context, listen: false).getCategoryList(true);
@@ -123,7 +124,7 @@ class CurrencyDialog extends StatelessWidget {
                 Provider.of<FeaturedDealProvider>(context, listen: false).getFeaturedDealList(true);
                 Provider.of<ProductProvider>(context, listen: false).getLProductList('1', reload: true);
                 Provider.of<SplashProvider>(context, listen: false).initConfig(context);
-                Phoenix.rebirth(context);
+
               }
               Navigator.pop(context);
             },
