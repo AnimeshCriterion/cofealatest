@@ -57,12 +57,12 @@ class ProductRepo {
       }else {
         uri = '${AppConstants.categoryProductUri}$id';
       }
-      final response = await dioClient!.get(uri);
-      print("ANimeshshshsh0"+response.toString());
+      final response = isBrand?await dioClient!.get(uri):await dioClient!.post(uri);
+      print("ANimeshshshsh0$response");
       return ApiResponse.withSuccess(response);
 
      } catch (e) {
-       print("ANimeshshshsh0"+e.toString());
+       print("ANimeshshshsh0$e");
        return ApiResponse.withError(ApiErrorHandler.getMessage(e));
     }
   }

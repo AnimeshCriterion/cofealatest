@@ -49,7 +49,7 @@ class DashBoardScreenState extends State<DashBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+    //Provider.of<SplashProvider>(context, listen: false).initConfig(context);
 
     return WillPopScope(
       onWillPop: () async {
