@@ -38,6 +38,7 @@ import 'package:flutter_sixvalley_ecommerce/theme/dark_theme.dart';
 import 'package:flutter_sixvalley_ecommerce/theme/light_theme.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/app_constants.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/splash/splash_screen.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
 
@@ -138,7 +139,7 @@ final List systemLang;
     for (var language in AppConstants.languages) {
       locals.add(Locale(language.languageCode!, language.countryCode));
     }
-    return MaterialApp(
+    return GetMaterialApp(
       title: AppConstants.appName,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
