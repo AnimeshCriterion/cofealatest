@@ -31,6 +31,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   bool _isLoading = true;
   final Completer<WebViewController> _controller = Completer<WebViewController>();
   WebViewController? controllerGlobal;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 
 
@@ -48,17 +49,33 @@ class _PaymentScreenState extends State<PaymentScreen> {
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
 
+
+
+  @override
+  void dispose() {
+    // _navigator.pushAndRemoveUntil();
+    super.dispose();
+  }
+
+  late NavigatorState _navigator;
+
+  @override
+  void didChangeDependencies() {
+    _navigator = Navigator.of(context);
+    super.didChangeDependencies();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () => _exitApp(context),
       child: Scaffold(
+        key: _scaffoldKey,
         backgroundColor: Theme.of(context).primaryColor,
         body: Column(
           children: [
-
             CustomAppBar(title: getTranslated('PAYMENT', context), onBackPressed: () => _exitApp(context)),
-
             Expanded(
               child: Stack(
                 children: [
@@ -81,8 +98,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         if (_isSuccess) {
                           Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
                               builder: (_) => const DashBoardScreen()), (route) => false);
-
-
                           showAnimatedDialog(context, MyDialog(
                             icon: Icons.done,
                             title: getTranslated('payment_done', context),

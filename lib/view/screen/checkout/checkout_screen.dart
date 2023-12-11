@@ -3,12 +3,14 @@ import 'package:flutter_sixvalley_ecommerce/data/model/body/order_place_model.da
 import 'package:flutter_sixvalley_ecommerce/data/model/response/cart_model.dart';
 import 'package:flutter_sixvalley_ecommerce/helper/price_converter.dart';
 import 'package:flutter_sixvalley_ecommerce/localization/language_constrants.dart';
+import 'package:flutter_sixvalley_ecommerce/main.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/cart_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/coupon_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/order_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/product_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/profile_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/splash_provider.dart';
+import 'package:get/get.dart' as getx ;
 import 'package:flutter_sixvalley_ecommerce/utill/color_resources.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/custom_themes.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
@@ -35,8 +37,8 @@ class CheckoutScreen extends StatefulWidget {
   final int? sellerId;
   final bool? onlyDigital;
 
-  CheckoutScreen({@required this.cartList, this.fromProductDetails = false,
-    @required this.discount, @required this.tax, @required this.totalOrderAmount, @required this.shippingFee, this.sellerId, this.onlyDigital = false});
+  CheckoutScreen({Key? key, @required this.cartList, this.fromProductDetails = false,
+    @required this.discount, @required this.tax, @required this.totalOrderAmount, @required this.shippingFee, this.sellerId, this.onlyDigital = false}) : super(key: key);
 
 
   @override
@@ -44,8 +46,7 @@ class CheckoutScreen extends StatefulWidget {
 }
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
-  final GlobalKey<ScaffoldMessengerState> _scaffoldKey = GlobalKey<
-      ScaffoldMessengerState>();
+   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final TextEditingController _controller = TextEditingController();
   final TextEditingController _voucharcontroller = TextEditingController();
   final TextEditingController _walletcontroller = TextEditingController();
@@ -66,10 +67,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     await Provider.of<ProfileProvider>(context, listen: false)
         .getUserWalletBalance(context)
         .then((value) {
-      setState(() {
+       setState(() {
          balanceWallet = value.toString();
-         print("ANiejhs"+balanceWallet.toString());
-      });
+         print("ANiejhs$balanceWallet");
+       });
 
     });
   }
@@ -78,10 +79,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   void initState() {
     super.initState();
     getWalletbalance();
-    Provider
-        .of<CouponProvider>(
-        context, listen: false)
-        .sewallet = 0.0;
+
     Provider.of<ProfileProvider>(context, listen: false).initAddressList();
     Provider.of<ProfileProvider>(context, listen: false).initAddressTypeList(context);
     Provider.of<ProfileProvider>(context, listen: false).getUserInfo(context);
@@ -90,27 +88,22 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     Provider.of<CartProvider>(context, listen: false).getChosenShippingMethod(context);
     _digitalPayment = Provider.of<SplashProvider>(context, listen: false).configModel!.digitalPayment;
     _cod = Provider.of<SplashProvider>(context, listen: false).configModel!.cod;
-
-
-
-
-
-
-
-
+    Provider.of<CouponProvider>(context, listen: false).sewallet = 0.0;
     _billingAddress = Provider.of<SplashProvider>(context, listen: false).configModel!.billingAddress == 1;
   }
+
 
   @override
   Widget build(BuildContext context) {
     _order = (widget.totalOrderAmount! + widget.discount!);
-    print("Animesh"+_billingAddress.toString());
+    print("Animesh$_billingAddress");
     // setState(() {
     //   getWalletbalance();
     // });
     return Scaffold(
+
       resizeToAvoidBottomInset: true,
-      key: _scaffoldKey,
+     key: _scaffoldKey,
 
       bottomNavigationBar: Container(
         height: 60,
@@ -277,57 +270,110 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           else {
                             String userID = await Provider.of<ProfileProvider>(
                                 context, listen: false).getUserInfo(context);
-                            Navigator.pushReplacement(
-                                context, MaterialPageRoute(builder: (_) =>
-                                PaymentScreen(
-                                  customerID: userID,
-                                  addressID: widget.onlyDigital! ? '' :
-                                  Provider
-                                      .of<ProfileProvider>(
-                                      context, listen: false)
-                                      .addressList[Provider
-                                      .of<OrderProvider>(context, listen: false)
-                                      .addressIndex!].id.toString(),
-                                  couponCode: Provider
-                                      .of<CouponProvider>(
-                                      context, listen: false)
-                                      .discount != null ? Provider
-                                      .of<CouponProvider>(
-                                      context, listen: false)
-                                      .coupon!=null?Provider
-                                      .of<CouponProvider>(
-                                      context, listen: false)
-                                      .coupon!.code!:"0" : '',
-                                  billingId: _billingAddress! ?
-                                  Provider
-                                      .of<ProfileProvider>(
-                                      context, listen: false)
-                                      .billingAddressList[Provider
-                                      .of<OrderProvider>(context, listen: false)
-                                      .billingAddressIndex!].id.toString() :
-                                  widget.onlyDigital! ? '' :
-                                  Provider
-                                      .of<ProfileProvider>(
-                                      context, listen: false)
-                                      .addressList[Provider
-                                      .of<OrderProvider>(context, listen: false)
-                                      .addressIndex!].id.toString(),
-                                  orderNote: orderNote,
-                                  walletBalance: Provider
-                                      .of<CouponProvider>(
-                                      context, listen: false)
-                                      .walletDiscount
-                                      .toString(),
-                                  voucharCode: Provider
-                                      .of<CouponProvider>(
-                                      context, listen: false)
-                                      .vouchar!=null? Provider
-                                      .of<CouponProvider>(
-                                      context, listen: false)
-                                      .vouchar!.code:"0",
 
-                                )));
-                          }
+                                // if it is mounted then go to result screen, time is off bro..
+
+                            getx.Get.to(  PaymentScreen(
+                              customerID: userID,
+                              addressID: widget.onlyDigital! ? '' :
+                              Provider
+                                  .of<ProfileProvider>(
+                                  context, listen: false)
+                                  .addressList[Provider
+                                  .of<OrderProvider>(context, listen: false)
+                                  .addressIndex!].id.toString(),
+                              couponCode: Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .discount != null ? Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .coupon!=null?Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .coupon!.code!:"0" : '',
+                              billingId: _billingAddress! ?
+                              Provider
+                                  .of<ProfileProvider>(
+                                  context, listen: false)
+                                  .billingAddressList[Provider
+                                  .of<OrderProvider>(context, listen: false)
+                                  .billingAddressIndex!].id.toString() :
+                              widget.onlyDigital! ? '' :
+                              Provider
+                                  .of<ProfileProvider>(
+                                  context, listen: false)
+                                  .addressList[Provider
+                                  .of<OrderProvider>(context, listen: false)
+                                  .addressIndex!].id.toString(),
+                              orderNote: orderNote,
+                              walletBalance: Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .walletDiscount
+                                  .toString(),
+                              voucharCode: Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .vouchar!=null? Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .vouchar!.code:"0",
+
+                            ));
+
+                                // Navigator.pushReplacement(
+                                //     context, MaterialPageRoute(builder: (_) =>
+                                //     PaymentScreen(
+                                //       customerID: userID,
+                                //       addressID: widget.onlyDigital! ? '' :
+                                //       Provider
+                                //           .of<ProfileProvider>(
+                                //           context, listen: false)
+                                //           .addressList[Provider
+                                //           .of<OrderProvider>(context, listen: false)
+                                //           .addressIndex!].id.toString(),
+                                //       couponCode: Provider
+                                //           .of<CouponProvider>(
+                                //           context, listen: false)
+                                //           .discount != null ? Provider
+                                //           .of<CouponProvider>(
+                                //           context, listen: false)
+                                //           .coupon!=null?Provider
+                                //           .of<CouponProvider>(
+                                //           context, listen: false)
+                                //           .coupon!.code!:"0" : '',
+                                //       billingId: _billingAddress! ?
+                                //       Provider
+                                //           .of<ProfileProvider>(
+                                //           context, listen: false)
+                                //           .billingAddressList[Provider
+                                //           .of<OrderProvider>(context, listen: false)
+                                //           .billingAddressIndex!].id.toString() :
+                                //       widget.onlyDigital! ? '' :
+                                //       Provider
+                                //           .of<ProfileProvider>(
+                                //           context, listen: false)
+                                //           .addressList[Provider
+                                //           .of<OrderProvider>(context, listen: false)
+                                //           .addressIndex!].id.toString(),
+                                //       orderNote: orderNote,
+                                //       walletBalance: Provider
+                                //           .of<CouponProvider>(
+                                //           context, listen: false)
+                                //           .walletDiscount
+                                //           .toString(),
+                                //       voucharCode: Provider
+                                //           .of<CouponProvider>(
+                                //           context, listen: false)
+                                //           .vouchar!=null? Provider
+                                //           .of<CouponProvider>(
+                                //           context, listen: false)
+                                //           .vouchar!.code:"0",
+                                //
+                                //     )));
+                              }
+
                         }
                       },
 
@@ -1030,7 +1076,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
                                       profile.getUserWalletBalance(context)
                                           .then((value) {
-                                        print("object" + _order.toString());
+                                        print("object$_order");
 
                                         if (double.parse(
                                             _walletcontroller.text) < value! &&
