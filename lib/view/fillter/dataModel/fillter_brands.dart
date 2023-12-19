@@ -1,4 +1,4 @@
-import 'package:flutter_phoenix/generated/i18n.dart';
+// import 'package:flutter_phoenix/generated/i18n.dart';
 
 class FillterBrands {
   int? id;
@@ -9,6 +9,7 @@ class FillterBrands {
   String? updatedAt;
   int? brandProductsCount;
   List<String>? translations;
+  bool? isSelect;
 
   FillterBrands(
       {this.id,
@@ -18,6 +19,7 @@ class FillterBrands {
         this.createdAt,
         this.updatedAt,
         this.brandProductsCount,
+        this.isSelect,
         this.translations});
 
   FillterBrands.fromJson(Map<String, dynamic> json) {
@@ -28,6 +30,7 @@ class FillterBrands {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     brandProductsCount = json['brand_products_count'];
+    isSelect = false;
     // if (json['translations'] != null) {
     //   translations = <String>[];
     //   json['translations'].forEach((v) {

@@ -2,6 +2,7 @@ class FillterTypes {
   String? uBn;
   int? productCount;
   int? reviewsCount;
+  bool? isSelect;
   // List<Null>? translations;
   // List<Null>? reviews;
 
@@ -9,6 +10,7 @@ class FillterTypes {
       {this.uBn,
         this.productCount,
         this.reviewsCount,
+        this.isSelect
         // this.translations,
         // this.reviews
       });
@@ -17,6 +19,7 @@ class FillterTypes {
     uBn = json['u_bn'];
     productCount = json['product_count'];
     reviewsCount = json['reviews_count'];
+    isSelect=false;
     // if (json['translations'] != null) {
     //   translations = <Null>[];
     //   json['translations'].forEach((v) {

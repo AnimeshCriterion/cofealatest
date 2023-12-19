@@ -29,18 +29,103 @@ class FillterProductsProvider extends ChangeNotifier{
 
   List<FillterTypes> get getFillterTypes => _fillterTypes;
 
+  List<int> selectedBrands=[];
+  List<String> selectedTypes=[];
+  List<String> selectedOrigin=[];
+  List<String> selectedIntencity=[];
 
-  List<String> _SideMenuText = ["Brand","Origin","Intensity","Type","Price"];
+
+  final List<String> _SideMenuText = ["Brand","Origin","Intencity","Type"];
 
   List<String> get getFillterSideText => _SideMenuText;
 
 
-  int? _categorySelectedIndex;
+  int? _categorySelectedIndex=0;
   int? get categorySelectedIndex => _categorySelectedIndex;
   void changeSelectedIndex(int selectedIndex) {
     _categorySelectedIndex = selectedIndex;
     notifyListeners();
   }
+
+
+  void updateIsSelectForBrands(isSelect,index){
+    getFillterBrands[index].isSelect=isSelect;
+    notifyListeners();
+  }
+
+
+   clearAllFillter(){
+    selectedIntencity=[];
+    selectedOrigin=[];
+    selectedBrands=[];
+    selectedTypes=[];
+    _categorySelectedIndex=0;
+    notifyListeners();
+  }
+
+  void updateIsSelectForOrigin(isSelect,index){
+    getFillterProductsOrigin[index].isSelect=isSelect;
+    notifyListeners();
+  }
+
+  void updateIsSelectForIntencity(isSelect,index){
+    getFillterIntencity[index].isSelect=isSelect;
+    notifyListeners();
+  }
+
+  void updateIsSelectForTypes(isSelect,index){
+    getFillterTypes[index].isSelect=isSelect;
+    notifyListeners();
+  }
+
+
+  void addSelectedBrands(selectedBrandId ){
+    if(!selectedBrands.contains(selectedBrandId)){
+      selectedBrands.add(int.parse(selectedBrandId.toString()));
+    }else{
+      selectedBrands.remove(int.parse(selectedBrandId.toString()));
+    }
+    notifyListeners();
+    print("Animehs${selectedBrands.toList()}");
+  }
+
+
+
+  void addSelectedTypes(selectedBrandId ){
+    if(!selectedTypes.contains(selectedBrandId)){
+      selectedTypes.add(selectedBrandId.toString());
+    }else{
+      selectedTypes.remove(selectedBrandId.toString());
+    }
+    notifyListeners();
+    print("Animehs${selectedTypes.toList()}");
+  }
+
+
+
+  void addSelectedOrigin(selectedBrandId ){
+    if(!selectedOrigin.contains(selectedBrandId)){
+      selectedOrigin.add(selectedBrandId.toString());
+    }else{
+      selectedOrigin.remove(selectedBrandId.toString());
+    }
+    notifyListeners();
+    print("Animehs${selectedOrigin.toList()}");
+  }
+
+
+
+  void addSelectedIntencity(selectedBrandId ){
+    if(!selectedIntencity.contains(selectedBrandId)){
+      selectedIntencity.add(selectedBrandId.toString());
+    }else{
+      selectedIntencity.remove(selectedBrandId.toString());
+    }
+    notifyListeners();
+    print("Animehs${selectedIntencity.toList()}");
+  }
+
+
 
 
 
@@ -96,7 +181,7 @@ class FillterProductsProvider extends ChangeNotifier{
       _fillterIntencity = [];
       _fillterIntencity.addAll(List<FillterIntencity>.from((apiResponse.response!.data
           .map((element) => FillterIntencity.fromJson(element)))));
-      print("CheckData${_fillterIntencity.toList()}");
+      print("CheckDataintencity${_fillterIntencity.toList()}");
       // _lPageSize = GiftVoucherDataModel.fromJson(apiResponse.response.data).totalSize;
       // _firstLoading = false;
       // _isLoading = false;

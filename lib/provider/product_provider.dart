@@ -5,6 +5,9 @@ import 'package:flutter_sixvalley_ecommerce/data/repository/product_repo.dart';
 import 'package:flutter_sixvalley_ecommerce/helper/api_checker.dart';
 import 'package:flutter_sixvalley_ecommerce/helper/product_type.dart';
 import 'package:flutter_sixvalley_ecommerce/main.dart';
+import 'package:provider/provider.dart';
+
+import 'fillter_provider.dart';
 
 class ProductProvider extends ChangeNotifier {
   final ProductRepo? productRepo;
@@ -242,6 +245,37 @@ class ProductProvider extends ChangeNotifier {
       _brandOrCategoryProductList.clear();
       _brandOrCategoryProductList.addAll(products.reversed);
       print("AnimeshCheckk2313"+_brandOrCategoryProductList.toList().toString());
+    } else {
+      ApiChecker.checkApi( apiResponse);
+    }
+    notifyListeners();
+  }
+
+
+
+  void initBrandOrCategoryProductListFillter(bool isBrand, String id, BuildContext context, String selectedBrands, String selectedTypes, String selectedOrigin, String selectedIntencity) async {
+    _brandOrCategoryProductList.clear();
+    _hasData = true;
+    ApiResponse apiResponse;
+
+    if(isBrand){
+      apiResponse=  await productRepo!.getBrandOrCategoryProductList(isBrand, id);
+    }else{
+      apiResponse=  await productRepo!.getCategoryProductListFillter(id,selectedBrands,selectedTypes,selectedOrigin,selectedIntencity);
+    }
+
+
+    // print("AnimeshCheckk"+apiResponse.response!.data.toString());
+    // print("AnimeshCheckk2313"+apiResponse.response!.statusCode.toString());
+    if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+      apiResponse.response!.data.forEach((product) => _brandOrCategoryProductList.add(Product.fromJson(product)));
+      _hasData = _brandOrCategoryProductList.length > 1;
+      List<Product> products = [];
+      products.addAll(_brandOrCategoryProductList);
+      _brandOrCategoryProductList.clear();
+      _brandOrCategoryProductList.addAll(products.reversed);
+      print("AnimeshCheckk2313"+_brandOrCategoryProductList.toList().toString());
+      await Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
     } else {
       ApiChecker.checkApi( apiResponse);
     }

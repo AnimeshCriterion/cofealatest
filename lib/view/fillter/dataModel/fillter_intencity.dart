@@ -2,6 +2,7 @@ class FillterIntencity {
   String? uRs;
   int? productCount;
   int? reviewsCount;
+  bool? isSelect;
   // List<Null>? translations;
   // List<Null>? reviews;
 
@@ -9,6 +10,7 @@ class FillterIntencity {
       {this.uRs,
         this.productCount,
         this.reviewsCount,
+        this.isSelect,
         // this.translations,
         // this.reviews
       });
@@ -17,6 +19,7 @@ class FillterIntencity {
     uRs = json['u_rs'];
     productCount = json['product_count'];
     reviewsCount = json['reviews_count'];
+    isSelect = false;
     // if (json['translations'] != null) {
     //   translations = <Null>[];
     //   json['translations'].forEach((v) {
