@@ -10,6 +10,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/facebook_login_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/featured_deal_provider.dart';
+import 'package:flutter_sixvalley_ecommerce/provider/fillter_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/gift_voucher-provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/google_sign_in_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/home_category_product_provider.dart';
@@ -115,6 +116,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<FacebookLoginProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<LocationProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<WalletTransactionProvider>()),
+      ChangeNotifierProvider(create: (context) => di.sl<FillterProductsProvider>()),
     ],
     child: MyApp(orderId: orderID,systemLang:systemList ,),
   ));

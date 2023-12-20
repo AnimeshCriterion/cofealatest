@@ -1,7 +1,7 @@
 import 'package:devicelocale/devicelocale.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
+// import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_sixvalley_ecommerce/localization/language_constrants.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/brand_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/category_provider.dart';
@@ -88,7 +88,7 @@ class CurrencyDialog extends StatelessWidget {
 
                 Provider.of<SplashProvider>(context, listen: false).setCurrency(index!);
                 Provider.of<SplashProvider>(context, listen: false).initConfig(context);
-                Phoenix.rebirth(context);
+            //    Phoenix.rebirth(context);
               }else {
                 if(index==2){
                   Provider.of<SplashProvider>(context, listen: false).initConfig(context);
@@ -101,7 +101,7 @@ class CurrencyDialog extends StatelessWidget {
                    systemList[1].toString(),
                  ));
 
-                  Phoenix.rebirth(context);
+              //    Phoenix.rebirth(context);
                 }else{
 
                   Provider.of<SplashProvider>(context, listen: false).initConfig(context);
@@ -123,7 +123,7 @@ class CurrencyDialog extends StatelessWidget {
                 Provider.of<FeaturedDealProvider>(context, listen: false).getFeaturedDealList(true);
                 Provider.of<ProductProvider>(context, listen: false).getLProductList('1', reload: true);
                 Provider.of<SplashProvider>(context, listen: false).initConfig(context);
-                Phoenix.rebirth(context);
+          //      Phoenix.rebirth(context);
               }
               Navigator.pop(context);
             },

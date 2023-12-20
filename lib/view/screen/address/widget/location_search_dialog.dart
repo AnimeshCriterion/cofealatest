@@ -58,10 +58,10 @@ class LocationSearchDialog extends StatelessWidget {
               ]),
             );
           },
-          onSuggestionSelected: (Prediction suggestion) {
-            Provider.of<LocationProvider>(context, listen: false).setLocation(suggestion.placeId, suggestion.description, mapController);
-            Navigator.pop(context);
-          },
+        onSuggestionSelected: (Prediction value) {
+          Provider.of<LocationProvider>(context, listen: false).setLocation(value.placeId, value.description, mapController);
+          Navigator.pop(context);
+        },
         )),
       ),
     );

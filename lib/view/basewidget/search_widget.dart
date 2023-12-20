@@ -25,107 +25,109 @@ class SearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextEditingController controller = TextEditingController(text: Provider.of<SearchProvider>(context).searchText);
-    return Stack(children: [
-      ClipRRect(child: SizedBox(
-          height: isSeller? 50 : 80 + MediaQuery.of(context).padding.top,
-          width: MediaQuery.of(context).size.width,
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0),
+      child: Stack(children: [
+        ClipRRect(child: SizedBox(
+            height: isSeller? 50 : 50 + MediaQuery.of(context).padding.top,
+            width: MediaQuery.of(context).size.width,
+          ),
         ),
-      ),
 
-      Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(width : MediaQuery.of(context).size.width,
-          height: isSeller? 50 : 60,
-          alignment: Alignment.center,
-          child: Row(children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Theme.of(context).cardColor,
-                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(Dimensions.paddingSizeSmall),
-                        bottomLeft: Radius.circular(Dimensions.paddingSizeSmall,))
-                ),
-                child: Padding(
-                  padding:  EdgeInsets.symmetric(
-                    vertical: isSeller ? Dimensions.paddingSizeExtraSmall : Dimensions.paddingSizeSmall,
-                    horizontal: Dimensions.paddingSizeSmall,
+        Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Container(width : MediaQuery.of(context).size.width,
+            height: isSeller? 50 : 50,
+            alignment: Alignment.center,
+            child: Row(children: [
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor,
+                      borderRadius:  BorderRadius.circular(Dimensions.paddingSizeSmall,)
                   ),
-                  child: TextFormField(
-                    controller: searchController,
-                    onFieldSubmitted: (query) {
-                      onSubmit!(query);
-                    },
-                    onChanged: (query) {
-                      onTextChanged!(query);
-                    },
-                    textInputAction: TextInputAction.search,
-                    maxLines: 1,
-                    textAlignVertical: TextAlignVertical.center,
-                    decoration: InputDecoration(
-                      hintText: hintText,
-                      isDense: true,
-                      hintStyle: robotoRegular.copyWith(color: Theme.of(context).hintColor),
-                      border: InputBorder.none,
-                      suffixIcon: Provider.of<SearchProvider>(context).searchText.isNotEmpty ? IconButton(
-                        icon: const Icon(Icons.clear, color: Colors.black),
-                        onPressed: () {
-                          onClearPressed();
-                          controller.clear();
-                        },
-                      ) : controller.text.isNotEmpty ? IconButton(
-                        icon: Icon(Icons.clear, color: ColorResources.getChatIcon(context)),
-                        onPressed: () {
-                          onClearPressed();
-                          controller.clear();
-                        },
-                      ) : (isSeller && Provider.of<ProductProvider>(context).sellerProductSearch.text.isNotEmpty)? IconButton(
-                        icon: Icon(Icons.clear, color: ColorResources.getChatIcon(context)),
-                        onPressed: () {
-                          Provider.of<ProductProvider>(context, listen: false).sellerProductSearch.clear();
-                          if(sellerId!=null){
-                            Provider.of<ProductProvider>(context, listen: false).initSellerProductList(sellerId.toString(), 1, context);
-                          }
+                  child: Padding(
+                    padding:  EdgeInsets.symmetric(
+                      vertical: isSeller ? Dimensions.paddingSizeExtraSmall : Dimensions.paddingSizeSmall,
+                      horizontal: Dimensions.paddingSizeSmall,
+                    ),
+                    child: TextFormField(
+                      controller: searchController,
+                      onFieldSubmitted: (query) {
+                        onSubmit!(query);
+                      },
+                      onChanged: (query) {
+                        onTextChanged!(query);
+                      },
+                      textInputAction: TextInputAction.search,
+                      maxLines: 1,
+                      textAlignVertical: TextAlignVertical.center,
+                      decoration: InputDecoration(
+                        hintText: hintText,
+                        isDense: true,
+                        hintStyle: robotoRegular.copyWith(color: Theme.of(context).hintColor),
+                        border: InputBorder.none,
+                        suffixIcon: Provider.of<SearchProvider>(context).searchText.isNotEmpty ? IconButton(
+                          icon: const Icon(Icons.clear, color: Colors.black),
+                          onPressed: () {
+                            onClearPressed();
+                            controller.clear();
+                          },
+                        ) : controller.text.isNotEmpty ? IconButton(
+                          icon: Icon(Icons.clear, color: ColorResources.getChatIcon(context)),
+                          onPressed: () {
+                            onClearPressed();
+                            controller.clear();
+                          },
+                        ) : (isSeller && Provider.of<ProductProvider>(context).sellerProductSearch.text.isNotEmpty)? IconButton(
+                          icon: Icon(Icons.clear, color: ColorResources.getChatIcon(context)),
+                          onPressed: () {
+                            Provider.of<ProductProvider>(context, listen: false).sellerProductSearch.clear();
+                            if(sellerId!=null){
+                              Provider.of<ProductProvider>(context, listen: false).initSellerProductList(sellerId.toString(), 1, context);
+                            }
 
 
-                        },
-                      ):null,
+                          },
+                        ):null,
+                      ),
                     ),
                   ),
+
                 ),
+              ),
+              isSeller?
+              InkWell(
+                onTap: onTap,
+                child: Container(
+                  width: 50,height: 50,decoration: BoxDecoration(color: Theme.of(context).primaryColor,
+                    borderRadius:  BorderRadius.circular(Dimensions.paddingSizeSmall)
+                ),
+                  child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.iconSizeSmall),
+                ),
+              ):
+              InkWell(
+                onTap: (){
+                  if(searchController!.value.text.trim().isNotEmpty) {
+                    Provider.of<SearchProvider>(context, listen: false).saveSearchAddress( searchController!.value.text.toString());
+                    Provider.of<SearchProvider>(context, listen: false).searchProduct( searchController!.value.text.toString(), context);
+                  }else{
+                    showCustomSnackBar(getTranslated('enter_somethings', context), context);
 
+                  }
+                },
+                child: Container(
+                  width: 50,height: 50,decoration: BoxDecoration(color: Theme.of(context).primaryColor,
+                    borderRadius:  BorderRadius.circular(Dimensions.paddingSizeSmall)
+                ),
+                  child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.iconSizeSmall),
+                ),
               ),
-            ),
-            isSeller?
-            InkWell(
-              onTap: onTap,
-              child: Container(
-                width: 55,height: 50,decoration: BoxDecoration(color: Theme.of(context).primaryColor,
-                  borderRadius:  BorderRadius.circular(Dimensions.paddingSizeSmall)
-              ),
-                child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.iconSizeSmall),
-              ),
-            ):
-            InkWell(
-              onTap: (){
-                if(searchController!.value.text.trim().isNotEmpty) {
-                  Provider.of<SearchProvider>(context, listen: false).saveSearchAddress( searchController!.value.text.toString());
-                  Provider.of<SearchProvider>(context, listen: false).searchProduct( searchController!.value.text.toString(), context);
-                }else{
-                  showCustomSnackBar(getTranslated('enter_somethings', context), context);
-
-                }
-              },
-              child: Container(
-                width: 55,height: 50,decoration: BoxDecoration(color: Theme.of(context).primaryColor,
-                  borderRadius:  BorderRadius.circular(Dimensions.paddingSizeSmall)
-              ),
-                child: Icon(Icons.search, color: Theme.of(context).cardColor, size: Dimensions.iconSizeSmall),
-              ),
-            ),
-            const SizedBox(width: 10),
-          ]),
+              const SizedBox(width: 10),
+            ]),
+          ),
         ),
-      ),
-    ]);
+      ]),
+    );
   }
 }
