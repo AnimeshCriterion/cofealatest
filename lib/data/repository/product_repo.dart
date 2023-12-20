@@ -70,7 +70,7 @@ class ProductRepo {
     "intencities":"",
     "types":""
     };
-         response = await dioClient!.post(uri,data:body );
+         response = await dioClient!.post(uri, );
       }
 
       print("ANimeshshshsh0"+response.toString());

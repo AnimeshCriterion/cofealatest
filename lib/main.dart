@@ -67,8 +67,6 @@ Future<void> main() async {
 
   var data=await Devicelocale.currentLocale;
   List systemList=data!.split("-").toList();
-  print("Checklsysss"+systemList[1].toString());
-  print("Checklsysss"+systemList[0].toString());
 
   // if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
   //   orderID = (notificationAppLaunchDetails!.payload != null && notificationAppLaunchDetails.payload!.isNotEmpty)

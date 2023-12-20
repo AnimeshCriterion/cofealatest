@@ -19,7 +19,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     Provider.of<SplashProvider>(context, listen: false).setFromSetting(true);
-    Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+
     return WillPopScope(
       onWillPop: () {
         Provider.of<SplashProvider>(context, listen: false).setFromSetting(false);

@@ -36,6 +36,7 @@ class _FillterProductsViewState extends State<FillterProductsView> {
   }
 
   Future<void> _loadData(bool reload) async {
+
     await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterBrandsApi(context);
     await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterIntencityApi(context);
     await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterProductsOriginApi(context);

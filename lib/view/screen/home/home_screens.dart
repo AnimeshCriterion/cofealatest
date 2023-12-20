@@ -47,6 +47,8 @@ import 'package:ottu/paymentDelegate/paymentDelegate.dart';
 import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
 
+import '../../../provider/fillter_provider.dart';
+
 
 
 class HomePage extends StatefulWidget {
@@ -103,7 +105,7 @@ class _HomePageState extends State<HomePage>  {
   @override
   Widget build(BuildContext context) {
 
-
+    Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
    List<String?> types =[getTranslated('new_arrival', context),getTranslated('top_product', context), getTranslated('best_selling', context),  getTranslated('discounted_product', context)];
     return UpgradeAlert(
       upgrader: Upgrader(dialogStyle: UpgradeDialogStyle.cupertino),

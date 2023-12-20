@@ -275,7 +275,7 @@ class ProductProvider extends ChangeNotifier {
       _brandOrCategoryProductList.clear();
       _brandOrCategoryProductList.addAll(products.reversed);
       print("AnimeshCheckk2313"+_brandOrCategoryProductList.toList().toString());
-      await Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+
     } else {
       ApiChecker.checkApi( apiResponse);
     }
