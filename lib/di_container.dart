@@ -35,6 +35,7 @@ import 'package:flutter_sixvalley_ecommerce/provider/chat_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/coupon_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/facebook_login_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/featured_deal_provider.dart';
+import 'package:flutter_sixvalley_ecommerce/provider/fillter_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/flash_deal_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/gift_voucher-provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/google_sign_in_provider.dart';
@@ -60,6 +61,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'data/datasource/remote/dio/logging_interceptor.dart';
+import 'data/repository/FillterProductsRepo.dart';
 import 'data/repository/home_category_product_repo.dart';
 
 final sl = GetIt.instance;
@@ -95,6 +97,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SupportTicketRepo(dioClient: sl()));
   sl.registerLazySingleton(() => LocationRepo(dioClient: sl()));
   sl.registerLazySingleton(() => WalletTransactionRepo(dioClient: sl()));
+  sl.registerLazySingleton(() => FillterProductsRepo(dioClient: sl()));
 
   // Provider
   sl.registerFactory(() => CategoryProvider(categoryRepo: sl()));
@@ -126,6 +129,7 @@ Future<void> init() async {
   sl.registerFactory(() => FacebookLoginProvider());
   sl.registerFactory(() => LocationProvider(sharedPreferences: sl(), locationRepo: sl()));
   sl.registerFactory(() => WalletTransactionProvider(transactionRepo: sl()));
+  sl.registerFactory(() => FillterProductsProvider(giftVoucherRepo:  sl()));
 
   // External
   final sharedPreferences = await SharedPreferences.getInstance();

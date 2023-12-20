@@ -31,7 +31,7 @@ class GiftVoucherProvider extends ChangeNotifier{
         _giftVoucherList = [];
         _giftVoucherList.addAll(List<GiftVoucherDataModel>.from((apiResponse.response!.data
             .map((element) => GiftVoucherDataModel.fromJson(element)))));
-        print("CheckData"+_giftVoucherList.toList().toString());
+        print("CheckData${_giftVoucherList.toList()}");
        // _lPageSize = GiftVoucherDataModel.fromJson(apiResponse.response.data).totalSize;
         // _firstLoading = false;
         // _isLoading = false;
