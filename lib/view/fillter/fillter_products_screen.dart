@@ -51,6 +51,13 @@ class _FillterProductsViewState extends State<FillterProductsView> {
     return Scaffold(
         backgroundColor: ColorResources.getIconBg(context),
         appBar: AppBar(
+            leading: InkWell(
+              onTap: (){
+                Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+                Navigator.pop(context);
+                print("ANimehsonTap");
+              },
+                child: const Icon(Icons.arrow_back,color: Colors.white,)),
           backgroundColor: Provider
               .of<ThemeProvider>(context)
               .darkTheme
