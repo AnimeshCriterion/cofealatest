@@ -72,7 +72,7 @@ class _FillterProductsViewState extends State<FillterProductsView> {
           actions: [
             InkWell(
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (_) =>  BrandAndCategoryProductScreen(isBrand: widget.isBrand, id:widget.id, name:widget.name,
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  BrandAndCategoryProductScreen(isBrand: widget.isBrand, id:widget.id, name:widget.name,
 
                 )));
               },

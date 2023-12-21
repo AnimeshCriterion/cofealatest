@@ -74,7 +74,7 @@ class BrandAndCategoryProductScreen extends StatefulWidget {
 
             icon:Icons.filter_alt_outlined,onActionPressed: (){
 
-              Navigator.push(context, MaterialPageRoute(builder: (_) =>  FillterProductsView(isBrand: widget.isBrand, id:widget.id, name:widget.name,
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  FillterProductsView(isBrand: widget.isBrand, id:widget.id, name:widget.name,
 
               )));
             },

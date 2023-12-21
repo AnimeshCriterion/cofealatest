@@ -64,12 +64,12 @@ class ProductRepo {
       }else {
 
         uri = '${AppConstants.categoryProductUri}$id';
-     var body=   {
-          "selectedBrands":145,
-    "product_origin":"",
-    "intencities":"",
-    "types":""
-    };
+    //  var body=   {
+    //       "selectedBrands":145,
+    // "product_origin":"",
+    // "intencities":"",
+    // "types":""
+    // };
          response = await dioClient!.post(uri, );
       }
 
@@ -77,6 +77,7 @@ class ProductRepo {
       return ApiResponse.withSuccess(response);
 
      } catch (e) {
+
        print("ANimeshshshsh0"+e.toString());
        return ApiResponse.withError(ApiErrorHandler.getMessage(e));
     }
