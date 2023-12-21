@@ -13,6 +13,7 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/product_widget.dart'
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
+import '../../../main.dart';
 import '../../fillter/fillter_products_screen.dart';
 
 class BrandAndCategoryProductScreen extends StatefulWidget {
@@ -73,10 +74,15 @@ class BrandAndCategoryProductScreen extends StatefulWidget {
 
             icon:Icons.filter_alt_outlined,onActionPressed: (){
 
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  FillterProductsView(isBrand: widget.isBrand, id:widget.id, name:widget.name,
+              Navigator.push(context, MaterialPageRoute(builder: (_) =>  FillterProductsView(isBrand: widget.isBrand, id:widget.id, name:widget.name,
 
               )));
-            },),
+            },
+          onBackPressed: (){
+             Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+            Navigator.pop(context);
+          },
+          ),
 
             widget. isBrand ? Container(height: 100,
               padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),

@@ -79,6 +79,25 @@ class FillterProductsProvider extends ChangeNotifier{
   }
 
 
+  updateAllListData(){
+    for(int i=0;i<getFillterTypes.length;i++){
+      getFillterTypes[i].isSelect=false;
+    };
+    for(int i=0;i<getFillterIntencity.length;i++){
+      getFillterIntencity[i].isSelect=false;
+    };
+    for(int i=0;i<getFillterProductsOrigin.length;i++){
+      getFillterProductsOrigin[i].isSelect=false;
+    };
+    for(int i=0;i<getFillterBrands.length;i++){
+      getFillterBrands[i].isSelect=false;
+    };
+    notifyListeners();
+  }
+
+
+
+
   void addSelectedBrands(selectedBrandId ){
     if(!selectedBrands.contains(selectedBrandId)){
       selectedBrands.add(int.parse(selectedBrandId.toString()));

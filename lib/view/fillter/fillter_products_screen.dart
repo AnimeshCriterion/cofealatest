@@ -97,7 +97,37 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                   )),
                 ),
               ),
-            )
+            ),
+
+            InkWell(
+              onTap: (){
+                Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+                Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
+
+              },
+
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: Center(
+                  child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: Provider
+                              .of<ThemeProvider>(context)
+                              .darkTheme
+                              ? Theme
+                              .of(context)
+                              .primaryColor
+                              : Colors.black.withOpacity(0.5)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text("Clear"),
+                      )),
+                ),
+              ),
+            ),
+
           ],
         ),
         body: Row(

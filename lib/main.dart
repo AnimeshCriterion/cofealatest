@@ -143,6 +143,7 @@ final List systemLang;
       title: AppConstants.appName,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
+
       theme: Provider.of<ThemeProvider>(context).darkTheme ? dark : light,
     //  locale: Locale(local!.toString().substring(0,2)),
       locale: Provider.of<LocalizationProvider>(context).getLanguageSystemDefualt()!?Provider.of<LocalizationProvider>(context).systemLocal:Provider.of<LocalizationProvider>(context).locale,
