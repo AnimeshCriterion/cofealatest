@@ -79,7 +79,8 @@ class BrandAndCategoryProductScreen extends StatefulWidget {
               )));
             },
           onBackPressed: (){
-             Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+            Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+            Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
             Navigator.pop(context);
           },
           ),
