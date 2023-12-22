@@ -26,7 +26,7 @@ class FillterBrands {
 
   FillterBrands.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['name'];
+    name = json['brand_name'];
     image = json['image'];
     status = json['status'];
     product_count = json['product_count'];
@@ -44,14 +44,14 @@ class FillterBrands {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['image'] = this.image;
-    data['status'] = this.status;
-    data['product_count'] = this.product_count;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['brand_products_count'] = this.brandProductsCount;
+    data['id'] = id;
+    data['brand_name'] = name;
+    data['image'] = image;
+    data['status'] = status;
+    data['product_count'] = product_count;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['brand_products_count'] = brandProductsCount;
     // if (this.translations != null) {
     //   data['translations'] = this.translations!.map((v) => v.toJson()).toList();
     // }
