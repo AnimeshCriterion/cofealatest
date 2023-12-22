@@ -37,10 +37,10 @@ class _FillterProductsViewState extends State<FillterProductsView> {
 
   Future<void> _loadData(bool reload) async {
 
-    await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterBrandsApi(context);
-    await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterIntencityApi(context);
-    await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterProductsOriginApi(context);
-    await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterTypesApi(context);
+    await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterBrandsApi(context,id: widget.id);
+    await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterIntencityApi(context,id: widget.id);
+    await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterProductsOriginApi(context,id: widget.id);
+    await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterTypesApi(context,id: widget.id);
 
   
   }
@@ -220,7 +220,7 @@ class _FillterProductsViewState extends State<FillterProductsView> {
     padding:  const EdgeInsets.only(right: 20),
     child: CheckboxListTile(
     tileColor: Colors.red,
-    title:  Text(categoryProvider.getFillterBrands[index].name.toString()),
+    title:  Text("${categoryProvider.getFillterBrands[index].name} (${categoryProvider.getFillterBrands[index].product_count})"),
     value: categoryProvider.getFillterBrands[index].isSelect,
     controlAffinity: ListTileControlAffinity.leading,
     onChanged:(bool? value) {
@@ -265,7 +265,7 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                       padding:  const EdgeInsets.only(right: 20),
                       child: CheckboxListTile(
                         tileColor: Colors.red,
-                        title:  Text(categoryProvider.getFillterProductsOrigin[index].uOrg.toString()),
+                        title:  Text("${categoryProvider.getFillterProductsOrigin[index].uOrg} (${categoryProvider.getFillterProductsOrigin[index].productCount})"),
                         value: categoryProvider.getFillterProductsOrigin[index].isSelect,
                         controlAffinity: ListTileControlAffinity.leading,
                         onChanged:(bool? value) {
@@ -308,7 +308,7 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                       padding:  const EdgeInsets.only(right: 20),
                       child: CheckboxListTile(
                         tileColor: Colors.red,
-                        title:  Text(categoryProvider.getFillterIntencity[index].uRs.toString()),
+                        title:  Text("${categoryProvider.getFillterIntencity[index].uRs} (${categoryProvider.getFillterIntencity[index].productCount})"),
                         value: categoryProvider.getFillterIntencity[index].isSelect,
                         controlAffinity: ListTileControlAffinity.leading,
                         onChanged:(bool? value) {
@@ -350,7 +350,7 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                       padding:  const EdgeInsets.only(right: 20),
                       child: CheckboxListTile(
                         tileColor: Colors.red,
-                        title:  Text(categoryProvider.getFillterTypes[index].uBn.toString()),
+                        title:  Text("${categoryProvider.getFillterTypes[index].uBn} (${categoryProvider.getFillterTypes[index].productCount})"),
                         value: categoryProvider.getFillterTypes[index].isSelect,
                         controlAffinity: ListTileControlAffinity.leading,
                         onChanged:(bool? value) {

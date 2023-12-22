@@ -106,10 +106,10 @@ class AppConstants {
   static const String GIFT_VOUCHER_API = '/api/v1/giftlist';
   static const String MY_GIFT_VOUCHER_API = '/api/v1/gift/list';
   //fillter products
-  static const String fillterBrands = '/api/v1/brands';
-  static const String fillterProductsOrigin = '/api/v1/product_origin';
-  static const String fillterIntencity = '/api/v1/intencity';
-  static const String fillterTypes = '/api/v1/types';
+  static const String fillterBrands = '/api/v1/brands/';
+  static const String fillterProductsOrigin = '/api/v1/product_origin/';
+  static const String fillterIntencity = '/api/v1/intencity/';
+  static const String fillterTypes = '/api/v1/types/';
 
 
 

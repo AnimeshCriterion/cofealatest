@@ -37,7 +37,6 @@ class FillterIntencity {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['u_rs'] = this.uRs;
-    data['product_count'] = this.productCount;
     data['reviews_count'] = this.reviewsCount;
     // if (this.translations != null) {
     //   data['translations'] = this.translations!.map((v) => v.toJson()).toList();

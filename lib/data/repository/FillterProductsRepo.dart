@@ -12,10 +12,10 @@ class FillterProductsRepo{
 
 
 
-  Future<ApiResponse> getFillterBrands() async {
+  Future<ApiResponse> getFillterBrands(String id) async {
     try {
-      final response = await dioClient.get(
-          AppConstants.fillterBrands);
+      final response = await dioClient.post(
+          AppConstants.fillterBrands+id);
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));
@@ -23,10 +23,10 @@ class FillterProductsRepo{
   }
 
 
-  Future<ApiResponse> getFillterProductOrigin() async {
+  Future<ApiResponse> getFillterProductOrigin(String id) async {
     try {
-      final response = await dioClient.get(
-          AppConstants.fillterProductsOrigin);
+      final response = await dioClient.post(
+          AppConstants.fillterProductsOrigin+id);
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));
@@ -34,10 +34,10 @@ class FillterProductsRepo{
   }
 
 
-  Future<ApiResponse> getFillterIntencity() async {
+  Future<ApiResponse> getFillterIntencity(String id) async {
     try {
-      final response = await dioClient.get(
-          AppConstants.fillterIntencity);
+      final response = await dioClient.post(
+          AppConstants.fillterIntencity+id);
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));
@@ -45,10 +45,10 @@ class FillterProductsRepo{
   }
 
 
-  Future<ApiResponse> getFillterTypes() async {
+  Future<ApiResponse> getFillterTypes(String id) async {
     try {
-      final response = await dioClient.get(
-          AppConstants.fillterTypes);
+      final response = await dioClient.post(
+          AppConstants.fillterTypes+id);
       return ApiResponse.withSuccess(response);
     } catch (e) {
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));

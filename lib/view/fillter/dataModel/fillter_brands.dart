@@ -5,6 +5,7 @@ class FillterBrands {
   String? name;
   String? image;
   int? status;
+  int? product_count;
   String? createdAt;
   String? updatedAt;
   int? brandProductsCount;
@@ -16,6 +17,7 @@ class FillterBrands {
         this.name,
         this.image,
         this.status,
+        this.product_count,
         this.createdAt,
         this.updatedAt,
         this.brandProductsCount,
@@ -27,6 +29,7 @@ class FillterBrands {
     name = json['name'];
     image = json['image'];
     status = json['status'];
+    product_count = json['product_count'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     brandProductsCount = json['brand_products_count'];
@@ -45,6 +48,7 @@ class FillterBrands {
     data['name'] = this.name;
     data['image'] = this.image;
     data['status'] = this.status;
+    data['product_count'] = this.product_count;
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     data['brand_products_count'] = this.brandProductsCount;

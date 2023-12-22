@@ -148,11 +148,11 @@ class FillterProductsProvider extends ChangeNotifier{
 
 
 
-  Future<void> hitGetFillterBrandsApi(BuildContext context,{bool reload = false}) async {
+  Future<void> hitGetFillterBrandsApi(BuildContext context,{bool reload = false,required String id}) async {
     if(reload) {
       _fillterBrandsList = [];
     }
-    ApiResponse apiResponse = await giftVoucherRepo.getFillterBrands();
+    ApiResponse apiResponse = await giftVoucherRepo.getFillterBrands(id);
     if (apiResponse.response != null && apiResponse.response!.statusCode! == 200) {
       _fillterBrandsList = [];
       _fillterBrandsList.addAll(List<FillterBrands>.from((apiResponse.response!.data
@@ -170,11 +170,11 @@ class FillterProductsProvider extends ChangeNotifier{
 
 
 
-  Future<void> hitGetFillterProductsOriginApi(BuildContext context,{bool reload = false}) async {
+  Future<void> hitGetFillterProductsOriginApi(BuildContext context,{bool reload = false,required String id}) async {
     if(reload) {
       _fillterProductsOrigin = [];
     }
-    ApiResponse apiResponse = await giftVoucherRepo.getFillterProductOrigin();
+    ApiResponse apiResponse = await giftVoucherRepo.getFillterProductOrigin(id);
     if (apiResponse.response != null && apiResponse.response!.statusCode! == 200) {
       _fillterProductsOrigin = [];
       _fillterProductsOrigin.addAll(List<FillterProductsOrigin>.from((apiResponse.response!.data
@@ -191,11 +191,11 @@ class FillterProductsProvider extends ChangeNotifier{
 
 
 
-  Future<void> hitGetFillterIntencityApi(BuildContext context,{bool reload = false}) async {
+  Future<void> hitGetFillterIntencityApi(BuildContext context,{bool reload = false,required String id}) async {
     if(reload) {
       _fillterIntencity = [];
     }
-    ApiResponse apiResponse = await giftVoucherRepo.getFillterIntencity();
+    ApiResponse apiResponse = await giftVoucherRepo.getFillterIntencity(id);
     if (apiResponse.response != null && apiResponse.response!.statusCode! == 200) {
       _fillterIntencity = [];
       _fillterIntencity.addAll(List<FillterIntencity>.from((apiResponse.response!.data
@@ -213,11 +213,11 @@ class FillterProductsProvider extends ChangeNotifier{
 
 
 
-  Future<void> hitGetFillterTypesApi(BuildContext context,{bool reload = false}) async {
+  Future<void> hitGetFillterTypesApi(BuildContext context,{bool reload = false,required String id}) async {
     if(reload) {
       _fillterTypes = [];
     }
-    ApiResponse apiResponse = await giftVoucherRepo.getFillterTypes();
+    ApiResponse apiResponse = await giftVoucherRepo.getFillterTypes(id);
     if (apiResponse.response != null && apiResponse.response!.statusCode! == 200) {
       _fillterTypes = [];
       _fillterTypes.addAll(List<FillterTypes>.from((apiResponse.response!.data
