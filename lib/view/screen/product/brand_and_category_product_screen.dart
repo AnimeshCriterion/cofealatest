@@ -70,7 +70,7 @@ class BrandAndCategoryProductScreen extends StatefulWidget {
 
           widget.isBrand?  CustomAppBar(title: widget.name,
 
-            ):CustomAppBar(title: widget.name,
+            ):CustomAppBar(title: widget.name.toString()+" ("+productProvider.brandOrCategoryProductList.length.toString()+")",
 
             icon:Icons.filter_alt_outlined,onActionPressed: (){
 
