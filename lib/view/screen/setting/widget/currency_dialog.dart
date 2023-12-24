@@ -91,7 +91,7 @@ class CurrencyDialog extends StatelessWidget {
                 Phoenix.rebirth(context);
               }else {
                 if(index==2){
-                //  Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+                  Provider.of<SplashProvider>(context, listen: false).initConfig(context);
 
                   var data=await Devicelocale.currentLocale;
                   List systemList=data!.split("-").toList();

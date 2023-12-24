@@ -34,7 +34,7 @@ class SignOutConfirmationDialog extends StatelessWidget {
         Consumer<ProfileProvider>(
           builder: (context, delete,_) {
             return delete.isDeleting?
-            const Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,children: [
+             Row(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,children: [
               CircularProgressIndicator()
             ],) : Row(children: [
 

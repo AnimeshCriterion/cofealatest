@@ -10,6 +10,8 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/notification/notificatio
 import 'package:flutter_sixvalley_ecommerce/view/screen/order/order_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../../../main.dart';
+import '../../../provider/fillter_provider.dart';
 import '../../giftVoucher/gift_voucher_screen.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -50,7 +52,8 @@ class DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
     //Provider.of<SplashProvider>(context, listen: false).initConfig(context);
-
+    Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+    Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
     return WillPopScope(
       onWillPop: () async {
         if(_pageIndex != 0) {

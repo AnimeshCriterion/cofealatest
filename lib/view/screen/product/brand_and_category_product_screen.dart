@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sixvalley_ecommerce/provider/fillter_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/product_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/splash_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/color_resources.dart';
@@ -11,6 +12,9 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/product_shimmer.dart
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/product_widget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
+
+import '../../../main.dart';
+import '../../fillter/fillter_products_screen.dart';
 
 class BrandAndCategoryProductScreen extends StatefulWidget {
   final bool isBrand;
@@ -32,7 +36,26 @@ class BrandAndCategoryProductScreen extends StatefulWidget {
 
   @override
   void initState() {
-    Provider.of<ProductProvider>(context, listen: false).initBrandOrCategoryProductList(widget.isBrand, widget.id, context);
+    List selectedBrands=Provider.of<FillterProductsProvider>(context,listen: false).selectedBrands.toList();
+    List selectedTypes=Provider.of<FillterProductsProvider>(context,listen: false).selectedTypes.toList();
+    List selectedOrigin=Provider.of<FillterProductsProvider>(context,listen: false).selectedOrigin.toList();
+    List selectedIntencity=Provider.of<FillterProductsProvider>(context,listen: false).selectedIntencity.toList();
+    print("AnimeshCheckBack"+selectedBrands.toList().toString());
+    print("AnimeshCheckBack"+selectedTypes.toList().toString());
+    print("AnimeshCheckBack"+selectedOrigin.toList().toString());
+    print("AnimeshCheckBack"+selectedIntencity.toList().toString());
+    if(selectedOrigin.isEmpty && selectedIntencity.isEmpty && selectedTypes.isEmpty && selectedBrands.isEmpty){
+      print("first run");
+      Provider.of<ProductProvider>(context, listen: false).initBrandOrCategoryProductList(widget.isBrand, widget.id, context);
+    }else{
+      print("second run");
+      Provider.of<ProductProvider>(context, listen: false).initBrandOrCategoryProductListFillter(widget.isBrand, widget.id, context,
+          selectedBrands.toList().toString(),selectedTypes.toList().toString(),selectedOrigin.toList().toString(),selectedIntencity.toList().toString()
+
+      );
+
+    }
+
     super.initState();
   }
 
@@ -45,7 +68,22 @@ class BrandAndCategoryProductScreen extends StatefulWidget {
         builder: (context, productProvider, child) {
           return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
 
-            CustomAppBar(title: widget.name),
+          widget.isBrand?  CustomAppBar(title: widget.name,
+
+            ):CustomAppBar(title: widget.name.toString()+" ("+productProvider.brandOrCategoryProductList.length.toString()+")",
+
+            icon:Icons.filter_alt_outlined,onActionPressed: (){
+
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  FillterProductsView(isBrand: widget.isBrand, id:widget.id, name:widget.name,
+
+              )));
+            },
+          onBackPressed: (){
+            Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+            Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
+            Navigator.pop(context);
+          },
+          ),
 
             widget. isBrand ? Container(height: 100,
               padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
