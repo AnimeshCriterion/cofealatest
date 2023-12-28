@@ -36,13 +36,10 @@ class _FillterProductsViewState extends State<FillterProductsView> {
   }
 
   Future<void> _loadData(bool reload) async {
-
     await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterBrandsApi(context,id: widget.id);
     await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterIntencityApi(context,id: widget.id);
     await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterProductsOriginApi(context,id: widget.id);
     await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterTypesApi(context,id: widget.id);
-
-  
   }
 
 
@@ -56,7 +53,6 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                 Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
                 Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
                 Navigator.pop(context);
-                print("ANimehsonTap");
               },
                 child: const Icon(Icons.arrow_back,color: Colors.white,)),
           backgroundColor: Provider
