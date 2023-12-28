@@ -36,13 +36,10 @@ class _FillterProductsViewState extends State<FillterProductsView> {
   }
 
   Future<void> _loadData(bool reload) async {
-
     await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterBrandsApi(context,id: widget.id);
     await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterIntencityApi(context,id: widget.id);
     await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterProductsOriginApi(context,id: widget.id);
     await Provider.of<FillterProductsProvider>(Get.context!, listen: false).hitGetFillterTypesApi(context,id: widget.id);
-
-  
   }
 
 
@@ -54,8 +51,8 @@ class _FillterProductsViewState extends State<FillterProductsView> {
             leading: InkWell(
               onTap: (){
                 Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+                Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
                 Navigator.pop(context);
-                print("ANimehsonTap");
               },
                 child: const Icon(Icons.arrow_back,color: Colors.white,)),
           backgroundColor: Provider
@@ -163,7 +160,9 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                             itemBuilder: (context, index) {
                               String category = categoryProvider.getFillterSideText[index];
                               return InkWell(
-                                onTap: () => Provider.of<FillterProductsProvider>(context, listen: false).changeSelectedIndex(index),
+                                onTap: () {
+                                  Provider.of<FillterProductsProvider>(context, listen: false).changeSelectedIndex(index);
+                                },
                                 child: CategoryItem(
                                   title: category,
                                   icon:"",

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/facebook_login_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/featured_deal_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/fillter_provider.dart';
@@ -117,7 +118,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<WalletTransactionProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<FillterProductsProvider>()),
     ],
-    child: MyApp(orderId: orderID,systemLang:systemList ,),
+    child: Phoenix(child: MyApp(orderId: orderID,systemLang:systemList ,)),
   ));
 }
 

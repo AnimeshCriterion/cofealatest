@@ -62,72 +62,81 @@ class BrandAndCategoryProductScreen extends StatefulWidget {
 
   Widget build(BuildContext context) {
 
-    return Scaffold(
-      backgroundColor: ColorResources.getIconBg(context),
-      body: Consumer<ProductProvider>(
-        builder: (context, productProvider, child) {
-          return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+    return WillPopScope(
+      onWillPop: (){
 
-          widget.isBrand?  CustomAppBar(title: widget.name,
+        Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+        Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
+        Navigator.pop(context);
+        return Future.value(false);
+      },
+      child: Scaffold(
+        backgroundColor: ColorResources.getIconBg(context),
+        body: Consumer<ProductProvider>(
+          builder: (context, productProvider, child) {
+            return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
 
-            ):CustomAppBar(title: widget.name.toString()+" ("+productProvider.brandOrCategoryProductList.length.toString()+")",
+            widget.isBrand?  CustomAppBar(title: widget.name,
 
-            icon:Icons.filter_alt_outlined,onActionPressed: (){
+              ):CustomAppBar(title: widget.name.toString()+" ("+productProvider.brandOrCategoryProductList.length.toString()+")",
 
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  FillterProductsView(isBrand: widget.isBrand, id:widget.id, name:widget.name,
+              icon:Icons.filter_alt_outlined,onActionPressed: (){
 
-              )));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) =>  FillterProductsView(isBrand: widget.isBrand, id:widget.id, name:widget.name,
+
+                )));
+              },
+            onBackPressed: (){
+              Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+              Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
+              Navigator.pop(context);
             },
-          onBackPressed: (){
-            Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
-            Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
-            Navigator.pop(context);
-          },
-          ),
+            ),
 
-            widget. isBrand ? Container(height: 100,
-              padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
-              margin: const EdgeInsets.only(top: Dimensions.paddingSizeSmall),
-              color: Theme.of(context).highlightColor,
-              child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                FadeInImage.assetNetwork(
-                  placeholder: Images.placeholder, width: 80, height: 80, fit: BoxFit.cover,
-                  image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls!.brandImageUrl}/$widget.image',
-                  imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, width: 80, height: 80, fit: BoxFit.cover),
+              widget. isBrand ? Container(height: 100,
+                padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
+                margin: const EdgeInsets.only(top: Dimensions.paddingSizeSmall),
+                color: Theme.of(context).highlightColor,
+                child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                  FadeInImage.assetNetwork(
+                    placeholder: Images.placeholder, width: 80, height: 80, fit: BoxFit.cover,
+                    image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls!.brandImageUrl}/$widget.image',
+                    imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, width: 80, height: 80, fit: BoxFit.cover),
+                  ),
+                  const SizedBox(width: Dimensions.paddingSizeSmall),
+
+
+                  Text(widget.name!, style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
+                ]),
+              ) : const SizedBox.shrink(),
+
+              const SizedBox(height: Dimensions.paddingSizeSmall),
+
+              // Products
+              productProvider.brandOrCategoryProductList.isNotEmpty ? Expanded(
+                child: StaggeredGridView.countBuilder(
+                  padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
+                  physics: const BouncingScrollPhysics(),
+                  crossAxisCount: 2,
+                  itemCount: productProvider.brandOrCategoryProductList.length,
+                  shrinkWrap: true,
+                  staggeredTileBuilder: (int index) => const StaggeredTile.fit(1),
+                  itemBuilder: (BuildContext context, int index) {
+                    return ProductWidget(productModel: productProvider.brandOrCategoryProductList[index]);
+                  },
                 ),
-                const SizedBox(width: Dimensions.paddingSizeSmall),
+              ) :
 
+              Expanded(child: Center(child: productProvider.hasData! ?
 
-                Text(widget.name!, style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
-              ]),
-            ) : const SizedBox.shrink(),
+              ProductShimmer(isHomePage: false,
+                  isEnabled: Provider.of<ProductProvider>(context).brandOrCategoryProductList.isEmpty)
+                  : const NoInternetOrDataScreen(isNoInternet: false),
+              )),
 
-            const SizedBox(height: Dimensions.paddingSizeSmall),
-
-            // Products
-            productProvider.brandOrCategoryProductList.isNotEmpty ? Expanded(
-              child: StaggeredGridView.countBuilder(
-                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
-                physics: const BouncingScrollPhysics(),
-                crossAxisCount: 2,
-                itemCount: productProvider.brandOrCategoryProductList.length,
-                shrinkWrap: true,
-                staggeredTileBuilder: (int index) => const StaggeredTile.fit(1),
-                itemBuilder: (BuildContext context, int index) {
-                  return ProductWidget(productModel: productProvider.brandOrCategoryProductList[index]);
-                },
-              ),
-            ) :
-
-            Expanded(child: Center(child: productProvider.hasData! ?
-
-            ProductShimmer(isHomePage: false,
-                isEnabled: Provider.of<ProductProvider>(context).brandOrCategoryProductList.isEmpty)
-                : const NoInternetOrDataScreen(isNoInternet: false),
-            )),
-
-          ]);
-        },
+            ]);
+          },
+        ),
       ),
     );
   }

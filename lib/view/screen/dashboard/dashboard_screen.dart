@@ -52,8 +52,8 @@ class DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
     //Provider.of<SplashProvider>(context, listen: false).initConfig(context);
-    Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
-    Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
+    // Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+    // Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
     return WillPopScope(
       onWillPop: () async {
         if(_pageIndex != 0) {
