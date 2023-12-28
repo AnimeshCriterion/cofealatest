@@ -54,6 +54,7 @@ class _FillterProductsViewState extends State<FillterProductsView> {
             leading: InkWell(
               onTap: (){
                 Provider.of<FillterProductsProvider>(Get.context!, listen: false).clearAllFillter();
+                Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
                 Navigator.pop(context);
                 print("ANimehsonTap");
               },
@@ -163,7 +164,9 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                             itemBuilder: (context, index) {
                               String category = categoryProvider.getFillterSideText[index];
                               return InkWell(
-                                onTap: () => Provider.of<FillterProductsProvider>(context, listen: false).changeSelectedIndex(index),
+                                onTap: () {
+                                  Provider.of<FillterProductsProvider>(context, listen: false).changeSelectedIndex(index);
+                                },
                                 child: CategoryItem(
                                   title: category,
                                   icon:"",

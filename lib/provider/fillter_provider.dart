@@ -42,7 +42,7 @@ class FillterProductsProvider extends ChangeNotifier{
 
   int? _categorySelectedIndex=0;
   int? get categorySelectedIndex => _categorySelectedIndex;
-  void changeSelectedIndex(int selectedIndex) {
+   changeSelectedIndex(int selectedIndex) {
     _categorySelectedIndex = selectedIndex;
     notifyListeners();
   }
