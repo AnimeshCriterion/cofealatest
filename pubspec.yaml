@@ -65,7 +65,7 @@ dependencies:
   get:
   flutter_inappwebview:
   path:
-  cached_network_image:
+  cached_network_image: ^3.3.1
   http_parser:
   google_maps_webservice: ^0.0.19
 
