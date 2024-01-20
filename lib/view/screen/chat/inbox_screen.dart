@@ -55,7 +55,7 @@ class _InboxScreenState extends State<InboxScreen> {
             borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(Dimensions.paddingSizeOverLarge),
                 bottomRight: Radius.circular(Dimensions.paddingSizeOverLarge))),
             padding: const EdgeInsets.symmetric(vertical:Dimensions.paddingSizeExtraSmall),
-            child:  const Column(
+            child:   Column(
               children:  [
                 ChatHeader(),
               ],

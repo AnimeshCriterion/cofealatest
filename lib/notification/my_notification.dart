@@ -14,21 +14,21 @@ class MyNotification {
 
   static Future<void> initialize(FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var androidInitialize = const AndroidInitializationSettings('notification_icon');
-    var iOSInitialize = const IOSInitializationSettings();
-    var initializationsSettings = InitializationSettings(android: androidInitialize, iOS: iOSInitialize);
-    flutterLocalNotificationsPlugin.initialize(initializationsSettings, onSelectNotification: (String? payload) async {
-      try{
-        if(payload != null && payload.isNotEmpty) {
-          Get.navigator!.push(
-              MaterialPageRoute(builder: (context) => OrderDetailsScreen(orderId: int.parse(payload),orderType: 'default_type')));
-        }
-      }catch (e) {
-        if (kDebugMode) {
-          print(e);
-        }
-      }
-      return;
-    });
+    // var iOSInitialize = const IOSInitializationSettings();
+    // var initializationsSettings = InitializationSettings(android: androidInitialize, iOS: iOSInitialize);
+    // flutterLocalNotificationsPlugin.initialize(initializationsSettings, onDidReceiveNotificationResponse: (String? payload) async {
+    //   try{
+    //     if(payload != null && payload.isNotEmpty) {
+    //       Get.navigator!.push(
+    //           MaterialPageRoute(builder: (context) => OrderDetailsScreen(orderId: int.parse(payload),orderType: 'default_type')));
+    //     }
+    //   }catch (e) {
+    //     if (kDebugMode) {
+    //       print(e);
+    //     }
+    //   }
+    //   return;
+    // });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       if (kDebugMode) {

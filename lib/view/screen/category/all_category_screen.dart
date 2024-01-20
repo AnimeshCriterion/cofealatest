@@ -25,7 +25,7 @@ class AllCategoryScreen extends StatelessWidget {
       body: Column(
         children: [
 
-          CustomAppBar(title: getTranslated('CATEGORY', context)),
+          CustomAppBar(title: getTranslated('CATEGORY', context,),),
 
           Expanded(child: Consumer<CategoryProvider>(
             builder: (context, categoryProvider, child) {

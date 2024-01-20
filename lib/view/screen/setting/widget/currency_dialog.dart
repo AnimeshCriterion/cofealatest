@@ -87,12 +87,13 @@ class CurrencyDialog extends StatelessWidget {
               if(isCurrency) {
 
                 Provider.of<SplashProvider>(context, listen: false).setCurrency(index!);
+                print("Animesh2");
                 Navigator.pop(context);
                 Phoenix.rebirth(context);
+                print("Animesh2");
               }else {
                 if(index==2){
-                //  Provider.of<SplashProvider>(context, listen: false).initConfig(context);
-
+                  Provider.of<SplashProvider>(context, listen: false).initConfig(context);
                   var data=await Devicelocale.currentLocale;
                   List systemList=data!.split("-").toList();
                  Provider.of<LocalizationProvider>(context,listen: false).setLangaugeSystemDefault(true);
@@ -100,8 +101,10 @@ class CurrencyDialog extends StatelessWidget {
                    systemList[0].toString(),
                    systemList[1].toString(),
                  ));
-                  Navigator.pop(context);
+                 print("Animesh1");
+                 Navigator.pop(context);
                   Phoenix.rebirth(context);
+                  print("Animesh1");
                 }else{
 
                   Provider.of<SplashProvider>(context, listen: false).initConfig(context);
@@ -110,8 +113,10 @@ class CurrencyDialog extends StatelessWidget {
                     AppConstants.languages[index!].languageCode!,
                     AppConstants.languages[index!].countryCode,
                   ));
-                  Navigator.pop(context);
+                  print("Animesh0");
+                 Navigator.pop(context);
                   Phoenix.rebirth(context);
+                  print("Animesh0");
 
                 }
 

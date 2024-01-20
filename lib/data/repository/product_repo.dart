@@ -5,6 +5,10 @@ import 'package:flutter_sixvalley_ecommerce/data/model/response/base/api_respons
 import 'package:flutter_sixvalley_ecommerce/helper/product_type.dart';
 import 'package:flutter_sixvalley_ecommerce/localization/language_constrants.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/app_constants.dart';
+import 'package:provider/provider.dart';
+
+import '../../main.dart';
+import '../../provider/fillter_provider.dart';
 
 class ProductRepo {
   final DioClient? dioClient;
@@ -52,18 +56,62 @@ class ProductRepo {
   Future<ApiResponse> getBrandOrCategoryProductList(bool isBrand, String id) async {
      try {
       String uri;
+      final response;
       if(isBrand){
+        print("brandrun");
         uri = '${AppConstants.brandProductUri}$id';
+         response = await dioClient!.get(uri);
       }else {
+
         uri = '${AppConstants.categoryProductUri}$id';
+    //  var body=   {
+    //       "selectedBrands":145,
+    // "product_origin":"",
+    // "intencities":"",
+    // "types":""
+    // };
+         response = await dioClient!.post(uri, );
       }
-      final response = isBrand?await dioClient!.get(uri):await dioClient!.post(uri);
-      print("ANimeshshshsh0$response");
+
+      print("ANimeshshshsh0"+response.toString());
       return ApiResponse.withSuccess(response);
 
      } catch (e) {
-       print("ANimeshshshsh0$e");
+
+       print("ANimeshshshsh0"+e.toString());
        return ApiResponse.withError(ApiErrorHandler.getMessage(e));
+    }
+  }
+
+
+  
+
+  Future<ApiResponse> getCategoryProductListFillter( String id,String selectedBrands, String selectedTypes, String selectedOrigin, String selectedIntencity) async {
+    try {
+      String uri;
+      final response;
+      print("AnimeshCheckBackinApi"+selectedBrands.toString().replaceAll("[", "").replaceAll("]", ""));
+      print("AnimeshCheckBackinApi"+selectedTypes.toString().replaceAll("[", "").replaceAll("]", ""));
+      print("AnimeshCheckBackinApi"+selectedOrigin.toString().replaceAll("[", "").replaceAll("]", ""));
+      print("AnimeshCheckBackinApi"+selectedIntencity.toString().replaceAll("[", "").replaceAll("]", ""));
+        uri = '${AppConstants.categoryProductUri}$id';
+        var body=   {
+          "selectedBrands":selectedBrands.toString().replaceAll("[", "").replaceAll("]", ""),
+          "product_origin":selectedOrigin.toString().replaceAll("[", "").replaceAll("]", ""),
+          "intencities":selectedIntencity.toString().replaceAll("[", "").replaceAll("]", ""),
+          "types":selectedTypes.toString().replaceAll("[", "").replaceAll("]", "")
+        };
+
+        print("Request"+body.toString());
+        response = await dioClient!.post(uri,data:body );
+
+
+
+      return ApiResponse.withSuccess(response);
+
+    } catch (e) {
+      print("ANimeshshshsh0"+e.toString());
+      return ApiResponse.withError(ApiErrorHandler.getMessage(e));
     }
   }
 

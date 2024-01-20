@@ -8,8 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/facebook_login_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/featured_deal_provider.dart';
+import 'package:flutter_sixvalley_ecommerce/provider/fillter_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/gift_voucher-provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/google_sign_in_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/home_category_product_provider.dart';
@@ -67,8 +69,6 @@ Future<void> main() async {
 
   var data=await Devicelocale.currentLocale;
   List systemList=data!.split("-").toList();
-  print("Checklsysss"+systemList[1].toString());
-  print("Checklsysss"+systemList[0].toString());
 
   // if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
   //   orderID = (notificationAppLaunchDetails!.payload != null && notificationAppLaunchDetails.payload!.isNotEmpty)
@@ -116,8 +116,9 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (context) => di.sl<FacebookLoginProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<LocationProvider>()),
       ChangeNotifierProvider(create: (context) => di.sl<WalletTransactionProvider>()),
+      ChangeNotifierProvider(create: (context) => di.sl<FillterProductsProvider>()),
     ],
-    child: MyApp(orderId: orderID,systemLang:systemList ,),
+    child: Phoenix(child: MyApp(orderId: orderID,systemLang:systemList ,)),
   ));
 }
 
@@ -143,6 +144,7 @@ final List systemLang;
       title: AppConstants.appName,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
+
       theme: Provider.of<ThemeProvider>(context).darkTheme ? dark : light,
     //  locale: Locale(local!.toString().substring(0,2)),
       locale: Provider.of<LocalizationProvider>(context).getLanguageSystemDefualt()!?Provider.of<LocalizationProvider>(context).systemLocal:Provider.of<LocalizationProvider>(context).locale,

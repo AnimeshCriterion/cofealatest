@@ -47,7 +47,7 @@ class CustomAppBar extends StatelessWidget {
           ),
 
           icon != null ? IconButton(
-            icon: Icon(icon, size: Dimensions.iconSizeLarge, color: Colors.white),
+            icon: Icon(icon, size: Dimensions.iconSizeLarge, color: Colors.black),
             onPressed: onActionPressed as void Function()?,
           ) : const SizedBox.shrink(),
 
