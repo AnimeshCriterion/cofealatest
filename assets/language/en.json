@@ -427,14 +427,18 @@
   "my_gift_voucher": "My Gift Voucher",
   "my_gift_vouchers": "My Gift Vouchers",
   "gift_vouchers": "Gift Vouchers",
-  "fillter_products": "Fillter",
   "have_a_coupon?": "Have a Coupon?",
   "have_a_voucher": "Have a Voucher",
   "enter_wallet_amount": "Enter wallet amount",
   "wallet_amount": "Wallet Amount",
-  "available_wallet_balance": "Available Wallet Balance - ",
+  "available_wallet_balance": "Available Wallet Balance",
   "redeem": "Redeem",
   "not_redeem": "Not Redeem",
   "cofea.": "cofea.",
-  "successfully_added!.": "Successfully Added!"
+  "successfully_added!.": "Successfully Added!",
+  "contact_details" : "Contact Details",
+  "phone_number" : "Phone Number",
+  "map" : "Map",
+    "clear" : "Clear"  ,
+  "fillter_products" : "Fillter Products"
 }

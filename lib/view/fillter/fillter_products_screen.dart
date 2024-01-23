@@ -95,9 +95,9 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                             .primaryColor
                             : Colors.black.withOpacity(0.5)
                       ),
-                      child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text("Apply",style: TextStyle(color: Colors.white),),
+                      child:  Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(getTranslated('APPLY', context)!,style: TextStyle(color: Colors.white),),
                   )),
                 ),
               ),
@@ -124,9 +124,9 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                               .primaryColor
                               : Colors.black.withOpacity(0.5)
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text("Clear",style: TextStyle(color: Colors.white)),
+                      child:  Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(getTranslated('clear', context)!,style: const TextStyle(color: Colors.white)),
                       )),
                 ),
               ),

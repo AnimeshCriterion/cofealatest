@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../../localization/language_constrants.dart';
 import '../../../provider/wallet_transaction_provider.dart';
 import '../../../utill/images.dart';
 
@@ -125,7 +126,7 @@ class WebViewScreenState extends State<WebViewScreen> {
           builder: (context, profile, child) {
             return Scaffold(
               appBar: AppBar(
-                title: const Text('Contact Details'),
+                title:  Text(getTranslated('contact_details', context)!),
               ),
               body: Padding(
                 padding: const EdgeInsets.only(
@@ -136,7 +137,7 @@ class WebViewScreenState extends State<WebViewScreen> {
                     Image.asset(Images.contactusImage),
                     const SizedBox(height: 20.0),
                     _buildContactRow(
-                        title: 'Phone Number',
+                        title:getTranslated('phone_number', context)!,
                         value: '+${profile.getContactUs?.data?.phone} ',
                         icon: Icons.phone,
                         onTap: (){
@@ -145,7 +146,7 @@ class WebViewScreenState extends State<WebViewScreen> {
                     ),
                     const SizedBox(height: 16.0),
                     _buildContactRow(
-                        title: 'Email',
+                        title: getTranslated('EMAIL', context)!,
                         value: '${profile.getContactUs?.data?.email}',
                         icon: Icons.email,
                         onTap: () async {
@@ -163,7 +164,7 @@ class WebViewScreenState extends State<WebViewScreen> {
                     ),
                     const SizedBox(height: 16.0),
                     _buildContactRow(
-                      title: 'Address',
+                      title: getTranslated('address', context)!,
                       value:
                       '${profile.getContactUs?.data?.address}',
                       icon: Icons.location_on,
@@ -174,7 +175,7 @@ class WebViewScreenState extends State<WebViewScreen> {
                     ),
                     const SizedBox(height: 16.0),
                     _buildContactRow(
-                      title: 'Map',
+                      title:  getTranslated('map', context)!,
                       value: '${profile.getContactUs?.data?.maplink}',
                       icon: Icons.location_on,
                       onTap: () async {
