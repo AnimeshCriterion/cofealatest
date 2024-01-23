@@ -2,8 +2,8 @@ import 'package:flutter_sixvalley_ecommerce/data/model/response/language_model.d
 
 class AppConstants {
   static const String appName = 'Cofea';
-  static const String appVersion = '14.0';
-  static const String baseUrl = 'https://test.cofea.com/';
+  static const String appVersion = '1.0';
+  static const String baseUrl = 'https://cofea.com/';
   static const String userId = 'userId';
   static const String name = 'name';
   static const String categoriesUri = '/api/v1/categories';
@@ -87,6 +87,11 @@ class AppConstants {
   static const String getSelectedShippingTypeUri = '/api/v1/shipping-method/check-shipping-type';
   static const String dealOfTheDay = '/api/v1/dealsoftheday/deal-of-the-day';
   static const String walletTransactionUri = '/api/v1/customer/wallet/list?limit=10&offset=';
+  static const String contactUsUrl = '/api/v1/contact-us';
+
+
+
+
   static const String loyaltyPointUri = '/api/v1/customer/loyalty/list?limit=20&offset=';
   static const String loyaltyPointConvert = '/api/v1/customer/loyalty/loyalty-exchange-currency';
   static const String deleteCustomerAccount = '/api/v1/customer/account-delete';

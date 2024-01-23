@@ -203,7 +203,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                                 style: robotoBold.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE,
                                     color: ColorResources.getReviewRattingColor(context))),
 
-                            TextSpan(text:  '${widget.orderModel!.orderNote != null? widget.orderModel!.orderNote ?? '': ""}',
+                            TextSpan(text:  widget.orderModel!.orderNote != null? widget.orderModel!.orderNote ?? '': "",
                                 style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_SMALL)),
                           ],
                           ),

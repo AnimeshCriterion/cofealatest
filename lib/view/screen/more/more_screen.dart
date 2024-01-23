@@ -33,6 +33,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/wishlist/wishlist_screen
 import 'package:provider/provider.dart';
 
 import '../../my_gift_vouchar/gift_voucher_screen.dart';
+import '../setting/widget/currency_dialog.dart';
 import 'faq_screen.dart';
 
 class MoreScreen extends StatefulWidget {
@@ -204,11 +205,21 @@ class _MoreScreenState extends State<MoreScreen> {
                   TitleButton(image: Images.chats, title: getTranslated('chats', context),
                       navigateTo: const InboxScreen()),
 
-                  TitleButton(image: Images.settings, title: getTranslated('settings', context),
-                      navigateTo: const SettingsScreen()),
+                  InkWell(
+                    onTap: (){
+                      showAnimatedDialog(context, const CurrencyDialog(isCurrency: false));
+                    },
+                    child:
+                    // TitleButton(image: Images.settings, title: getTranslated('settings', context),
+                    //     navigateTo: const SettingsScreen()),
+                      ListTile(
+                        leading: Image.asset(  Images.language, width: 25, height: 25, fit: BoxFit.fill,color: Theme.of(context).primaryColor,),
+                        title: Text(getTranslated('choose_language', context)!, style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeLarge)),
+                      )
+                  ),
 
-                  TitleButton(image: Images.preference, title: getTranslated('support_ticket', context),
-                      navigateTo: SupportTicketScreen()),
+                  // TitleButton(image: Images.preference, title: getTranslated('support_ticket', context),
+                  //     navigateTo: SupportTicketScreen()),
 
                   TitleButton(image: Images.termCondition, title: getTranslated('terms_condition', context),
                       navigateTo: HtmlViewScreen(title: getTranslated('terms_condition', context),

@@ -18,6 +18,7 @@ class Images {
   static const String couponBannerImage = 'assets/images/coupon_banner.png';
   static const String chatImage = 'assets/images/chat.png';
   static const String filterImage = 'assets/images/filter.png';
+  static const String contactusImage = 'assets/images/contactus.jpg';
   static const String fastDelivery = 'assets/images/fast_delivery.png';
   static const String delivery = 'assets/images/delivery.png';
   static const String toolbarBackground = 'assets/images/toolbar_background.jpg';
