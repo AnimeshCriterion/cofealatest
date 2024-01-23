@@ -7,6 +7,8 @@ import 'package:flutter_sixvalley_ecommerce/helper/api_checker.dart';
 import 'package:flutter_sixvalley_ecommerce/localization/language_constrants.dart';
 import 'package:flutter_sixvalley_ecommerce/main.dart';
 
+import '../data/model/response/contact_us_data.dart';
+
 class WalletTransactionProvider extends ChangeNotifier {
   final WalletTransactionRepo? transactionRepo;
   bool _isLoading = false;
@@ -18,7 +20,9 @@ class WalletTransactionProvider extends ChangeNotifier {
   int? _transactionPageSize;
   int? get transactionPageSize=> _transactionPageSize;
   TransactionModel? _walletBalance;
+  ContactUsData? _contactUsData;
   TransactionModel? get walletBalance => _walletBalance;
+  ContactUsData? get getContactUs => _contactUsData;
 
   int? _loyaltyPointPageSize;
   int? get loyaltyPointPageSize=> _loyaltyPointPageSize;
@@ -59,6 +63,22 @@ class WalletTransactionProvider extends ChangeNotifier {
     if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
       _loyaltyPointList.addAll(LoyaltyPointModel.fromJson(apiResponse.response!.data).loyaltyPointList!);
       _loyaltyPointPageSize = LoyaltyPointModel.fromJson(apiResponse.response!.data).totalLoyaltyPoint;
+      _isLoading = false;
+    } else {
+      _isLoading = false;
+      ApiChecker.checkApi( apiResponse);
+    }
+    notifyListeners();
+  }
+
+  Future<void> getContactUsData(BuildContext context, int offset, {bool reload = false}) async {
+    if(reload){
+      _transactionList = [];
+    }
+    _isLoading = true;
+    ApiResponse apiResponse = await transactionRepo!.getContactUsData();
+    if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+      _contactUsData = ContactUsData.fromJson(apiResponse.response!.data);
       _isLoading = false;
     } else {
       _isLoading = false;
