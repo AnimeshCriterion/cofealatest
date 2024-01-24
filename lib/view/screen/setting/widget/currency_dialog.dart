@@ -29,7 +29,6 @@ class CurrencyDialog extends StatelessWidget {
     }else {
       index = Provider.of<LocalizationProvider>(context, listen: false).languageIndex;
     }
-
     return Dialog(
       backgroundColor: Theme.of(context).highlightColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -55,10 +54,24 @@ class CurrencyDialog extends StatelessWidget {
                 valueList.add(language.languageName);
               }
             }
+            // return CupertinoPicker(
+            //   itemExtent: 40,
+            //   useMagnifier: true,
+            //   magnification: 1.2,
+            //
+            //   scrollController: FixedExtentScrollController(initialItem: index!),
+            //   onSelectedItemChanged: (int i) {
+            //     index = i;
+            //   },
+            //   children: valueList.map((value) {
+            //     return Center(child: Text(value!, style: TextStyle(color: Theme.of(context).textTheme.bodyLarge!.color)));
+            //   }).toList(),
+            // );
             return CupertinoPicker(
               itemExtent: 40,
               useMagnifier: true,
               magnification: 1.2,
+
               scrollController: FixedExtentScrollController(initialItem: index!),
               onSelectedItemChanged: (int i) {
                 index = i;
@@ -85,7 +98,6 @@ class CurrencyDialog extends StatelessWidget {
             onPressed: () async {
               Provider.of<SplashProvider>(context, listen: false).initConfig(context);
               if(isCurrency) {
-
                 Provider.of<SplashProvider>(context, listen: false).setCurrency(index!);
                 print("Animesh2");
                 Navigator.pop(context);
@@ -139,5 +151,6 @@ class CurrencyDialog extends StatelessWidget {
 
       ]),
     );
+
   }
 }

@@ -131,64 +131,66 @@ class WebViewScreenState extends State<WebViewScreen> {
               body: Padding(
                 padding: const EdgeInsets.only(
                     left: 0.0, right: 0, top: 0, bottom: 16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset(Images.contactusImage),
-                    const SizedBox(height: 20.0),
-                    _buildContactRow(
-                        title:getTranslated('phone_number', context)!,
-                        value: '+${profile.getContactUs?.data?.phone} ',
-                        icon: Icons.phone,
-                        onTap: (){
-                          launch("tel://${profile.getContactUs?.data?.phone}");
-                        }
-                    ),
-                    const SizedBox(height: 16.0),
-                    _buildContactRow(
-                        title: getTranslated('EMAIL', context)!,
-                        value: '${profile.getContactUs?.data?.email}',
-                        icon: Icons.email,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(Images.contactusImage),
+                      const SizedBox(height: 20.0),
+                      _buildContactRow(
+                          title:getTranslated('phone_number', context)!,
+                          value: '+${profile.getContactUs?.data?.phone} ',
+                          icon: Icons.phone,
+                          onTap: (){
+                            launch("tel://${profile.getContactUs?.data?.phone}");
+                          }
+                      ),
+                      const SizedBox(height: 16.0),
+                      _buildContactRow(
+                          title: getTranslated('EMAIL', context)!,
+                          value: '${profile.getContactUs?.data?.email}',
+                          icon: Icons.email,
+                          onTap: () async {
+                            final email = Uri(
+                              scheme: 'mailto',
+                              path: 'info@example.com',
+                              query: 'subject=&body=',
+                            );
+                            if (await canLaunchUrl(email)) {
+                              launchUrl(email);
+                            } else {
+                              throw 'Could not launch $email';
+                            }
+                          }
+                      ),
+                      const SizedBox(height: 16.0),
+                      _buildContactRow(
+                        title: getTranslated('address', context)!,
+                        value:
+                        '${profile.getContactUs?.data?.address}',
+                        icon: Icons.location_on,
+                        onTap: () {
+                  
+                          _openMap('${profile.getContactUs?.data?.address}');
+                        },
+                      ),
+                      const SizedBox(height: 16.0),
+                      _buildContactRow(
+                        title:  getTranslated('map', context)!,
+                        value: '${profile.getContactUs?.data?.maplink}',
+                        icon: Icons.location_on,
                         onTap: () async {
-                          final email = Uri(
-                            scheme: 'mailto',
-                            path: 'info@example.com',
-                            query: 'subject=&body=',
-                          );
-                          if (await canLaunchUrl(email)) {
-                            launchUrl(email);
+                          if (await canLaunchUrl(Uri.parse(profile.getContactUs!.data!.maplink!))) {
+                            launchUrl(Uri.parse(profile.getContactUs!.data!.maplink!));
                           } else {
                             throw 'Could not launch $email';
                           }
-                        }
-                    ),
-                    const SizedBox(height: 16.0),
-                    _buildContactRow(
-                      title: getTranslated('address', context)!,
-                      value:
-                      '${profile.getContactUs?.data?.address}',
-                      icon: Icons.location_on,
-                      onTap: () {
-
-                        _openMap('${profile.getContactUs?.data?.address}');
-                      },
-                    ),
-                    const SizedBox(height: 16.0),
-                    _buildContactRow(
-                      title:  getTranslated('map', context)!,
-                      value: '${profile.getContactUs?.data?.maplink}',
-                      icon: Icons.location_on,
-                      onTap: () async {
-                        if (await canLaunchUrl(Uri.parse(profile.getContactUs!.data!.maplink!))) {
-                          launchUrl(Uri.parse(profile.getContactUs!.data!.maplink!));
-                        } else {
-                          throw 'Could not launch $email';
-                        }
-                        // _openMap(
-                        //     '${mapLink}');
-                      },
-                    ),
-                  ],
+                          // _openMap(
+                          //     '${mapLink}');
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );

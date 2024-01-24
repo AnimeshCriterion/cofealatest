@@ -33,6 +33,7 @@ import 'package:flutter_sixvalley_ecommerce/view/screen/wishlist/wishlist_screen
 import 'package:provider/provider.dart';
 
 import '../../my_gift_vouchar/gift_voucher_screen.dart';
+import '../dashboard/alertpopup.dart';
 import '../setting/widget/currency_dialog.dart';
 import 'faq_screen.dart';
 
@@ -156,9 +157,9 @@ class _MoreScreenState extends State<MoreScreen> {
                                       navigateTo: const WalletScreen(),count: 1,hasCount: false):const SizedBox(),
 
 
-                                  Provider.of<SplashProvider>(context,listen: false).configModel!.loyaltyPointStatus ==1?
-                                  SquareButton(image: Images.loyaltyPoint, title: getTranslated('loyalty_point', context),
-                                    navigateTo: const LoyaltyPointScreen(),count: 1,hasCount: false,):const SizedBox(),
+                                  // Provider.of<SplashProvider>(context,listen: false).configModel!.loyaltyPointStatus ==1?
+                                  // SquareButton(image: Images.loyaltyPoint, title: getTranslated('loyalty_point', context),
+                                  //   navigateTo: const LoyaltyPointScreen(),count: 1,hasCount: false,):const SizedBox(),
 
 
                                   SquareButton(image: Images.shoppingImage, title: getTranslated('orders', context),
@@ -198,8 +199,8 @@ class _MoreScreenState extends State<MoreScreen> {
                   TitleButton(image: Images.moreFilledImage, title: getTranslated('all_category', context),
                       navigateTo: const AllCategoryScreen()),
 
-                  TitleButton(image: Images.notificationFilled, title: getTranslated('notification', context),
-                      navigateTo: const NotificationScreen()),
+                  // TitleButton(image: Images.notificationFilled, title: getTranslated('notification', context),
+                  //     navigateTo: const NotificationScreen()),
 
                   singleVendor?const SizedBox():
                   TitleButton(image: Images.chats, title: getTranslated('chats', context),
@@ -207,7 +208,8 @@ class _MoreScreenState extends State<MoreScreen> {
 
                   InkWell(
                     onTap: (){
-                      showAnimatedDialog(context, const CurrencyDialog(isCurrency: false));
+                      //showAnimatedDialog(context, const CurrencyDialog(isCurrency: false));
+                      languageDialogue(context,false);
                     },
                     child:
                     // TitleButton(image: Images.settings, title: getTranslated('settings', context),
@@ -326,7 +328,7 @@ class TitleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.asset(image, width: 25, height: 25, fit: BoxFit.fill,color: Theme.of(context).primaryColor,),
+      leading: Image.asset(image, width: 25, height: 35, fit: BoxFit.fill,color: Theme.of(context).primaryColor,),
       title: Text(title!, style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeLarge)),
       onTap: () => Navigator.push(
         context, MaterialPageRoute(builder: (_) => navigateTo),
