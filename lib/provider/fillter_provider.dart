@@ -35,7 +35,7 @@ class FillterProductsProvider extends ChangeNotifier{
   List<String> selectedIntencity=[];
 
 
-  final List<String> _SideMenuText = ["Brand","Origin","Intencity","Type"];
+
 
   List<String> get getFillterSideText => _SideMenuText;
 

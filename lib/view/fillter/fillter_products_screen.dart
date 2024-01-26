@@ -27,7 +27,7 @@ class FillterProductsView extends StatefulWidget {
 
 class _FillterProductsViewState extends State<FillterProductsView> {
 
-
+   List<String> SideMenuText=[];
   @override
   void initState() {
 
@@ -45,6 +45,7 @@ class _FillterProductsViewState extends State<FillterProductsView> {
 
   @override
   Widget build(BuildContext context) {
+   SideMenuText = [getTranslated('brand', context)!,getTranslated('origin', context)!,getTranslated('intensity', context)!,getTranslated('type', context)!];
     return Scaffold(
         backgroundColor: ColorResources.getIconBg(context),
         appBar: AppBar(
