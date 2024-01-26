@@ -26,6 +26,16 @@ class WalletTransactionRepo {
     }
   }
 
+
+  Future<ApiResponse> getContactUsData() async {
+    try {
+      Response response = await dioClient!.get(AppConstants.contactUsUrl);
+      return ApiResponse.withSuccess(response);
+    } catch (e) {
+      return ApiResponse.withError(ApiErrorHandler.getMessage(e));
+    }
+  }
+
   Future<ApiResponse> convertPointToCurrency(int point) async {
     try {
       Response response = await dioClient!.post(
