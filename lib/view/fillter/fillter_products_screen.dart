@@ -142,7 +142,7 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                   Expanded(child:
                   Consumer<FillterProductsProvider>(
                     builder: (context, categoryProvider, child) {
-                      return categoryProvider.getFillterSideText.isNotEmpty ?
+                      return SideMenuText.isNotEmpty ?
                       Row(children: [
 
                         Container(
@@ -156,10 +156,10 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                           ),
                           child: ListView.builder(
                             physics: const BouncingScrollPhysics(),
-                            itemCount: categoryProvider.getFillterSideText.length,
+                            itemCount: SideMenuText.length,
                             padding: const EdgeInsets.all(0),
                             itemBuilder: (context, index) {
-                              String category = categoryProvider.getFillterSideText[index];
+                              String category = SideMenuText[index];
                               return InkWell(
                                 onTap: () {
                                   Provider.of<FillterProductsProvider>(context, listen: false).changeSelectedIndex(index);

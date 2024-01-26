@@ -37,7 +37,7 @@ class FillterProductsProvider extends ChangeNotifier{
 
 
 
-  List<String> get getFillterSideText => _SideMenuText;
+  // List<String> get getFillterSideText => _SideMenuText;
 
 
   int? _categorySelectedIndex=0;
