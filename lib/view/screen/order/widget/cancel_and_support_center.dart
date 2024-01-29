@@ -46,17 +46,20 @@ class CancelAndSupport extends StatelessWidget {
         const SizedBox(width: Dimensions.paddingSizeSmall),
 
 
-        Expanded(child: SizedBox(height: 45,
-          child: TextButton(
-            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SupportTicketScreen())),
-            style: TextButton.styleFrom(shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6),
-              side: BorderSide(color: ColorResources.getPrimary(context)),
-            )),
-            child: Text(getTranslated('SUPPORT_CENTER', context)!,
-              style: titilliumSemiBold.copyWith(fontSize: 16, color: ColorResources.getPrimary(context)),),
+        Visibility(
+          visible: false,
+          child: Expanded(child: SizedBox(height: 45,
+            child: TextButton(
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SupportTicketScreen())),
+              style: TextButton.styleFrom(shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6),
+                side: BorderSide(color: ColorResources.getPrimary(context)),
+              )),
+              child: Text(getTranslated('SUPPORT_CENTER', context)!,
+                style: titilliumSemiBold.copyWith(fontSize: 16, color: ColorResources.getPrimary(context)),),
+            ),
           ),
-        ),
+          ),
         ),
       ],
       ),

@@ -119,7 +119,6 @@ class _HomePageState extends State<HomePage>  {
             onRefresh: () async {
               await _loadData(true);
               await Provider.of<FlashDealProvider>(context, listen: false).getMegaDealList(true,  false);
-
             },
             child: Stack(
               children: [

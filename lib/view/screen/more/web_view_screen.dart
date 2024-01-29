@@ -14,6 +14,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../localization/language_constrants.dart';
 import '../../../provider/wallet_transaction_provider.dart';
+import '../../../utill/custom_themes.dart';
 import '../../../utill/images.dart';
 
 class WebViewScreen extends StatefulWidget {
@@ -220,7 +221,7 @@ class WebViewScreenState extends State<WebViewScreen> {
             Icon(
               icon,
               size: 30.0,
-              color: ColorResources.black,
+              color: ColorResources.getPrimary(context),
             ),
             const SizedBox(width: 16.0),
             Expanded(
@@ -229,10 +230,7 @@ class WebViewScreenState extends State<WebViewScreen> {
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                    ),
+                      style: titleHeader
                   ),
                   const SizedBox(height: 8.0),
                   Text(

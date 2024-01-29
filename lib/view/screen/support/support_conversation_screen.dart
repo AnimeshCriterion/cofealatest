@@ -16,11 +16,14 @@ class SupportConversationScreen extends StatelessWidget {
   SupportConversationScreen({Key? key, required this.supportTicketModel}) : super(key: key);
 
   final TextEditingController _controller = TextEditingController();
-
+  bool first = true;
   @override
   Widget build(BuildContext context) {
-    if(Provider.of<AuthProvider>(context, listen: false).isLoggedIn()) {
-      Provider.of<SupportTicketProvider>(context, listen: false).getSupportTicketReplyList(context, supportTicketModel.id);
+    if(first) {
+      first = false;
+      if (Provider.of<AuthProvider>(context, listen: false).isLoggedIn()) {
+        Provider.of<SupportTicketProvider>(context, listen: false).getSupportTicketReplyList(context, supportTicketModel.id);
+      }
     }
 
     return CustomExpandedAppBar(

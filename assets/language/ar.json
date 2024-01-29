@@ -449,7 +449,7 @@
   "my_order" : "طلباتي",
   "other_details" : "Other details",
   "model_code" : "كود الموديل",
-  "dimensions_WxDxH_MM " : "الأبعاد العرض × الطول × الارتفاع مم",
+  "dimensions_WxDxH_MM" : "الأبعاد العرض × الطول × الارتفاع مم",
   "weight(kg)" : "الوزن (كجم)",
   "power(W)" : "(الطاقة (واط",
   "bean_container_capacity_g" : "سعة حاوية حبوب القهوة (ج)",

@@ -450,7 +450,7 @@
   "my_order" : "My Order",
   "other_details" : "Other details",
   "model_code" : "Model Code",
-  "dimensions_WxDxH_MM " : "Dimensions WxDxH MM ",
+  "dimensions_WxDxH_MM" : "Dimensions WxDxH MM ",
   "weight(kg)" : "Weight (kg)",
   "power(W)" : "Power (W)",
   "bean_container_capacity_g" : "Bean Container Capacity g",
