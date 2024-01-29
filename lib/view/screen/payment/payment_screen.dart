@@ -19,7 +19,14 @@ class PaymentScreen extends StatefulWidget {
   final String? walletBalance;
   final String? voucharCode;
 
-  PaymentScreen({@required this.addressID, @required this.customerID, @required this.couponCode, @required this.billingId, this.orderNote, this.walletBalance,this.voucharCode});
+  PaymentScreen(
+      {@required this.addressID,
+      @required this.customerID,
+      @required this.couponCode,
+      @required this.billingId,
+      this.orderNote,
+      this.walletBalance,
+      this.voucharCode});
 
   @override
   _PaymentScreenState createState() => _PaymentScreenState();
@@ -29,27 +36,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
   String? selectedUrl;
   double value = 0.0;
   bool _isLoading = true;
-  final Completer<WebViewController> _controller = Completer<WebViewController>();
+  final Completer<WebViewController> _controller =
+      Completer<WebViewController>();
   WebViewController? controllerGlobal;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-
-
 
   @override
   void initState() {
     super.initState();
-    print("CheckEverything"+widget.couponCode.toString()+widget.walletBalance.toString());
+    print("CheckEverything" +
+        widget.couponCode.toString() +
+        widget.walletBalance.toString());
     // selectedUrl = '${AppConstants.BASE_URL}/customer/payment-mobile?customer_id='
     //     '${widget.customerID}&address_id=${widget.addressID}&coupon_code='
     //     '${widget.couponCode}&billing_address_id=${widget.billingId}&order_note=${widget.orderNote}';
-    selectedUrl = '${AppConstants.baseUrl}customer/payment-mobile?customer_id=${widget.customerID}&billing_address_id=${widget.billingId}&mobile_wallet_discount=${widget.walletBalance.toString()}&mobile_gift_voucher=${widget.voucharCode}&mobile_coupon_discount=${widget.couponCode}';
+    selectedUrl =
+        '${AppConstants.baseUrl}customer/payment-mobile?customer_id=${widget.customerID}&billing_address_id=${widget.billingId}&mobile_wallet_discount=${widget.walletBalance.toString()}&mobile_gift_voucher=${widget.voucharCode}&mobile_coupon_discount=${widget.couponCode}';
     print(selectedUrl);
 
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
-
-
 
   @override
   void dispose() {
@@ -65,7 +71,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
     super.didChangeDependencies();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -75,109 +80,192 @@ class _PaymentScreenState extends State<PaymentScreen> {
         backgroundColor: Theme.of(context).primaryColor,
         body: Column(
           children: [
-            CustomAppBar(title: getTranslated('PAYMENT', context), onBackPressed: () => _exitApp(context)),
+            CustomAppBar(
+                title: getTranslated('PAYMENT', context),
+                onBackPressed: () => _exitApp(context)),
             Expanded(
               child: Stack(
                 children: [
-                  WebView(javascriptMode: JavascriptMode.unrestricted,
+                  WebView(
+                    javascriptMode: JavascriptMode.unrestricted,
                     initialUrl: selectedUrl,
                     gestureNavigationEnabled: true,
-                    userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13E233 Safari/601.1',
+                    userAgent:
+                        'Mozilla/5.0 (iPhone; CPU iPhone OS 9_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13E233 Safari/601.1',
                     onWebViewCreated: (WebViewController webViewController) {
-                      _controller.future.then((value) => controllerGlobal = value);
+                      _controller.future
+                          .then((value) => controllerGlobal = value);
                       _controller.complete(webViewController);
                     },
                     onPageStarted: (String url) {
                       print('Started url: $url');
-                      if(url.contains(AppConstants.baseUrl)) {
+                      if (url.contains(AppConstants.baseUrl)) {
                         bool _isSuccess = url.contains('success');
                         bool _isFailed = url.contains('fail');
+                        bool _isError = url.contains('error');
                         setState(() {
                           _isLoading = true;
                         });
                         if (_isSuccess) {
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                              builder: (_) => const DashBoardScreen()), (route) => false);
-                          showAnimatedDialog(context, MyDialog(
-                            icon: Icons.done,
-                            title: getTranslated('payment_done', context),
-                            description: getTranslated('your_payment_successfully_done', context),
-                          ), dismissible: false, isFlip: true);
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (_) => const DashBoardScreen()),
+                              (route) => false);
+                          showAnimatedDialog(
+                              context,
+                              MyDialog(
+                                icon: Icons.done,
+                                title: getTranslated('payment_done', context),
+                                description: getTranslated(
+                                    'your_payment_successfully_done', context),
+                              ),
+                              dismissible: false,
+                              isFlip: true);
                         } else if (_isFailed) {
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                              builder: (_) => const DashBoardScreen()), (route) => false);
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (_) => const DashBoardScreen()),
+                              (route) => false);
 
-
-
-                          showAnimatedDialog(context, MyDialog(
-                            icon: Icons.clear,
-                            title: getTranslated('payment_failed', context),
-                            description: getTranslated('your_payment_failed', context),
-                            isFailed: true,
-                          ), dismissible: false, isFlip: true);
+                          showAnimatedDialog(
+                              context,
+                              MyDialog(
+                                icon: Icons.clear,
+                                title: getTranslated('payment_failed', context),
+                                description: getTranslated(
+                                    'your_payment_failed', context),
+                                isFailed: true,
+                              ),
+                              dismissible: false,
+                              isFlip: true);
                         } else if (url == '${AppConstants.baseUrl}/cancel') {
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                              builder: (_) => const DashBoardScreen()), (route) => false);
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (_) => const DashBoardScreen()),
+                              (route) => false);
 
+                          showAnimatedDialog(
+                              context,
+                              MyDialog(
+                                icon: Icons.clear,
+                                title:
+                                    getTranslated('payment_cancelled', context),
+                                description: getTranslated(
+                                    'your_payment_cancelled', context),
+                                isFailed: true,
+                              ),
+                              dismissible: false,
+                              isFlip: true);
+                        } else if (_isError) {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (_) => const DashBoardScreen()),
+                              (route) => false);
 
-                          showAnimatedDialog(context, MyDialog(
-                            icon: Icons.clear,
-                            title: getTranslated('payment_cancelled', context),
-                            description: getTranslated('your_payment_cancelled', context),
-                            isFailed: true,
-                          ), dismissible: false, isFlip: true);
+                          showAnimatedDialog(
+                              context,
+                              MyDialog(
+                                icon: Icons.clear,
+                                title:
+                                    getTranslated('payment_cancelled', context),
+                                description: getTranslated(
+                                    'your_payment_cancelled', context),
+                                isFailed: true,
+                              ),
+                              dismissible: false,
+                              isFlip: true);
                         }
                       }
                     },
                     onPageFinished: (String url) {
-                      print('Started url: $url');
-                      if(url.contains(AppConstants.baseUrl)) {
+                      print('Started url finished: $url');
+                      if (url.contains(AppConstants.baseUrl)) {
                         bool _isSuccess = url.contains('success');
                         bool _isFailed = url.contains('fail');
+                        bool isWrong = url.contains('error');
                         setState(() {
                           _isLoading = false;
                         });
                         if (_isSuccess) {
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                              builder: (_) => const DashBoardScreen()), (route) => false);
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (_) => const DashBoardScreen()),
+                                  (route) => false);
 
-
-                          showAnimatedDialog(context, MyDialog(
-                            icon: Icons.done,
-                            title: getTranslated('payment_done', context),
-                            description: getTranslated('your_payment_successfully_done', context),
-                          ), dismissible: false, isFlip: true);
+                          showAnimatedDialog(
+                              context,
+                              MyDialog(
+                                icon: Icons.done,
+                                title: getTranslated('payment_done', context),
+                                description: getTranslated(
+                                    'your_payment_successfully_done', context),
+                              ),
+                              dismissible: false,
+                              isFlip: true);
                         } else if (_isFailed) {
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                              builder: (_) => const DashBoardScreen()), (route) => false);
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (_) => const DashBoardScreen()),
+                                  (route) => false);
 
-
-
-                          showAnimatedDialog(context, MyDialog(
-                            icon: Icons.clear,
-                            title: getTranslated('payment_failed', context),
-                            description: getTranslated('your_payment_failed', context),
-                            isFailed: true,
-                          ), dismissible: false, isFlip: true);
+                          showAnimatedDialog(
+                              context,
+                              MyDialog(
+                                icon: Icons.clear,
+                                title: getTranslated('payment_failed', context),
+                                description: getTranslated(
+                                    'your_payment_failed', context),
+                                isFailed: true,
+                              ),
+                              dismissible: false,
+                              isFlip: true);
                         } else if (url == '${AppConstants.baseUrl}/cancel') {
-                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(
-                              builder: (_) => const DashBoardScreen()), (route) => false);
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (_) => const DashBoardScreen()),
+                                  (route) => false);
 
+                          showAnimatedDialog(
+                              context,
+                              MyDialog(
+                                icon: Icons.clear,
+                                title:
+                                getTranslated('payment_cancelled', context),
+                                description: getTranslated(
+                                    'your_payment_cancelled', context),
+                                isFailed: true,
+                              ),
+                              dismissible: false,
+                              isFlip: true);
+                        }
+                        else if (isWrong) {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (_) => const DashBoardScreen()),
+                                  (route) => false);
 
-                          showAnimatedDialog(context, MyDialog(
-                            icon: Icons.clear,
-                            title: getTranslated('payment_cancelled', context),
-                            description: getTranslated('your_payment_cancelled', context),
-                            isFailed: true,
-                          ), dismissible: false, isFlip: true);
+                          showAnimatedDialog(
+                              context,
+                              MyDialog(
+                                icon: Icons.clear,
+                                title:
+                                getTranslated('payment_cancelled', context),
+                                description: getTranslated(
+                                    'your_payment_cancelled', context),
+                                isFailed: true,
+                              ),
+                              dismissible: false,
+                              isFlip: true);
                         }
                       }
                     },
                   ),
-
-                  _isLoading ? Center(
-                    child: CustomLoader(color: Theme.of(context).primaryColor),
-                  ) : const SizedBox.shrink(),
+                  _isLoading
+                      ? Center(
+                          child: CustomLoader(
+                              color: Theme.of(context).primaryColor),
+                        )
+                      : const SizedBox.shrink(),
                 ],
               ),
             ),
@@ -192,13 +280,19 @@ class _PaymentScreenState extends State<PaymentScreen> {
       controllerGlobal!.goBack();
       return Future.value(false);
     } else {
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const DashBoardScreen()), (route) => false);
-      showAnimatedDialog(context, MyDialog(
-        icon: Icons.clear,
-        title: getTranslated('payment_cancelled', context),
-        description: getTranslated('your_payment_cancelled', context),
-        isFailed: true,
-      ), dismissible: false, isFlip: true);
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (_) => const DashBoardScreen()),
+          (route) => false);
+      showAnimatedDialog(
+          context,
+          MyDialog(
+            icon: Icons.clear,
+            title: getTranslated('payment_cancelled', context),
+            description: getTranslated('your_payment_cancelled', context),
+            isFailed: true,
+          ),
+          dismissible: false,
+          isFlip: true);
       return Future.value(true);
     }
   }
