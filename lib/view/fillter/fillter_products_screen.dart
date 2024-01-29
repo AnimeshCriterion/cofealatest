@@ -27,7 +27,7 @@ class FillterProductsView extends StatefulWidget {
 
 class _FillterProductsViewState extends State<FillterProductsView> {
 
-
+   List<String> SideMenuText=[];
   @override
   void initState() {
 
@@ -45,6 +45,7 @@ class _FillterProductsViewState extends State<FillterProductsView> {
 
   @override
   Widget build(BuildContext context) {
+   SideMenuText = [getTranslated('brand', context)!,getTranslated('origin', context)!,getTranslated('intensity', context)!,getTranslated('type', context)!];
     return Scaffold(
         backgroundColor: ColorResources.getIconBg(context),
         appBar: AppBar(
@@ -141,7 +142,7 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                   Expanded(child:
                   Consumer<FillterProductsProvider>(
                     builder: (context, categoryProvider, child) {
-                      return categoryProvider.getFillterSideText.isNotEmpty ?
+                      return SideMenuText.isNotEmpty ?
                       Row(children: [
 
                         Container(
@@ -155,10 +156,10 @@ class _FillterProductsViewState extends State<FillterProductsView> {
                           ),
                           child: ListView.builder(
                             physics: const BouncingScrollPhysics(),
-                            itemCount: categoryProvider.getFillterSideText.length,
+                            itemCount: SideMenuText.length,
                             padding: const EdgeInsets.all(0),
                             itemBuilder: (context, index) {
-                              String category = categoryProvider.getFillterSideText[index];
+                              String category = SideMenuText[index];
                               return InkWell(
                                 onTap: () {
                                   Provider.of<FillterProductsProvider>(context, listen: false).changeSelectedIndex(index);

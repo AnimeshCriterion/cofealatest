@@ -48,7 +48,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "DIMENSIONS WxDxH MM",
+                                      getTranslated('dimensions_WxDxH_MM', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -77,7 +77,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Weight (kg)",
+                                        getTranslated('weight(kg)', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -106,7 +106,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Power (W)",
+                                       getTranslated('power(W)', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -135,7 +135,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Bean Container Capacity g",
+                                        getTranslated('bean_container_capacity_g', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -164,7 +164,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Water Container Capacity",
+                                        getTranslated('water_container_capacity', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -193,7 +193,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Milk Frother",
+                                        getTranslated('milk_frother', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -222,7 +222,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Coffee tamper",
+                                      getTranslated('coffee_tamper', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -251,7 +251,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Descaler",
+                                     getTranslated('descaler', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -280,7 +280,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Cleaning Brush",
+                                      getTranslated('Cleaning_brush', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -309,7 +309,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Measuring Scoop",
+                                        getTranslated('measuring_scoop', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -338,7 +338,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Carbon Active Filter",
+                                     getTranslated('carbon_active_filter', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -367,7 +367,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Milk jug",
+                                         getTranslated('milk_jug', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -396,7 +396,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Auto Shut-off",
+                                       getTranslated('auto_shut_off', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -425,7 +425,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Removable water tank",
+                                      getTranslated('removable_water_tank', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -454,7 +454,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Removable drip tray",
+                                      getTranslated('removable_drip_tray', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -483,7 +483,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Water level indicator",
+                                       getTranslated('water_level_indicator', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -512,7 +512,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Compatible for ESE pods",
+                                        getTranslated('sompatible_for_ESE_pods', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -541,7 +541,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Pump Pressure bar",
+                                      getTranslated('pump_pressure_bar', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -570,7 +570,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Sensor Grinding Technology",
+                                        getTranslated('sensor_grinding_technology', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -599,7 +599,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Max cup height (mm)inches",
+                                        getTranslated('max_cup_height_(mm)inches', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -628,7 +628,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Grounds container capacity (n)",
+                                      getTranslated('grounds_container_capacity_(n)', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -657,7 +657,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Capacity",
+                                        getTranslated('capacity', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -686,7 +686,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Material",
+                                       getTranslated('material', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -715,7 +715,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Non Electric Specifications",
+                                     getTranslated('non_electric_specifications', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -744,7 +744,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Pour over	",
+                                         getTranslated('pour_over', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -773,7 +773,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Sub1",
+                                       getTranslated('sub1', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -802,7 +802,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Sub2",
+                                     getTranslated('sub2', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -831,7 +831,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Origin",
+                                         getTranslated('origin', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -860,7 +860,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Bean Type	",
+                                     getTranslated('bean_type', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -889,7 +889,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Roast",
+                                       getTranslated('roast', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -918,7 +918,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Process",
+                                        getTranslated('process', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -947,7 +947,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Altitude",
+                                        getTranslated('altitude', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),
@@ -976,7 +976,7 @@ class SpecificationScreen extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        "Coffee Plant	",
+                                        getTranslated('coffee_plant', context)!,
                                         style: titilliumSemiBold.copyWith(
                                             fontSize: Dimensions.FONT_SIZE_DEFAULT),
                                       ),

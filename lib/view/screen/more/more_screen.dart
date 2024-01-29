@@ -311,7 +311,7 @@ class SquareButton extends StatelessWidget {
           ),
         ),
         Flexible(
-          child: Text(title!, maxLines: 1,overflow: TextOverflow.clip,
+          child: Text(title!, maxLines: 2,overflow: TextOverflow.clip,
               style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeDefault)),
         ),
       ]),

@@ -1,4 +1,4 @@
-package com.intro.cofea
+package com.cofea.ecom
 
 import io.flutter.embedding.android.FlutterActivity
 
