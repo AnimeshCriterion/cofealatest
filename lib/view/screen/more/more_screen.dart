@@ -328,7 +328,7 @@ class TitleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.asset(image, width: 25, height: 35, fit: BoxFit.fill,color: Theme.of(context).primaryColor,),
+      leading: Image.asset(image, width: 25, height: 25, fit: BoxFit.fill,color: Theme.of(context).primaryColor,),
       title: Text(title!, style: titilliumRegular.copyWith(fontSize: Dimensions.fontSizeLarge)),
       onTap: () => Navigator.push(
         context, MaterialPageRoute(builder: (_) => navigateTo),

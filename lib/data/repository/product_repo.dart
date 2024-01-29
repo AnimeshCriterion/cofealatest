@@ -54,6 +54,7 @@ class ProductRepo {
   }
 
   Future<ApiResponse> getBrandOrCategoryProductList(bool isBrand, String id) async {
+    print("CheckkkkkID"+id.toString());
      try {
       String uri;
       final response;
@@ -73,12 +74,12 @@ class ProductRepo {
          response = await dioClient!.post(uri, );
       }
 
-      print("ANimeshshshsh0"+response.toString());
+      print("ANimeshshshsh0"+uri.toString());
       return ApiResponse.withSuccess(response);
 
      } catch (e) {
 
-       print("ANimeshshshsh0"+e.toString());
+       print("ANimeshshshsh0$e");
        return ApiResponse.withError(ApiErrorHandler.getMessage(e));
     }
   }

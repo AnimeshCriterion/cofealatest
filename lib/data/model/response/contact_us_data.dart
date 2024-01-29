@@ -10,8 +10,8 @@ class ContactUsData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['message'] = this.message;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['message'] = message;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
@@ -35,11 +35,11 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['address'] = this.address;
-    data['email'] = this.email;
-    data['phone'] = this.phone;
-    data['maplink'] = this.maplink;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['address'] = address;
+    data['email'] = email;
+    data['phone'] = phone;
+    data['maplink'] = maplink;
     return data;
   }
 }
