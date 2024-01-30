@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage>  {
                           child: IconButton(
                             onPressed: () {
                               //  Navigator.push(context, MaterialPageRoute(builder: (_) => GiftVoucherScreen()));
-                              Navigator.push(context, MaterialPageRoute(builder: (_) => CartScreen()));
+                              Navigator.push(context, MaterialPageRoute(builder: (_) => const CartScreen()));
                             },
                             icon: Stack(clipBehavior: Clip.none, children: [
                               Image.asset(
@@ -170,12 +170,12 @@ class _HomePageState extends State<HomePage>  {
                         pinned: true,
                         delegate: SliverDelegate(
                             child: InkWell(
-                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SearchScreen())),
+                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SearchScreen())),
                               child: Container(padding: const EdgeInsets.symmetric(
                                   horizontal: Dimensions.HOME_PAGE_PADDING, vertical: Dimensions.PADDING_SIZE_SMALL),
                                 color: ColorResources.getHomeBg(context),
                                 alignment: Alignment.center,
-                                child: Container(padding: EdgeInsets.only(
+                                child: Container(padding: const EdgeInsets.only(
                                   left: Dimensions.HOME_PAGE_PADDING, right: Dimensions.PADDING_SIZE_EXTRA_SMALL,
                                   top: Dimensions.PADDING_SIZE_EXTRA_SMALL, bottom: Dimensions.PADDING_SIZE_EXTRA_SMALL,
                                 ),
@@ -206,8 +206,8 @@ class _HomePageState extends State<HomePage>  {
                             Dimensions.PADDING_SIZE_SMALL, Dimensions.PADDING_SIZE_DEFAULT, Dimensions.PADDING_SIZE_SMALL  ),
                         child: Column(
                           children: [
-                            BannersView(),
-                            SizedBox(height: Dimensions.HOME_PAGE_PADDING),
+                            const BannersView(),
+                            const SizedBox(height: Dimensions.HOME_PAGE_PADDING),
 
 
 
@@ -215,11 +215,11 @@ class _HomePageState extends State<HomePage>  {
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_EXTRA_SMALL,vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                               child: TitleRow(title: getTranslated('CATEGORY', context),
-                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AllCategoryScreen()))),
+                                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AllCategoryScreen()))),
                             ),
-                            SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
+                            const SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
                               child: CategoryView(isHomePage: true),
                             ),
 
@@ -231,25 +231,25 @@ class _HomePageState extends State<HomePage>  {
                             Consumer<FlashDealProvider>(
                               builder: (context, flashDeal, child) {
                                 return  (flashDeal.flashDeal != null
-                                    && flashDeal.flashDealList.length > 0)
+                                    && flashDeal.flashDealList.isNotEmpty)
                                     ? TitleRow(title: getTranslated('flash_deal', context),
                                   eventDuration: flashDeal.flashDeal != null ? flashDeal.duration : null,
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (_) => FlashDealScreen()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (_) => const FlashDealScreen()));
                                   },isFlash: true,
                                 )
-                                    : SizedBox.shrink();
+                                    : const SizedBox.shrink();
                               },
                             ),
-                            SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                            const SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
                             Consumer<FlashDealProvider>(
                               builder: (context, megaDeal, child) {
-                                return  (megaDeal.flashDeal != null && megaDeal.flashDealList.length > 0)
+                                return  (megaDeal.flashDeal != null && megaDeal.flashDealList.isNotEmpty)
                                     ? Container(height: MediaQuery.of(context).size.width*.77,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
+                                    child: const Padding(
+                                      padding: EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
                                       child: FlashDealsView(),
-                                    )) : SizedBox.shrink();},),
+                                    )) : const SizedBox.shrink();},),
 
 
 
@@ -261,22 +261,22 @@ class _HomePageState extends State<HomePage>  {
                               padding: const EdgeInsets.only(left: Dimensions.PADDING_SIZE_EXTRA_SMALL, right: Dimensions.PADDING_SIZE_EXTRA_SMALL,
                                   bottom: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                               child: TitleRow(title: getTranslated('brand', context),
-                                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => AllBrandScreen()));}),
-                            ):SizedBox(),
+                                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => const AllBrandScreen()));}),
+                            ):const SizedBox(),
                             SizedBox(height: Provider.of<SplashProvider>(context, listen: false).configModel!.brandSetting == "1"?Dimensions.PADDING_SIZE_SMALL: 0),
                             Provider.of<SplashProvider>(context, listen: false).configModel!.brandSetting == "1"?
-                            BrandView(isHomePage: true) : SizedBox(),
+                            const BrandView(isHomePage: true) : const SizedBox(),
 
 
 
                             //top seller
-                            singleVendor?SizedBox():
+                            singleVendor?const SizedBox():
                             TitleRow(title: getTranslated('top_seller', context),
-                              onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => AllTopSellerScreen(topSeller: null,)));},),
-                            singleVendor?SizedBox(height: 0):SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
-                            singleVendor?SizedBox():
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
+                              onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => const AllTopSellerScreen(topSeller: null,)));},),
+                            singleVendor?const SizedBox(height: 0):const SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+                            singleVendor?const SizedBox():
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
                               child: TopSellerView(isHomePage: true),
                             ),
 
@@ -286,11 +286,11 @@ class _HomePageState extends State<HomePage>  {
 
                             //footer banner
                             Consumer<BannerProvider>(builder: (context, footerBannerProvider, child){
-                              return footerBannerProvider.footerBannerList != null && footerBannerProvider.footerBannerList!.length > 0?
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
+                              return footerBannerProvider.footerBannerList != null && footerBannerProvider.footerBannerList!.isNotEmpty?
+                              const Padding(
+                                padding: EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
                                 child: FooterBannersView(index: 0,),
-                              ):SizedBox();
+                              ):const SizedBox();
                             }),
 
 
@@ -300,7 +300,7 @@ class _HomePageState extends State<HomePage>  {
                             // Featured Products
                             Consumer<ProductProvider>(
                                 builder: (context, featured,_) {
-                                  return featured.featuredProductList.length>0 ?
+                                  return featured.featuredProductList.isNotEmpty ?
                                   Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL,vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
                                     child: Padding(
@@ -308,7 +308,7 @@ class _HomePageState extends State<HomePage>  {
                                       child: TitleRow(title: getTranslated('featured_products', context),
                                           onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => AllProductScreen(productType: ProductType.featuredProduct)));}),
                                     ),
-                                  ):SizedBox();
+                                  ):const SizedBox();
                                 }
                             ),
 
@@ -325,26 +325,26 @@ class _HomePageState extends State<HomePage>  {
                             // Featured Deal
                             Consumer<FeaturedDealProvider>(
                               builder: (context, featuredDealProvider, child) {
-                                return featuredDealProvider.featuredDealProductList.length >0 ?
+                                return featuredDealProvider.featuredDealProductList.isNotEmpty ?
                                 Padding(padding: const EdgeInsets.only(bottom: Dimensions.PADDING_SIZE_SMALL),
                                   child: TitleRow(title: getTranslated('featured_deals', context),
-                                      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => FeaturedDealScreen()));}),
-                                ) : SizedBox.shrink();},),
+                                      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (_) => const FeaturedDealScreen()));}),
+                                ) : const SizedBox.shrink();},),
 
                             Consumer<FeaturedDealProvider>(
                               builder: (context, featuredDealProvider, child) {
-                                return featuredDealProvider.featuredDealProductList.length >0 ?
+                                return featuredDealProvider.featuredDealProductList.isNotEmpty ?
                                 Container(height: featuredDealProvider.featuredDealProductList.length> 4 ? 120 * 4.0 : 120 * (double.parse(featuredDealProvider.featuredDealProductList.length.toString())),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
+                                    child: const Padding(
+                                      padding: EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
                                       child: FeaturedDealsView(),
-                                    )) : SizedBox.shrink();},),
+                                    )) : const SizedBox.shrink();},),
 
 
 
 
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
                               child: RecommendedProductView(),
                             ),
 
@@ -355,11 +355,11 @@ class _HomePageState extends State<HomePage>  {
                             //footer banner
                             Consumer<BannerProvider>(builder: (context, footerBannerProvider, child){
                               return footerBannerProvider.mainSectionBannerList != null &&
-                                  footerBannerProvider.mainSectionBannerList!.length > 0?
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
+                                  footerBannerProvider.mainSectionBannerList!.isNotEmpty?
+                              const Padding(
+                                padding: EdgeInsets.only(bottom: Dimensions.HOME_PAGE_PADDING),
                                 child: MainSectionBannersView(index: 0,),
-                              ):SizedBox();
+                              ):const SizedBox();
 
                             }),
 
@@ -457,7 +457,7 @@ class _HomePageState extends State<HomePage>  {
                   child: Consumer<SplashProvider>(
                     builder: (context, announcement, _){
                       return (announcement.configModel!.announcement!.announcement != null && announcement.onOff)?
-                      AnnouncementScreen(announcement: announcement.configModel!.announcement):SizedBox();
+                      AnnouncementScreen(announcement: announcement.configModel!.announcement):const SizedBox();
                     },
 
                   ),

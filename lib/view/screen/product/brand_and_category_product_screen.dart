@@ -75,7 +75,6 @@ class BrandAndCategoryProductScreen extends StatefulWidget {
         body: Consumer<ProductProvider>(
           builder: (context, productProvider, child) {
             return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-
             widget.isBrand?  CustomAppBar(title: widget.name,
 
               ):CustomAppBar(title: widget.name.toString()+" ("+productProvider.brandOrCategoryProductList.length.toString()+")",
@@ -100,10 +99,12 @@ class BrandAndCategoryProductScreen extends StatefulWidget {
                 child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
                   FadeInImage.assetNetwork(
                     placeholder: Images.placeholder, width: 80, height: 80, fit: BoxFit.cover,
-                    image: '${Provider.of<SplashProvider>(context,listen: false).baseUrls!.brandImageUrl}/$widget.image',
+                    image: Provider.of<SplashProvider>(context,listen: false).baseUrls!.brandImageUrl.toString()+"/"+widget.image.toString(),
                     imageErrorBuilder: (c, o, s) => Image.asset(Images.placeholder, width: 80, height: 80, fit: BoxFit.cover),
                   ),
-                  const SizedBox(width: Dimensions.paddingSizeSmall),
+
+
+                 const SizedBox(width: Dimensions.paddingSizeSmall),
 
 
                   Text(widget.name!, style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeLarge)),

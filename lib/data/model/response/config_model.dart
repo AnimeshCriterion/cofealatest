@@ -473,6 +473,8 @@ class BaseUrls {
     _notificationImageUrl = json['notification_image_url'];
     _digitalProductUrl = json['digital_product_url'];
     _deliveryManImage = json['delivery_man_image_url'];
+
+    print("BranchImageUrl"+_brandImageUrl.toString());
   }
 
   Map<String, dynamic> toJson() {
