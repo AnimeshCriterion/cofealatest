@@ -39,6 +39,7 @@ import 'package:flutter_sixvalley_ecommerce/provider/wishlist_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/theme/dark_theme.dart';
 import 'package:flutter_sixvalley_ecommerce/theme/light_theme.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/app_constants.dart';
+import 'package:flutter_sixvalley_ecommerce/view/screen/payment/payment_gateway_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/splash/splash_screen.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
