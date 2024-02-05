@@ -78,6 +78,10 @@ void languageDialogue(BuildContext context, bool isCurrency) {
                                 return InkWell(
                                   onTap: () async {
                                     Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+                                    Provider.of<LocalizationProvider>(context, listen: false).setLanguage(Locale(
+                                      AppConstants.languages[valueList.indexOf(value)].languageCode!,
+                                      AppConstants.languages[valueList.indexOf(value)].countryCode,
+                                    ));
                                     if (isCurrency) {
                                       Provider.of<SplashProvider>(context, listen: false).setCurrency(index!);
                                       print("Animesh2");
