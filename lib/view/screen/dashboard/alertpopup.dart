@@ -77,11 +77,19 @@ void languageDialogue(BuildContext context, bool isCurrency) {
                               children: valueList.map((value) {
                                 return InkWell(
                                   onTap: () async {
-                                    Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+                                await    Provider.of<SplashProvider>(context, listen: false).initConfig(context);
                                     Provider.of<LocalizationProvider>(context, listen: false).setLanguage(Locale(
                                       AppConstants.languages[valueList.indexOf(value)].languageCode!,
                                       AppConstants.languages[valueList.indexOf(value)].countryCode,
                                     ));
+                                Provider.of<CategoryProvider>(context, listen: false).getCategoryList(true);
+                                Provider.of<HomeCategoryProductProvider>(context, listen: false).getHomeCategoryProductList(true);
+                                Provider.of<TopSellerProvider>(context, listen: false).getTopSellerList(true);
+                                Provider.of<BrandProvider>(context, listen: false).getBrandList(true);
+                                Provider.of<ProductProvider>(context, listen: false).getLatestProductList(1, reload: true);
+                                Provider.of<ProductProvider>(context, listen: false).getFeaturedProductList('1', reload: true);
+                                Provider.of<FeaturedDealProvider>(context, listen: false).getFeaturedDealList(true);
+                                Provider.of<ProductProvider>(context, listen: false).getLProductList('1', reload: true);
                                     if (isCurrency) {
                                       Provider.of<SplashProvider>(context, listen: false).setCurrency(index!);
                                       print("Animesh2");
@@ -110,15 +118,8 @@ void languageDialogue(BuildContext context, bool isCurrency) {
                                         Phoenix.rebirth(context);
                                         print("Animesh0");
                                       };
-                                      Provider.of<CategoryProvider>(context, listen: false).getCategoryList(true);
-                                      Provider.of<HomeCategoryProductProvider>(context, listen: false).getHomeCategoryProductList(true);
-                                      Provider.of<TopSellerProvider>(context, listen: false).getTopSellerList(true);
-                                      Provider.of<BrandProvider>(context, listen: false).getBrandList(true);
-                                      Provider.of<ProductProvider>(context, listen: false).getLatestProductList(1, reload: true);
-                                      Provider.of<ProductProvider>(context, listen: false).getFeaturedProductList('1', reload: true);
-                                      Provider.of<FeaturedDealProvider>(context, listen: false).getFeaturedDealList(true);
-                                      Provider.of<ProductProvider>(context, listen: false).getLProductList('1', reload: true);
-                                      Provider.of<SplashProvider>(context, listen: false).initConfig(context);
+
+                                   // //   Provider.of<SplashProvider>(context, listen: false).initConfig(context);
                                     }
                                     // Navigator.pop(context);
                                   },

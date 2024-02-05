@@ -54,7 +54,7 @@ class ProductRepo {
   }
 
   Future<ApiResponse> getBrandOrCategoryProductList(bool isBrand, String id) async {
-    print("CheckkkkkID"+id.toString());
+    print("CheckkkkkID$id");
      try {
       String uri;
       final response;
@@ -74,7 +74,7 @@ class ProductRepo {
          response = await dioClient!.post(uri, );
       }
 
-      print("ANimeshshshsh0"+uri.toString());
+      print("ANimeshshshsh0$uri");
       return ApiResponse.withSuccess(response);
 
      } catch (e) {
@@ -91,10 +91,10 @@ class ProductRepo {
     try {
       String uri;
       final response;
-      print("AnimeshCheckBackinApi"+selectedBrands.toString().replaceAll("[", "").replaceAll("]", ""));
-      print("AnimeshCheckBackinApi"+selectedTypes.toString().replaceAll("[", "").replaceAll("]", ""));
-      print("AnimeshCheckBackinApi"+selectedOrigin.toString().replaceAll("[", "").replaceAll("]", ""));
-      print("AnimeshCheckBackinApi"+selectedIntencity.toString().replaceAll("[", "").replaceAll("]", ""));
+      print("AnimeshCheckBackinApi${selectedBrands.toString().replaceAll("[", "").replaceAll("]", "")}");
+      print("AnimeshCheckBackinApi${selectedTypes.toString().replaceAll("[", "").replaceAll("]", "")}");
+      print("AnimeshCheckBackinApi${selectedOrigin.toString().replaceAll("[", "").replaceAll("]", "")}");
+      print("AnimeshCheckBackinApi${selectedIntencity.toString().replaceAll("[", "").replaceAll("]", "")}");
         uri = '${AppConstants.categoryProductUri}$id';
         var body=   {
           "selectedBrands":selectedBrands.toString().replaceAll("[", "").replaceAll("]", ""),
@@ -103,7 +103,7 @@ class ProductRepo {
           "types":selectedTypes.toString().replaceAll("[", "").replaceAll("]", "")
         };
 
-        print("Request"+body.toString());
+        print("Request$body");
         response = await dioClient!.post(uri,data:body );
 
 
@@ -111,7 +111,7 @@ class ProductRepo {
       return ApiResponse.withSuccess(response);
 
     } catch (e) {
-      print("ANimeshshshsh0"+e.toString());
+      print("ANimeshshshsh0$e");
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));
     }
   }
@@ -144,6 +144,7 @@ class ProductRepo {
         AppConstants.latestProductUri+offset,);
       return ApiResponse.withSuccess(response);
     } catch (e) {
+      print("Animesh Singh$e");
       return ApiResponse.withError(ApiErrorHandler.getMessage(e));
     }
   }
