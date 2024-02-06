@@ -72,7 +72,7 @@ class _OrderScreenState extends State<OrderScreen> {
               }
               return Expanded(
                 child: RefreshIndicator(
-                  backgroundColor: Theme.of(context).primaryColor,
+                  backgroundColor: Theme.of(context).cardColor,
                   onRefresh: () async {
                     await Provider.of<OrderProvider>(context, listen: false).initOrderList(context);
                     },

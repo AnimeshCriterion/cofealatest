@@ -145,7 +145,7 @@ class OrderModel {
       _sellerId = json['seller_id'];
     }
     _shippingMethodId = int.parse(json['shipping_method_id'].toString());
-    _shippingCost = double.parse(json['payment_method_amount'].toString());
+    _shippingCost = double.parse(json['shipping_cost'].toString());
     if(json['created_at'] != null){
       _createdAt = json['created_at'];
     }
