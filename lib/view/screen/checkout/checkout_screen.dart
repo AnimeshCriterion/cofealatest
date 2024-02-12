@@ -274,55 +274,58 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
                                 // if it is mounted then go to result screen, time is off bro..
 
-                            // getx.Get.to(  PaymentScreen(
+                            getx.Get.to(  PaymentScreen(
+                              customerID: userID,
+                              addressID: widget.onlyDigital! ? '' :
+                              Provider
+                                  .of<ProfileProvider>(
+                                  context, listen: false)
+                                  .addressList[Provider
+                                  .of<OrderProvider>(context, listen: false)
+                                  .addressIndex!].id.toString(),
+                              couponCode: Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .discount != null ? Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .coupon!=null?Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .coupon!.code!:"0" : '',
+                              billingId: _billingAddress! ?
+                              Provider
+                                  .of<ProfileProvider>(
+                                  context, listen: false)
+                                  .billingAddressList[Provider
+                                  .of<OrderProvider>(context, listen: false)
+                                  .billingAddressIndex!].id.toString() :
+                              widget.onlyDigital! ? '' :
+                              Provider
+                                  .of<ProfileProvider>(
+                                  context, listen: false)
+                                  .addressList[Provider
+                                  .of<OrderProvider>(context, listen: false)
+                                  .addressIndex!].id.toString(),
+                              orderNote: orderNote,
+                              walletBalance: Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .walletDiscount
+                                  .toString(),
+                              voucharCode: Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .vouchar!=null? Provider
+                                  .of<CouponProvider>(
+                                  context, listen: false)
+                                  .vouchar!.code:"0",
+
+                            ));
+                            // getx.Get.to(PaymentGateWayScreen(
                             //   customerID: userID,
-                            //   addressID: widget.onlyDigital! ? '' :
-                            //   Provider
-                            //       .of<ProfileProvider>(
-                            //       context, listen: false)
-                            //       .addressList[Provider
-                            //       .of<OrderProvider>(context, listen: false)
-                            //       .addressIndex!].id.toString(),
-                            //   couponCode: Provider
-                            //       .of<CouponProvider>(
-                            //       context, listen: false)
-                            //       .discount != null ? Provider
-                            //       .of<CouponProvider>(
-                            //       context, listen: false)
-                            //       .coupon!=null?Provider
-                            //       .of<CouponProvider>(
-                            //       context, listen: false)
-                            //       .coupon!.code!:"0" : '',
-                            //   billingId: _billingAddress! ?
-                            //   Provider
-                            //       .of<ProfileProvider>(
-                            //       context, listen: false)
-                            //       .billingAddressList[Provider
-                            //       .of<OrderProvider>(context, listen: false)
-                            //       .billingAddressIndex!].id.toString() :
-                            //   widget.onlyDigital! ? '' :
-                            //   Provider
-                            //       .of<ProfileProvider>(
-                            //       context, listen: false)
-                            //       .addressList[Provider
-                            //       .of<OrderProvider>(context, listen: false)
-                            //       .addressIndex!].id.toString(),
-                            //   orderNote: orderNote,
-                            //   walletBalance: Provider
-                            //       .of<CouponProvider>(
-                            //       context, listen: false)
-                            //       .walletDiscount
-                            //       .toString(),
-                            //   voucharCode: Provider
-                            //       .of<CouponProvider>(
-                            //       context, listen: false)
-                            //       .vouchar!=null? Provider
-                            //       .of<CouponProvider>(
-                            //       context, listen: false)
-                            //       .vouchar!.code:"0",
-                            //
+                            //   billingId: ,
                             // ));
-                            getx.Get.to(PaymentGateWayScreen(customerId:userID,));
 
                                 // Navigator.pushReplacement(
                                 //     context, MaterialPageRoute(builder: (_) =>

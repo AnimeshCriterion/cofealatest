@@ -9,8 +9,21 @@ import 'package:http/http.dart' as http;
 
 
 class PaymentGateWayScreen extends StatefulWidget {
-  String? customerId;
-   PaymentGateWayScreen({Key? key, required this.customerId}) : super(key: key);
+  final String? addressID;
+  final String? billingId;
+  final String? orderNote;
+  final String? customerID;
+  final String? couponCode;
+  final String? walletBalance;
+  final String? voucharCode;
+
+  const PaymentGateWayScreen(   {Key? key, @required this.addressID,
+    @required this.customerID,
+    @required this.couponCode,
+    @required this.billingId,
+    this.orderNote,
+    this.walletBalance,
+    this.voucharCode}) : super(key: key);
 
   @override
   State<PaymentGateWayScreen> createState() => _HomeScreenState();
@@ -77,12 +90,12 @@ class _HomeScreenState extends State<PaymentGateWayScreen> implements PaymentDel
 
   @override
   void errorCallback(String paymentStatus) {
-    print("Error"+paymentStatus.toString());
+    print("Error$paymentStatus");
   }
 
   @override
   void beforeRedirect(String paymentStatus) {
-    print("BeforeRedirect"+paymentStatus.toString());
+    print("BeforeRedirect$paymentStatus");
   }
 
   @override
@@ -112,17 +125,24 @@ class _HomeScreenState extends State<PaymentGateWayScreen> implements PaymentDel
       'Content-Type': 'application/json',
       'Cookie': 'Cookie_1=value; Cookie_2=value'
     };
-    var request = http.Request('POST', Uri.parse('https://test.cofea.com/api/v1/apple_session'));
-    request.body = json.encode({
-      "amount": 10,
-      "customer_id": widget.customerId.toString(),
-      "customer_email": "mail@gmail.com",
-      "customer_first_name": "first name",
-      "customer_last_name": "last name",
-      "customer_phone": 123456,
-      "order_no":Random().nextInt(10),
-      "pg_code": "knet-test"
-    });
+    var request = http.Request('POST', Uri.parse('https://test.cofea.com/api/v1/get_session'));
+    request.body = json.encode(
+        {
+          "amount":100,
+          "customer_id":widget.customerID.toString(),
+          "customer_email":"fsyed97@gmail.com",
+          "customer_first_name":"faraz",
+          "customer_last_name":"syed",
+          "customer_phone":123456,
+          "mobile_wallet_discount":widget.walletBalance,
+          "mobile_gift_voucher":25,
+          "giftVoucherCode":widget.voucharCode.toString(),
+          "mobile_coupon_discount":10,
+          "coupon_code":widget.couponCode.toString(),
+          "billing_address_id":widget.billingId.toString(),
+          "pg_code":"knet-test"
+        }
+    );
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
@@ -131,7 +151,7 @@ class _HomeScreenState extends State<PaymentGateWayScreen> implements PaymentDel
       var data=jsonDecode(await await response.stream.bytesToString());
       setState(() {
         sessionID=data['session_id'].toString();
-        print("SessionDdd"+data['session_id'].toString());
+        print("SessionDdd${data['session_id']}");
       });
 
     }

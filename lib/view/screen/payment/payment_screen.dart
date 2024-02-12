@@ -278,10 +278,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
   }
 
   Future<bool> _exitApp(BuildContext context) async {
-    if (await controllerGlobal!.canGoBack()) {
-      controllerGlobal!.goBack();
-      return Future.value(false);
-    } else {
+    // if (await controllerGlobal!.canGoBack()) {
+    //   controllerGlobal!.goBack();
+    //   return Future.value(false);
+    // } else
+
+     {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (_) => const DashBoardScreen()),
           (route) => false);
