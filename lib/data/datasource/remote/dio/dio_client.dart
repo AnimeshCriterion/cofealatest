@@ -42,8 +42,8 @@ class DioClient {
 
   void updateHeader(String? token, String? countryCode) {
     token = token ?? this.token;
-    print("NImeshthth"+token.toString());
-    print("NImeshthth"+countryCode.toString());
+    print("NImeshthth$token");
+    print("NImeshthth$countryCode");
     countryCode = countryCode == null ? this.countryCode == 'US' ? 'en': this.countryCode!.toLowerCase(): countryCode == 'US' ? 'en' : countryCode.toLowerCase();
     this.token = token;
     this.countryCode = countryCode=="KW" || countryCode=="kw"?"SA":countryCode;

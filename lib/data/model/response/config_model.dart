@@ -36,8 +36,11 @@ class ConfigModel {
   int? _loyaltyPointMinimumPoint;
   String? _brandSetting;
   String? _digitalProductSetting;
+  String? _inhouseSelectedShippingType;
   bool? _cashOnDelivery;
   int? _deliveryCountryRestriction;
+  int? _customMinimumValue;
+  double? _customShippingCost;
   int? _deliveryZipCodeAreaRestriction;
   PaymentMethods? _paymentMethods;
 
@@ -54,6 +57,9 @@ class ConfigModel {
         StaticUrls? staticUrls,
         String? aboutUs,
         String? privacyPolicy,
+        int? customMinimumValue,
+        double? customShippingCost,
+        String? inhouseSelectedShippingType,
         List<Faq>? faq,
         String? termsConditions,
         RefundPolicy? refundPolicy,
@@ -98,6 +104,9 @@ class ConfigModel {
     _aboutUs = aboutUs;
     _privacyPolicy = privacyPolicy;
     _faq = faq;
+    _inhouseSelectedShippingType=inhouseSelectedShippingType;
+   _customMinimumValue=customMinimumValue;
+        _customShippingCost=customShippingCost;
     _termsConditions = termsConditions;
     if (refundPolicy != null) {
       _refundPolicy = refundPolicy;
@@ -202,6 +211,9 @@ class ConfigModel {
   int? get deliveryCountryRestriction => _deliveryCountryRestriction;
   int? get deliveryZipCodeAreaRestriction => _deliveryZipCodeAreaRestriction;
   PaymentMethods? get paymentMethods => _paymentMethods;
+  String? get getInhouseSelectedShippingType=>_inHouseSelectedShippingType;
+  double? get getcustomShippingCost=>_customShippingCost;
+  int? get getcustomMinimumValue=>_customMinimumValue;
 
 
 
@@ -246,6 +258,9 @@ class ConfigModel {
     _emailVerification = json['email_verification'];
     _phoneVerification = json['phone_verification'];
     _countryCode = json['country_code'];
+    _customShippingCost=json['custom_shipping_cost'];
+    _customMinimumValue=json['custom_minimum_value'];
+    _inhouseSelectedShippingType=json['inhouse_selected_shipping_type'];
     if (json['social_login'] != null) {
       _socialLogin = [];
       json['social_login'].forEach((v) { _socialLogin!.add(SocialLogin.fromJson(v)); });

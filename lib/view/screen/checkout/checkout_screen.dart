@@ -32,7 +32,7 @@ class CheckoutScreen extends StatefulWidget {
   final List<CartModel>? cartList;
   final bool? fromProductDetails;
   final double? totalOrderAmount;
-  final double? shippingFee;
+   double? shippingFee;
   final double? discount;
   final double? tax;
   final int? sellerId;
@@ -91,6 +91,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     _cod = Provider.of<SplashProvider>(context, listen: false).configModel!.cod;
     Provider.of<CouponProvider>(context, listen: false).sewallet = 0.0;
     _billingAddress = Provider.of<SplashProvider>(context, listen: false).configModel!.billingAddress == 1;
+
   }
 
 
@@ -101,6 +102,20 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     // setState(() {
     //   getWalletbalance();
     // });
+    print("Animesh541651"+_order.toString());
+    if( Provider.of<SplashProvider>(context, listen: false).configModel!.inHouseSelectedShippingType.toString()=="custom_flat_rate_shipping"){
+      print("Animesh541651${PriceConverter
+          .convertPrice(context, _order)}");
+      if(_order< double.parse(Provider.of<SplashProvider>(context, listen: false).configModel!.getcustomMinimumValue.toString())){
+       widget.shippingFee=Provider.of<SplashProvider>(context, listen: false).configModel!.getcustomShippingCost
+
+
+
+       ;
+      }
+
+
+    }
     return Scaffold(
 
       resizeToAvoidBottomInset: true,
