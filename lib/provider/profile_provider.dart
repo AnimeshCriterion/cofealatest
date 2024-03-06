@@ -199,6 +199,17 @@ class ProfileProvider extends ChangeNotifier {
     }
   }
 
+
+  void hitLoadAfterSucess(BuildContext context,String orderId) async {
+      ApiResponse apiResponse = await profileRepo!.loadHitAfterSuccess(orderId);
+      if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+      } else {
+        ApiChecker.checkApi( apiResponse);
+      }
+      notifyListeners();
+
+  }
+
   Future addAddress(AddressModel addressModel, Function callback) async {
     _isLoading = true;
     notifyListeners();

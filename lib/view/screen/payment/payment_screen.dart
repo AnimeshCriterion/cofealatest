@@ -8,7 +8,10 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_app_bar.dart'
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/custom_loader.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/my_dialog.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/dashboard/dashboard_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+import '../../../provider/profile_provider.dart';
 
 class PaymentScreen extends StatefulWidget {
   final String? addressID;
@@ -108,10 +111,23 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         bool _isError = url.contains('error');
 
                         if (_isSuccess) {
-                          Navigator.of(context).pushAndRemoveUntil(
+                          if(url.contains("order_no")){
+                             String str = url;
+                            const start = "order_no=";
+                            const end = "&reference_number";
+
+                            final startIndex = str.indexOf(start);
+                            final endIndex = str.indexOf(end, startIndex + start.length);
+
+                            print(str.substring(startIndex + start.length, endIndex)); // brown
+                            Provider.of<ProfileProvider>(context, listen: false).hitLoadAfterSucess(context,str.substring(startIndex + start.length, endIndex));
+
+                          }
+                           Navigator.of(context).pushAndRemoveUntil(
                               MaterialPageRoute(
                                   builder: (_) => const DashBoardScreen()),
                               (route) => false);
+
                           showAnimatedDialog(
                               context,
                               MyDialog(

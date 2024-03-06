@@ -27,6 +27,7 @@ class AppConstants {
   static const String removeWishListUri = '/api/v1/customer/wish-list/remove?product_id=';
   static const String updateProfileUri = '/api/v1/customer/update-profile';
   static const String customerUri = '/api/v1/customer/info';
+  static const String loadafterSuccess = '/api/v1/LoadAfterSuccess?order_id=';
   static const String addressListUri = '/api/v1/customer/address/list';
   static const String removeAddressUri = '/api/v1/customer/address?address_id=';
   static const String addAddressUri = '/api/v1/customer/address/add';

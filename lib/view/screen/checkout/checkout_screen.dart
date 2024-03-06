@@ -107,11 +107,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       print("Animesh541651${PriceConverter
           .convertPrice(context, _order)}");
       if(_order< double.parse(Provider.of<SplashProvider>(context, listen: false).configModel!.getcustomMinimumValue.toString())){
-       widget.shippingFee=Provider.of<SplashProvider>(context, listen: false).configModel!.getcustomShippingCost
-
-
-
-       ;
+       widget.shippingFee=Provider.of<SplashProvider>(context, listen: false).configModel!.getcustomShippingCost;
       }
 
 

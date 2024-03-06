@@ -40,6 +40,16 @@ class ProfileRepo {
     }
   }
 
+
+  Future<ApiResponse> loadHitAfterSuccess(String orderId) async {
+    try {
+      final response = await dioClient!.post(AppConstants.loadafterSuccess+orderId.toString());
+      return ApiResponse.withSuccess(response);
+    } catch (e) {
+      return ApiResponse.withError(ApiErrorHandler.getMessage(e));
+    }
+  }
+
   Future<ApiResponse> deleteUserAccount(int? customerId) async {
     try {
       final response = await dioClient!.get('${AppConstants.deleteCustomerAccount}/$customerId');
