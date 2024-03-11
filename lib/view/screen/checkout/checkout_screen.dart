@@ -1093,12 +1093,25 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                       profile.getUserWalletBalance(context)
                                           .then((value) {
                                         print("object$_order");
+                                        double _couponDiscount = Provider
+                                            .of<CouponProvider>(context,listen: false)
+                                            .discount! != null ?
+                                        Provider
+                                            .of<CouponProvider>(context,listen: false)
+                                            .discount! : 0;
+                                        double subtotal=double.parse(PriceConverter.convertPrice(context,
+                                            (_order + widget.shippingFee! -
+                                                Provider
+                                                    .of<CouponProvider>(
+                                                    context, listen: false)
+                                                    .walletDiscount - _couponDiscount +
+                                                widget.tax!)).replaceAll("KD", ""));
 
                                         if (double.parse(
                                             _walletcontroller.text) < value! &&
                                             double.parse(
                                                 _walletcontroller.text) <
-                                                _order) {
+                                                subtotal) {
                                           Provider
                                               .of<CouponProvider>(
                                               context, listen: false)
@@ -1120,7 +1133,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                               .showSnackBar(
                                               const SnackBar(
                                                 content: Text(
-                                                  'Amount should be lesser than the wallet amount',),
+                                                  'Wallet amount should be less than Total Amount.',),
                                                 backgroundColor: Colors.red,
                                               ));
                                         }
