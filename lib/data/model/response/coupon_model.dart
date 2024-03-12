@@ -134,8 +134,8 @@ class VoucharModel {
     startDate = json['start_date'];
     expireDate = json['expire_date'];
     minPurchase = json['min_purchase'];
-    maxDiscount = json['max_discount'];
-    discount = json['discount'];
+    maxDiscount = double.parse(json['max_discount'].toString());
+    discount = double.parse(json['discount'].toString());
     discountType = json['discount_type'];
     status = json['status'];
     createdAt = json['created_at'];
