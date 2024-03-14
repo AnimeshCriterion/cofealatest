@@ -101,7 +101,7 @@ class VoucharModel {
   String? code="0";
   String? startDate;
   String? expireDate;
-  int? minPurchase;
+  double? minPurchase;
   double? maxDiscount;
   double? discount;
   String? discountType;
@@ -133,7 +133,7 @@ class VoucharModel {
     code = json['code'];
     startDate = json['start_date'];
     expireDate = json['expire_date'];
-    minPurchase = json['min_purchase'];
+    minPurchase = double.parse(json['min_purchase'].toString());
     maxDiscount = double.parse(json['max_discount'].toString());
     discount = double.parse(json['discount'].toString());
     discountType = json['discount_type'];

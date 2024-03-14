@@ -258,8 +258,8 @@ class ConfigModel {
     _emailVerification = json['email_verification'];
     _phoneVerification = json['phone_verification'];
     _countryCode = json['country_code'];
-    _customShippingCost=json['custom_shipping_cost'];
-    _customMinimumValue=json['custom_minimum_value'];
+    _customShippingCost=double.parse(json['custom_shipping_cost'].toString());
+    _customMinimumValue=int.parse(json['custom_minimum_value'].toString());
     _inhouseSelectedShippingType=json['inhouse_selected_shipping_type'];
     if (json['social_login'] != null) {
       _socialLogin = [];
