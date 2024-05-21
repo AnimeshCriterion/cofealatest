@@ -7,8 +7,9 @@ import 'package:flutter_sixvalley_ecommerce/utill/dimensions.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/no_internet_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/product_shimmer.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/product_widget.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
+import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
+import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
 class ProductView extends StatelessWidget {
   final bool isHomePage;

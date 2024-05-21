@@ -25,11 +25,11 @@ dependencies:
   shared_preferences: ^2.0.5
   fancy_bottom_navigation: ^0.3.3
   carousel_slider: ^4.0.0-nullsafety.0
-  flutter_staggered_grid_view:
+  staggered_grid_view_flutter:
   shimmer: ^2.0.0-nullsafety.0
   upgrader:
   url_launcher:
-  ottu: ^0.1.5
+  ottu:
   image_picker:
   webview_flutter:
   flutter_html: ^3.0.0-alpha.3
@@ -65,7 +65,7 @@ dependencies:
   get:
   flutter_inappwebview:
   path:
-  cached_network_image: ^3.3.1
+  cached_network_image:
   http_parser:
   google_maps_webservice: ^0.0.19
 

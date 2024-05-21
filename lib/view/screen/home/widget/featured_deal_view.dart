@@ -24,7 +24,7 @@ class FeaturedDealsView extends StatelessWidget {
         ListView.builder(
           padding: const EdgeInsets.all(0),
           scrollDirection: Axis.vertical,
-          physics: const NeverScrollableScrollPhysics(),
+          physics: isHomePage?const NeverScrollableScrollPhysics():BouncingScrollPhysics(),
           itemCount: featuredDealProvider.featuredDealProductList.length >4 && isHomePage ?
           4 : featuredDealProvider.featuredDealProductList.length,
           itemBuilder: (context, index) {
@@ -85,21 +85,21 @@ class FeaturedDealsView extends StatelessWidget {
                             ),
                             const SizedBox(height: Dimensions.paddingSizeSmall),
 
-                            Row(children: [
-                              Text(
-                                featuredDealProvider.featuredDealProductList[index].rating != null && featuredDealProvider.featuredDealProductList[index].rating!.isNotEmpty?
-                                double.parse(featuredDealProvider.featuredDealProductList[index].rating![0].average!).toStringAsFixed(1) : '0.0',
-                                style: robotoRegular.copyWith(color: Provider.of<ThemeProvider>(context).darkTheme ? Colors.white : Colors.orange, fontSize: Dimensions.fontSizeSmall),
-                              ),
-                              Icon(Icons.star, color: Provider.of<ThemeProvider>(context).darkTheme ?
-                              Colors.white : Colors.orange, size: 15),
-                              Text('(${featuredDealProvider.featuredDealProductList[index].reviewCount.toString()})',
-                                  style: robotoRegular.copyWith(
-                                    color: Provider.of<ThemeProvider>(context).darkTheme ? Colors.white : Colors.orange,
-                                    fontSize: Dimensions.fontSizeSmall,
-                                  )),
-                            ]),
-                            const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+                            // Row(children: [
+                            //   Text(
+                            //     featuredDealProvider.featuredDealProductList[index].rating != null && featuredDealProvider.featuredDealProductList[index].rating!.isNotEmpty?
+                            //     double.parse(featuredDealProvider.featuredDealProductList[index].rating![0].average!).toStringAsFixed(1) : '0.0',
+                            //     style: robotoRegular.copyWith(color: Provider.of<ThemeProvider>(context).darkTheme ? Colors.white : Colors.orange, fontSize: Dimensions.fontSizeSmall),
+                            //   ),
+                            //   Icon(Icons.star, color: Provider.of<ThemeProvider>(context).darkTheme ?
+                            //   Colors.white : Colors.orange, size: 15),
+                            //   Text('(${featuredDealProvider.featuredDealProductList[index].reviewCount.toString()})',
+                            //       style: robotoRegular.copyWith(
+                            //         color: Provider.of<ThemeProvider>(context).darkTheme ? Colors.white : Colors.orange,
+                            //         fontSize: Dimensions.fontSizeSmall,
+                            //       )),
+                            // ]),
+                            // const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
 
 

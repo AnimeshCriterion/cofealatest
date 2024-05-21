@@ -9,7 +9,6 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/no_internet_screen.d
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/product_shimmer.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/search_widget.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/search/widget/search_product_widget.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 

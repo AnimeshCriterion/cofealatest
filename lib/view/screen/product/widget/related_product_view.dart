@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/product_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/product_shimmer.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/product_widget.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
+import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
+import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 
 class RelatedProductView extends StatelessWidget {
   const RelatedProductView({Key? key}) : super(key: key);
