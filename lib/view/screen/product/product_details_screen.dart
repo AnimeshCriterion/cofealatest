@@ -43,7 +43,6 @@ class _ProductDetailsState extends State<ProductDetails> {
   _loadData( BuildContext context) async{
     print("Check3"+widget.slug.toString());
     Provider.of<ProductDetailsProvider>(context, listen: false).getProductDetails(context, widget.slug.toString());
-
     Provider.of<ProductDetailsProvider>(context, listen: false).removePrevReview();
     Provider.of<ProductDetailsProvider>(context, listen: false).initProduct(widget.productId, widget.slug, context);
     Provider.of<ProductProvider>(context, listen: false).removePrevRelatedProduct();
@@ -52,6 +51,13 @@ class _ProductDetailsState extends State<ProductDetails> {
     Provider.of<ProductDetailsProvider>(context, listen: false).getSharableLink(widget.slug.toString(), context);
     if(Provider.of<AuthProvider>(context, listen: false).isLoggedIn()) {
       Provider.of<WishListProvider>(context, listen: false).checkWishList(widget.productId.toString(), context);
+
+
+    }
+
+
+    if(Provider.of<ProductDetailsProvider>(context, listen: false).productDetailsModel!.combo==1){
+      Provider.of<ProductDetailsProvider>(context, listen: false).getComboProducts(context, widget.productId.toString());
     }
 
 
@@ -115,7 +121,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: !details.isDetails?
                   Column(
                     children: [
-                  Text("Datattaaa"+details.productDetailsModel!.combo.toString()),
+                       Text("Datattaaa"+details.productDetailsModel!.combo.toString()),
                       ProductImageView(productModel: details.productDetailsModel),
 
                       Container(
