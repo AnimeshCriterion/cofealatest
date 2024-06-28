@@ -15,11 +15,14 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/show_custom_snakbar.
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
+import '../data/model/response/combo_product_datamodel.dart';
+
 class ProductDetailsProvider extends ChangeNotifier {
   final ProductDetailsRepo? productDetailsRepo;
   ProductDetailsProvider({required this.productDetailsRepo});
 
   List<ReviewModel>? _reviewList;
+  List<ComboProductDataModel>? _comboProduct;
   int? _imageSliderIndex;
   bool _wish = false;
   int? _quantity = 0;
@@ -54,17 +57,14 @@ class ProductDetailsProvider extends ChangeNotifier {
 
 
   Future<void> getProductDetails(BuildContext context, String productId) async {
-
     _isDetails = true;
     ApiResponse apiResponse = await productDetailsRepo!.getProduct(productId);
-
     if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
       _isDetails = false;
       _productDetailsModel = ProductDetailsModel.fromJson(apiResponse.response!.data);
       if(_productDetailsModel != null){
         Provider.of<ProductProvider>(Get.context!, listen: false).initSellerProductList(Provider.of<ProductDetailsProvider>(Get.context!, listen: false).productDetailsModel!.userId.toString(), 1, Get.context!);
       }
-
     } else {
       _isDetails = false;
       if(context.mounted){}
@@ -73,6 +73,25 @@ class ProductDetailsProvider extends ChangeNotifier {
     _isDetails = false;
     notifyListeners();
   }
+
+
+//combo
+  Future<void> getComboProducts(BuildContext context, String productId) async {
+    _isDetails = true;
+    ApiResponse apiResponse = await productDetailsRepo!.getComboProduct(productId);
+    if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+      _isDetails = false;
+      _comboProduct = [];
+      apiResponse.response!.data.forEach((reviewModel) => _comboProduct!.add(ComboProductDataModel.fromJson(reviewModel)));
+    } else {
+      _isDetails = false;
+      if(context.mounted){}
+      showCustomSnackBar(apiResponse.error.toString(), Get.context!);
+    }
+    _isDetails = false;
+    notifyListeners();
+  }
+
 
 
   Future<void> initProduct(int? productId,String? productSlug, BuildContext context) async {
