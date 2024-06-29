@@ -227,7 +227,7 @@ class SignUpWidgetState extends State<SignUpWidget> {
                     showDropDownButton: true,
                     padding: EdgeInsets.zero,
                     showFlagMain: true,
-                    textStyle: TextStyle(color: Theme.of(context).textTheme.headline1!.color),
+                    textStyle: TextStyle(color: Theme.of(context).textTheme.headlineMedium!.color),
 
                   ),
 

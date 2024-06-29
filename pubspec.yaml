@@ -50,7 +50,7 @@ dependencies:
   flutter_google_places:
   geocoding:
   geolocator:
-  flutter_typeahead:
+  flutter_typeahead: ^4.4.0
   marquee:
   flutter_rating_bar:
   flutter_widget_from_html:

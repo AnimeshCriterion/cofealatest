@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage>  {
     Provider.of<FillterProductsProvider>(Get.context!, listen: false).updateAllListData();
    List<String?> types =[getTranslated('new_arrival', context),getTranslated('top_product', context), getTranslated('best_selling', context),  getTranslated('discounted_product', context)];
     return UpgradeAlert(
-      upgrader: Upgrader(dialogStyle: UpgradeDialogStyle.cupertino),
+      upgrader: Upgrader(),
       child: Scaffold(
         backgroundColor: ColorResources.getHomeBg(context),
         resizeToAvoidBottomInset: false,

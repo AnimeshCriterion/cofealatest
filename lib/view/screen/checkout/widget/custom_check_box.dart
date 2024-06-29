@@ -24,7 +24,7 @@ class CustomCheckBox extends StatelessWidget {
             ),
             Expanded(
               child: Text(title!, style: titilliumRegular.copyWith(
-                color: order.paymentMethodIndex == index ? Theme.of(context).textTheme.bodyText1!.color : ColorResources.getGainsBoro(context),
+                color: order.paymentMethodIndex == index ? Theme.of(context).textTheme.bodySmall!.color : ColorResources.getGainsBoro(context),
               )),
             ),
           ]),

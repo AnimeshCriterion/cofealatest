@@ -134,7 +134,7 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> {
                             children: <TextSpan>[
                               TextSpan(text: getTranslated('ORDER_ID', context),
                                   style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE,
-                                    color: Theme.of(context).textTheme.bodyText1!.color,)),
+                                    color: Theme.of(context).textTheme.bodySmall!.color,)),
                               TextSpan(text: order.trackingModel!.id.toString(),
                                   style: titilliumRegular.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE,
                                       color: ColorResources.getPrimary(context))),
