@@ -23,8 +23,9 @@ class FeaturedDealsView extends StatelessWidget {
         return featuredDealProvider.featuredDealProductList.isNotEmpty ?
         ListView.builder(
           padding: const EdgeInsets.all(0),
+
           scrollDirection: Axis.vertical,
-          physics: isHomePage?const NeverScrollableScrollPhysics():BouncingScrollPhysics(),
+          physics: isHomePage?const NeverScrollableScrollPhysics():const BouncingScrollPhysics(),
           itemCount: featuredDealProvider.featuredDealProductList.length >4 && isHomePage ?
           4 : featuredDealProvider.featuredDealProductList.length,
           itemBuilder: (context, index) {
@@ -46,7 +47,6 @@ class FeaturedDealsView extends StatelessWidget {
                 ),
                 child: Stack(children: [
                   Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-
                     Expanded(
                       flex: 3,
                       child: Container(

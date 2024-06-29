@@ -3,7 +3,7 @@ import 'package:flutter_sixvalley_ecommerce/data/model/response/language_model.d
 class AppConstants {
   static const String appName = 'Cofea';
   static const String appVersion = '1.0';
-  static const String baseUrl = 'https://cofea.com/';
+  static const String baseUrl = 'https://test.cofea.com/';
   static const String userId = 'userId';
   static const String name = 'name';
   static const String categoriesUri = '/api/v1/categories';
@@ -116,6 +116,7 @@ class AppConstants {
   static const String fillterProductsOrigin = '/api/v1/product_origin/';
   static const String fillterIntencity = '/api/v1/intencity/';
   static const String fillterTypes = '/api/v1/types/';
+  static const String comboProduct = '/api/v1/products/details_combo/';
 
 
 

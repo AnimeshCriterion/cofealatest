@@ -20,6 +20,17 @@ class ProductDetailsRepo {
   }
 
 
+  Future<ApiResponse> getComboProduct(String productID) async {
+    try {
+      final response = await dioClient!.get(AppConstants.comboProduct+productID);
+      return ApiResponse.withSuccess(response);
+    } catch (e) {
+      return ApiResponse.withError(ApiErrorHandler.getMessage(e));
+    }
+  }
+
+
+
   Future<ApiResponse> getReviews(String productID) async {
     try {
       final response = await dioClient!.get(AppConstants.productReviewUri+productID);

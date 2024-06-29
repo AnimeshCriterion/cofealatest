@@ -51,7 +51,15 @@ class _ProductDetailsState extends State<ProductDetails> {
     Provider.of<ProductDetailsProvider>(context, listen: false).getSharableLink(widget.slug.toString(), context);
     if(Provider.of<AuthProvider>(context, listen: false).isLoggedIn()) {
       Provider.of<WishListProvider>(context, listen: false).checkWishList(widget.productId.toString(), context);
+
+
     }
+
+
+    if(Provider.of<ProductDetailsProvider>(context, listen: false).productDetailsModel!.combo==1){
+      Provider.of<ProductDetailsProvider>(context, listen: false).getComboProducts(context, widget.productId.toString());
+    }
+
 
 
 
@@ -69,7 +77,9 @@ class _ProductDetailsState extends State<ProductDetails> {
   Widget build(BuildContext context) {
     ScrollController _scrollController = ScrollController();
 
+
     return WillPopScope(
+
       onWillPop: () async{
         if(widget.isFromWishList){
           Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => const WishListScreen()));
@@ -104,13 +114,14 @@ class _ProductDetailsState extends State<ProductDetails> {
             child: Consumer<ProductDetailsProvider>(
 
               builder: (context, details, child) {
-       //       print("CheckDaya"+details.productDetailsModel!.averageReview.toString());
+
+
                 return SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: !details.isDetails?
                   Column(
                     children: [
-
+                       Text("Datattaaa"+details.productDetailsModel!.combo.toString()),
                       ProductImageView(productModel: details.productDetailsModel),
 
                       Container(
@@ -230,7 +241,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   ):
                   Column(mainAxisAlignment: MainAxisAlignment.center,crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(height: MediaQuery.of(context).size.height,
+                      SizedBox(height: MediaQuery.of(context).size.height,
                           child: const Center(child: CircularProgressIndicator())),
                     ],
                   ),

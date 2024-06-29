@@ -12,6 +12,7 @@ class ProductDetailsModel {
   int? _brandId;
   String? _unit;
   int? _minQty;
+  int? _combo;
   int? _refundable;
   String? _digitalProductType;
   String? _digitalFileReady;
@@ -106,6 +107,7 @@ class ProductDetailsModel {
         int? brandId,
         String? unit,
         int? minQty,
+        int? combo,
         int? refundable,
         String? digitalProductType,
         String? digitalFileReady,
@@ -347,6 +349,7 @@ class ProductDetailsModel {
   }
 
   int? get id => _id;
+  int? get combo => _combo;
   String? get addedBy => _addedBy;
   int? get userId => _userId;
   String? get name => _name;
@@ -414,6 +417,7 @@ class ProductDetailsModel {
     _brandId = json['brand_id'];
     _unit = json['unit'];
     _minQty = json['min_qty'];
+    _combo = json['combo'];
     _refundable = json['refundable'];
     _digitalProductType = json['digital_product_type'];
     _digitalFileReady = json['digital_file_ready'];
@@ -536,6 +540,7 @@ class ProductDetailsModel {
     data['brand_id'] = _brandId;
     data['unit'] = _unit;
     data['min_qty'] = _minQty;
+    data['combo'] = _combo;
     data['refundable'] = _refundable;
     data['digital_product_type'] = _digitalProductType;
     data['digital_file_ready'] = _digitalFileReady;
