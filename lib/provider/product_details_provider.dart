@@ -39,6 +39,7 @@ class ProductDetailsProvider extends ChangeNotifier {
   bool get isDetails =>_isDetails;
 
   List<ReviewModel>? get reviewList => _reviewList;
+  List<ComboProductDataModel>? get comboProductList => _comboProduct;
   int? get imageSliderIndex => _imageSliderIndex;
   bool get isWished => _wish;
   int? get quantity => _quantity;
@@ -83,6 +84,7 @@ class ProductDetailsProvider extends ChangeNotifier {
       _isDetails = false;
       _comboProduct = [];
       apiResponse.response!.data.forEach((reviewModel) => _comboProduct!.add(ComboProductDataModel.fromJson(reviewModel)));
+    print("ComboData"+apiResponse.response!.data.toList().toString());
     } else {
       _isDetails = false;
       if(context.mounted){}

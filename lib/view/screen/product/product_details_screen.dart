@@ -4,6 +4,7 @@ import 'package:flutter_sixvalley_ecommerce/provider/auth_provider.dart';
 import 'package:flutter_sixvalley_ecommerce/utill/color_resources.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/rating_bar.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/home/widget/products_view.dart';
+import 'package:flutter_sixvalley_ecommerce/view/screen/product/combo_product_view.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/product/widget/promise_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/product/widget/seller_view.dart';
 
@@ -55,7 +56,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
     }
 
-
+print("initialCombo"+Provider.of<ProductDetailsProvider>(context, listen: false).productDetailsModel!.combo.toString());
     if(Provider.of<ProductDetailsProvider>(context, listen: false).productDetailsModel!.combo==1){
       Provider.of<ProductDetailsProvider>(context, listen: false).getComboProducts(context, widget.productId.toString());
     }
@@ -121,7 +122,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: !details.isDetails?
                   Column(
                     children: [
-                       Text("Datattaaa"+details.productDetailsModel!.combo.toString()),
                       ProductImageView(productModel: details.productDetailsModel),
 
                       Container(
@@ -140,7 +140,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               averageRatting: details.productDetailsModel!.averageReview != 0?
                               details.productDetailsModel!.averageReview: "0"),
 
-                          Container(height: 60,
+                          Container(height: 65,
                             margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
                             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
                             child: ProductSpecification(productSpecification: details.productDetailsModel),) ,
@@ -219,7 +219,21 @@ class _ProductDetailsState extends State<ProductDetails> {
 
 
 
+                          Container(
+                            margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
+                            padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+                            child: Column(children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL,
+                                    vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                                child: TitleRow(title: getTranslated('combo_products', context), isDetailsPage: true),
+                              ),
+                              const SizedBox(height: 5),
+                              const ComboProductView(),
 
+                            ],
+                            ),
+                          ),
                           Container(
                             margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
                             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
@@ -231,6 +245,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               ),
                               const SizedBox(height: 5),
                               const RelatedProductView(),
+
                             ],
                             ),
                           ),
