@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sixvalley_ecommerce/data/model/response/cart_model.dart';
+import 'package:flutter_sixvalley_ecommerce/data/model/response/combo_product_datamodel.dart';
 import 'package:flutter_sixvalley_ecommerce/data/model/response/shipping_model.dart';
 import 'package:flutter_sixvalley_ecommerce/helper/price_converter.dart';
 import 'package:flutter_sixvalley_ecommerce/localization/language_constrants.dart';
@@ -24,7 +25,8 @@ import 'package:provider/provider.dart';
 class CartScreen extends StatefulWidget {
   final bool fromCheckout;
   final int sellerId;
-  const CartScreen({Key? key, this.fromCheckout = false, this.sellerId = 1}) : super(key: key);
+   List<ComboProductDataModel>? comboCart;
+   CartScreen({Key? key, this.fromCheckout = false, this.sellerId = 1,  this.comboCart}) : super(key: key);
 
   @override
   CartScreenState createState() => CartScreenState();
@@ -62,7 +64,6 @@ class CartScreenState extends State<CartScreen> {
       List<bool> sellerWiseOnlyDigital = [];
       List<CartModel> cartList = [];
       cartList.addAll(cart.cartList);
-
       for(CartModel cart in cartList) {
         if(cart.productType == "physical"){
           onlyDigital = false;
@@ -264,8 +265,6 @@ class CartScreenState extends State<CartScreen> {
                                 Padding(padding: const EdgeInsets.all(8.0),
                                     child: Text(sellerGroupList[index].shopInfo!,
                                           textAlign: TextAlign.end, style: titilliumSemiBold.copyWith(fontSize: Dimensions.fontSizeLarge))) : const SizedBox(),
-
-
                                 Card(child: Container(padding: const EdgeInsets.only(bottom: Dimensions.paddingSizeLarge),
                                   decoration: BoxDecoration(color: Theme.of(context).highlightColor),
                                   child: Column(children: [
@@ -281,7 +280,6 @@ class CartScreenState extends State<CartScreen> {
                                       );
                                       },
                                     ),
-
 
                                     Provider.of<SplashProvider>(context,listen: false).configModel!.shippingMethod =='sellerwise_shipping' &&
                                         sellerGroupList[index].shippingType == 'order_wise' && hasPhysical ?

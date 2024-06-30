@@ -168,7 +168,7 @@ class _MoreScreenState extends State<MoreScreen> {
                                     navigateTo: const MyGiftVoucherScreen(),count: 1,hasCount: false,),
 
                                   SquareButton(image: Images.cartImage, title: getTranslated('CART', context),
-                                    navigateTo: const CartScreen(),
+                                    navigateTo:  CartScreen(),
                                     count: Provider.of<CartProvider>(context,listen: false).cartList.length, hasCount: true,),
 
                                   SquareButton(image: Images.offers, title: getTranslated('offers', context),

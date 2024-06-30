@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sixvalley_ecommerce/data/model/response/combo_product_datamodel.dart';
 import 'package:flutter_sixvalley_ecommerce/data/model/response/product_details_model.dart';
 import 'package:flutter_sixvalley_ecommerce/localization/language_constrants.dart';
 import 'package:flutter_sixvalley_ecommerce/provider/cart_provider.dart';
@@ -13,7 +14,8 @@ import 'package:provider/provider.dart';
 
 class BottomCartView extends StatefulWidget {
   final ProductDetailsModel? product;
-  const BottomCartView({Key? key, required this.product}) : super(key: key);
+  final List<ComboProductDataModel>? comboCart;
+  const BottomCartView({Key? key, required this.product,   this.comboCart}) : super(key: key);
 
   @override
   State<BottomCartView> createState() => _BottomCartViewState();
@@ -75,7 +77,7 @@ class _BottomCartViewState extends State<BottomCartView> {
             GestureDetector(
                 onTap: (){
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context)=>const CartScreen()
+                      builder: (context)=> CartScreen(comboCart:widget.comboCart)
                   ));
                 },
                 child: Image.asset(Images.cartArrowDownImage, color: ColorResources.getPrimary(context))),

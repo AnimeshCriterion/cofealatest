@@ -140,6 +140,23 @@ print("initialCombo"+Provider.of<ProductDetailsProvider>(context, listen: false)
                               averageRatting: details.productDetailsModel!.averageReview != 0?
                               details.productDetailsModel!.averageReview: "0"),
 
+
+
+                          Container(
+                            margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
+                            padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+                            child: Column(children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL,
+                                    vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                                child: TitleRow(title: getTranslated('combo_products', context), isDetailsPage: true),
+                              ),
+                              const SizedBox(height: 5),
+                              const ComboProductView(),
+
+                            ],
+                            ),
+                          ),
                           Container(height: 65,
                             margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
                             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
@@ -217,23 +234,6 @@ print("initialCombo"+Provider.of<ProductDetailsProvider>(context, listen: false)
                             child: ProductView(isHomePage: true, productType: ProductType.SELLER_PRODUCT,
                                 scrollController: _scrollController, sellerId: details.productDetailsModel!.userId.toString()),):const SizedBox(),
 
-
-
-                          Container(
-                            margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
-                            padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
-                            child: Column(children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL,
-                                    vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                                child: TitleRow(title: getTranslated('combo_products', context), isDetailsPage: true),
-                              ),
-                              const SizedBox(height: 5),
-                              const ComboProductView(),
-
-                            ],
-                            ),
-                          ),
                           Container(
                             margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
                             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
@@ -267,7 +267,7 @@ print("initialCombo"+Provider.of<ProductDetailsProvider>(context, listen: false)
         ),
         bottomNavigationBar: Consumer<ProductDetailsProvider>(
             builder: (context, details, child) {
-              return BottomCartView(product: details.productDetailsModel);
+              return BottomCartView(product: details.productDetailsModel,comboCart:details.comboProductList);
             }
         ),
       ),

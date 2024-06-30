@@ -79,7 +79,7 @@ class _GiftVoucherScreenState extends State<GiftVoucherScreen> {
             child: IconButton(
               onPressed: () {
                 //  Navigator.push(context, MaterialPageRoute(builder: (_) => GiftVoucherScreen()));
-                Navigator.push(context, MaterialPageRoute(builder: (_) => const CartScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (_) =>  CartScreen()));
               },
               icon: Stack(clipBehavior: Clip.none, children: [
                 Image.asset(
