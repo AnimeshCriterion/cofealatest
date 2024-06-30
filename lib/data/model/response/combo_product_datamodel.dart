@@ -26,7 +26,7 @@ class ComboProductDataModel {
   String? choiceOptions;
   String? variation;
   int? published;
-  double? unitPrice;
+  int? unitPrice;
   int? purchasePrice;
   int? tax;
   String? taxType;

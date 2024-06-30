@@ -16,6 +16,7 @@ class ComboProductView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ProductDetailsProvider>(
       builder: (context, prodProvider, child) {
+
         return Column(children: [
           prodProvider.comboProductList != null ? prodProvider.comboProductList!.isNotEmpty ? StaggeredGridView.countBuilder(
             crossAxisCount: 2,

@@ -18,9 +18,18 @@ import 'package:flutter_sixvalley_ecommerce/view/basewidget/guest_dialog.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/no_internet_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/basewidget/show_custom_snakbar.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/cart/widget/cart_widget.dart';
+import 'package:flutter_sixvalley_ecommerce/view/screen/cart/widget/combo_product_dartview.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/checkout/checkout_screen.dart';
 import 'package:flutter_sixvalley_ecommerce/view/screen/checkout/widget/shipping_method_bottom_sheet.dart';
 import 'package:provider/provider.dart';
+import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
+import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
+
+import '../../../provider/product_details_provider.dart';
+import '../../basewidget/product_shimmer.dart';
+import '../../basewidget/title_row.dart';
+import '../product/combo_product.dart';
+import '../product/combo_product_view.dart';
 
 class CartScreen extends StatefulWidget {
   final bool fromCheckout;
@@ -50,6 +59,10 @@ class CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     _loadData();
+if(widget.comboCart!.toList().toString()!="null"){
+  print("CheckCartData"+widget.comboCart!.toList().toString());
+}
+
     super.initState();
   }
 
@@ -325,6 +338,33 @@ class CartScreenState extends State<CartScreen> {
                         ),
                       ),
                     ),
+                    widget.comboCart!.isNotEmpty? Container(
+                      margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
+                      padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
+                      child: Column(children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL,
+                              vertical: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                          child: TitleRow(title: getTranslated('combo_products', context), isDetailsPage: true),
+                        ),
+                        const SizedBox(height: 5),
+      Column(children: [
+      widget.comboCart != null ? widget.comboCart!.isNotEmpty ? StaggeredGridView.countBuilder(
+      crossAxisCount: 1,
+      itemCount: widget.comboCart!.length,
+      shrinkWrap: true,
+      scrollDirection: Axis.vertical,
+      staggeredTileBuilder: (int index) => const StaggeredTile.fit(1),
+      itemBuilder: (BuildContext context, int index) {
+      return ComboProductCartWidget(productModel: widget.comboCart![index]);
+      },
+      ): const Center(child: Text('No Combo Product Found')) :
+      ProductShimmer(isHomePage: false, isEnabled: widget.comboCart == null),
+      ])
+
+                      ],
+                      ),
+                    ):Container(),
                     Provider.of<SplashProvider>(context,listen: false).configModel!.shippingMethod !='sellerwise_shipping' && Provider.of<SplashProvider>(context,listen: false).configModel!.inHouseSelectedShippingType =='order_wise'?
                     InkWell(
                       onTap: () {

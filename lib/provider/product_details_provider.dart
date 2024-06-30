@@ -83,6 +83,7 @@ class ProductDetailsProvider extends ChangeNotifier {
     if (apiResponse.response != null && apiResponse.response!.statusCode == 200) {
       _isDetails = false;
       _comboProduct = [];
+      print("ComboData"+apiResponse.response!.data.toList().toString());
       apiResponse.response!.data.forEach((reviewModel) => _comboProduct!.add(ComboProductDataModel.fromJson(reviewModel)));
     print("ComboData"+apiResponse.response!.data.toList().toString());
     } else {

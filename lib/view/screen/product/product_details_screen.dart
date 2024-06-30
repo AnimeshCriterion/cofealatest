@@ -56,7 +56,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
     }
 
-print("initialCombo"+Provider.of<ProductDetailsProvider>(context, listen: false).productDetailsModel!.combo.toString());
+
     if(Provider.of<ProductDetailsProvider>(context, listen: false).productDetailsModel!.combo==1){
       Provider.of<ProductDetailsProvider>(context, listen: false).getComboProducts(context, widget.productId.toString());
     }
@@ -142,7 +142,7 @@ print("initialCombo"+Provider.of<ProductDetailsProvider>(context, listen: false)
 
 
 
-                          Container(
+                         details.productDetailsModel!.combo==1? Container(
                             margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
                             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_DEFAULT),
                             child: Column(children: [
@@ -156,8 +156,8 @@ print("initialCombo"+Provider.of<ProductDetailsProvider>(context, listen: false)
 
                             ],
                             ),
-                          ),
-                          Container(height: 65,
+                          ):Container(),
+                          Container(height: 70,
                             margin: const EdgeInsets.only(top: Dimensions.PADDING_SIZE_SMALL),
                             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
                             child: ProductSpecification(productSpecification: details.productDetailsModel),) ,
